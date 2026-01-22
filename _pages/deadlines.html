@@ -1,0 +1,1400 @@
+---
+layout: archive
+title: "Conference Deadlines"
+permalink: /deadlines/
+author_profile: true
+---
+
+<style>
+/* Deadlines Page Styles */
+.deadlines-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.deadlines-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 30px;
+  background: #494e52;
+  border-radius: 8px;
+  color: white;
+}
+
+.deadlines-header h1 {
+  margin: 0 0 10px 0;
+  font-size: 2.2em;
+}
+
+.deadlines-header p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Filter Tags */
+.filter-section {
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 6px;
+}
+
+.filter-title {
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #2d3748;
+}
+
+.filter-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-tag {
+  padding: 8px 16px;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 0.85em;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.filter-tag:hover {
+  border-color: #494e52;
+  color: #494e52;
+}
+
+.filter-tag.active {
+  background: #494e52;
+  color: white;
+  border-color: transparent;
+}
+
+/* Conference Stack */
+.conference-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.conference-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #e0e0e0;
+}
+
+.conference-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.conference-card.expired {
+  opacity: 0.5;
+}
+
+.conf-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 24px;
+  background: linear-gradient(135deg, #f8f9fc 0%, #fff 100%);
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.conf-info {
+  flex: 1;
+}
+
+.conf-name {
+  font-size: 1.4em;
+  font-weight: 700;
+  color: #2d3748;
+  margin: 0 0 8px 0;
+}
+
+.conf-name a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.conf-name a:hover {
+  color: #494e52;
+}
+
+.conf-fullname {
+  font-size: 0.95em;
+  color: #718096;
+  margin-bottom: 10px;
+}
+
+.conf-location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9em;
+  color: #494e52;
+}
+
+.conf-hindex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 20px;
+  background: #494e52;
+  border-radius: 6px;
+  color: white;
+  min-width: 80px;
+}
+
+.conf-hindex-value {
+  font-size: 1.8em;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.conf-hindex-label {
+  font-size: 0.7em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+
+.conf-body {
+  padding: 24px;
+}
+
+.conf-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.conf-tag {
+  padding: 4px 12px;
+  background: #f0f0f0;
+  color: #494e52;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.conf-deadline-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.conf-dates {
+  flex: 1;
+}
+
+.conf-date-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: 0.9em;
+}
+
+.conf-date-label {
+  color: #718096;
+  min-width: 100px;
+}
+
+.conf-date-value {
+  font-weight: 600;
+  color: #2d3748;
+}
+
+/* Countdown Timer */
+.countdown-timer {
+  display: flex;
+  gap: 10px;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+}
+
+.countdown-timer.urgent {
+  background: #fff5f5;
+  border-color: #e53e3e;
+}
+
+.countdown-timer.expired {
+  background: #f5f5f5;
+  border-color: #ccc;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 50px;
+}
+
+.countdown-value {
+  font-size: 1.6em;
+  font-weight: 700;
+  color: #494e52;
+  line-height: 1;
+}
+
+.countdown-timer.urgent .countdown-value {
+  color: #e53e3e;
+}
+
+.countdown-timer.expired .countdown-value {
+  color: #999;
+}
+
+.countdown-label {
+  font-size: 0.65em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.countdown-separator {
+  font-size: 1.4em;
+  font-weight: 700;
+  color: #494e52;
+  align-self: flex-start;
+  margin-top: 5px;
+}
+
+.conf-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.conf-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  background: #494e52;
+  color: white !important;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.conf-link:hover {
+  background: #333;
+}
+
+.conf-link.secondary {
+  background: white;
+  color: #494e52 !important;
+  border: 1px solid #494e52;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .conf-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .conf-hindex {
+    align-self: flex-start;
+  }
+  
+  .conf-deadline-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .countdown-timer {
+    justify-content: center;
+  }
+}
+</style>
+
+<div class="deadlines-container">
+
+<div class="deadlines-header">
+  <h1><i class="fas fa-clock"></i> Conference Deadlines</h1>
+  <p>Track upcoming submission deadlines for top AI, ML, Robotics, and Engineering conferences</p>
+</div>
+
+<div class="filter-section">
+  <div class="filter-title"><i class="fas fa-filter"></i> Filter by Topic</div>
+  <div class="filter-tags">
+    <span class="filter-tag active" data-filter="all">All</span>
+    <span class="filter-tag" data-filter="ai">AI</span>
+    <span class="filter-tag" data-filter="ml">Machine Learning</span>
+    <span class="filter-tag" data-filter="cv">Computer Vision</span>
+    <span class="filter-tag" data-filter="nlp">NLP</span>
+    <span class="filter-tag" data-filter="robotics">Robotics</span>
+    <span class="filter-tag" data-filter="hci">HCI</span>
+    <span class="filter-tag" data-filter="manufacturing">Manufacturing</span>
+    <span class="filter-tag" data-filter="software">Software Eng.</span>
+    <span class="filter-tag" data-filter="data">Data Mining</span>
+    <span class="filter-tag" data-filter="graphics">Graphics</span>
+    <span class="filter-tag" data-filter="optimization">Optimization</span>
+  </div>
+</div>
+
+<div class="conference-stack" id="conferenceStack">
+
+<!-- IROS 2026 -->
+<div class="conference-card" data-tags="robotics ai" data-deadline="2026-03-02">
+  <div class="conf-header">
+    <div class="conf-info">
+      <h3 class="conf-name"><a href="#" target="_blank">IROS 2026</a></h3>
+      <div class="conf-fullname">IEEE/RSJ International Conference on Intelligent Robots and Systems</div>
+      <div class="conf-location"><i class="fas fa-map-marker-alt"></i> Pittsburgh, PA, USA</div>
+    </div>
+    <div class="conf-hindex">
+      <span class="conf-hindex-value">92</span>
+      <span class="conf-hindex-label">h-index</span>
+    </div>
+  </div>
+  <div class="conf-body">
+    <div class="conf-tags">
+      <span class="conf-tag">Robotics</span>
+      <span class="conf-tag">AI</span>
+      <span class="conf-tag">Automation</span>
+      <span class="conf-tag">Perception</span>
+    </div>
+    <div class="conf-deadline-section">
+      <div class="conf-dates">
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-paper-plane"></i> Deadline:</span>
+          <span class="conf-date-value">March 2, 2026</span>
+        </div>
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-calendar"></i> Conference:</span>
+          <span class="conf-date-value">Sep 27 - Oct 1, 2026</span>
+        </div>
+      </div>
+      <div class="countdown-timer" data-deadline="2026-03-02T23:59:59">
+        <div class="countdown-unit"><span class="countdown-value days">--</span><span class="countdown-label">Days</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value hours">--</span><span class="countdown-label">Hours</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value mins">--</span><span class="countdown-label">Mins</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value secs">--</span><span class="countdown-label">Secs</span></div>
+      </div>
+    </div>
+    <div class="conf-links">
+      <a href="#" class="conf-link"><i class="fas fa-external-link-alt"></i> Conference Website</a>
+      <a href="#" class="conf-link secondary"><i class="fas fa-file-alt"></i> CFP</a>
+    </div>
+  </div>
+</div>
+
+<!-- UIST 2026 -->
+<div class="conference-card" data-tags="hci software" data-deadline="2026-04-02">
+  <div class="conf-header">
+    <div class="conf-info">
+      <h3 class="conf-name"><a href="#" target="_blank">UIST 2026</a></h3>
+      <div class="conf-fullname">ACM Symposium on User Interface Software and Technology</div>
+      <div class="conf-location"><i class="fas fa-map-marker-alt"></i> Detroit, MI, USA</div>
+    </div>
+    <div class="conf-hindex">
+      <span class="conf-hindex-value">53</span>
+      <span class="conf-hindex-label">h-index</span>
+    </div>
+  </div>
+  <div class="conf-body">
+    <div class="conf-tags">
+      <span class="conf-tag">HCI</span>
+      <span class="conf-tag">User Interface</span>
+      <span class="conf-tag">Software</span>
+      <span class="conf-tag">Interaction</span>
+    </div>
+    <div class="conf-deadline-section">
+      <div class="conf-dates">
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-paper-plane"></i> Deadline:</span>
+          <span class="conf-date-value">March 24, 2026</span>
+        </div>
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-calendar"></i> Conference:</span>
+          <span class="conf-date-value">Nov 2-5, 2026</span>
+        </div>
+      </div>
+      <div class="countdown-timer" data-deadline="2026-03-24T23:59:59">
+        <div class="countdown-unit"><span class="countdown-value days">--</span><span class="countdown-label">Days</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value hours">--</span><span class="countdown-label">Hours</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value mins">--</span><span class="countdown-label">Mins</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value secs">--</span><span class="countdown-label">Secs</span></div>
+      </div>
+    </div>
+    <div class="conf-links">
+      <a href="#" class="conf-link"><i class="fas fa-external-link-alt"></i> Conference Website</a>
+      <a href="#" class="conf-link secondary"><i class="fas fa-file-alt"></i> CFP</a>
+    </div>
+  </div>
+</div>
+
+<!-- CoRL 2026 -->
+<div class="conference-card" data-tags="robotics ml ai" data-deadline="2026-06-15">
+  <div class="conf-header">
+    <div class="conf-info">
+      <h3 class="conf-name"><a href="#" target="_blank">CoRL 2026</a></h3>
+      <div class="conf-fullname">Conference on Robot Learning</div>
+      <div class="conf-location"><i class="fas fa-map-marker-alt"></i> Austin, TX, USA</div>
+    </div>
+    <div class="conf-hindex">
+      <span class="conf-hindex-value">107</span>
+      <span class="conf-hindex-label">h-index</span>
+    </div>
+  </div>
+  <div class="conf-body">
+    <div class="conf-tags">
+      <span class="conf-tag">Robotics</span>
+      <span class="conf-tag">Machine Learning</span>
+      <span class="conf-tag">AI</span>
+      <span class="conf-tag">Reinforcement Learning</span>
+    </div>
+    <div class="conf-deadline-section">
+      <div class="conf-dates">
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-paper-plane"></i> Deadline:</span>
+          <span class="conf-date-value">April 23, 2026</span>
+        </div>
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-calendar"></i> Conference:</span>
+          <span class="conf-date-value">Nov 9-12, 2026</span>
+        </div>
+      </div>
+      <div class="countdown-timer" data-deadline="2026-04-23T23:59:59">
+        <div class="countdown-unit"><span class="countdown-value days">--</span><span class="countdown-label">Days</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value hours">--</span><span class="countdown-label">Hours</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value mins">--</span><span class="countdown-label">Mins</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value secs">--</span><span class="countdown-label">Secs</span></div>
+      </div>
+    </div>
+    <div class="conf-links">
+      <a href="#" class="conf-link"><i class="fas fa-external-link-alt"></i> Conference Website</a>
+      <a href="#" class="conf-link secondary"><i class="fas fa-file-alt"></i> CFP</a>
+    </div>
+  </div>
+</div>
+
+<!-- WACV 2027 -->
+<div class="conference-card" data-tags="cv ai ml" data-deadline="2026-07-11">
+  <div class="conf-header">
+    <div class="conf-info">
+      <h3 class="conf-name"><a href="#" target="_blank">WACV 2027</a></h3>
+      <div class="conf-fullname">IEEE/CVF Winter Conference on Applications of Computer Vision</div>
+      <div class="conf-location"><i class="fas fa-map-marker-alt"></i> Orlando, FL, USA</div>
+    </div>
+    <div class="conf-hindex">
+      <span class="conf-hindex-value">131</span>
+      <span class="conf-hindex-label">h-index</span>
+    </div>
+  </div>
+  <div class="conf-body">
+    <div class="conf-tags">
+      <span class="conf-tag">Computer Vision</span>
+      <span class="conf-tag">AI</span>
+      <span class="conf-tag">Deep Learning</span>
+      <span class="conf-tag">Image Processing</span>
+    </div>
+    <div class="conf-deadline-section">
+      <div class="conf-dates">
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-paper-plane"></i> Deadline:</span>
+          <span class="conf-date-value">July 11, 2026</span>
+        </div>
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-calendar"></i> Conference:</span>
+          <span class="conf-date-value">Mar 5-10, 2027</span>
+        </div>
+      </div>
+      <div class="countdown-timer" data-deadline="2026-07-11T23:59:59">
+        <div class="countdown-unit"><span class="countdown-value days">--</span><span class="countdown-label">Days</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value hours">--</span><span class="countdown-label">Hours</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value mins">--</span><span class="countdown-label">Mins</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value secs">--</span><span class="countdown-label">Secs</span></div>
+      </div>
+    </div>
+    <div class="conf-links">
+      <a href="#" class="conf-link"><i class="fas fa-external-link-alt"></i> Conference Website</a>
+      <a href="#" class="conf-link secondary"><i class="fas fa-file-alt"></i> CFP</a>
+    </div>
+  </div>
+</div>
+
+<!-- NeurIPS 2026 -->
+<div class="conference-card" data-tags="ml ai" data-deadline="2026-05-15">
+  <div class="conf-header">
+    <div class="conf-info">
+      <h3 class="conf-name"><a href="#" target="_blank">NeurIPS 2026</a></h3>
+      <div class="conf-fullname">Conference on Neural Information Processing Systems</div>
+      <div class="conf-location"><i class="fas fa-map-marker-alt"></i> TBD</div>
+    </div>
+    <div class="conf-hindex">
+      <span class="conf-hindex-value">309</span>
+      <span class="conf-hindex-label">h-index</span>
+    </div>
+  </div>
+  <div class="conf-body">
+    <div class="conf-tags">
+      <span class="conf-tag">Machine Learning</span>
+      <span class="conf-tag">AI</span>
+      <span class="conf-tag">Deep Learning</span>
+      <span class="conf-tag">Neural Networks</span>
+    </div>
+    <div class="conf-deadline-section">
+      <div class="conf-dates">
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-paper-plane"></i> Deadline:</span>
+          <span class="conf-date-value">May 15, 2026 (est.)</span>
+        </div>
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-calendar"></i> Conference:</span>
+          <span class="conf-date-value">Dec 2026</span>
+        </div>
+      </div>
+      <div class="countdown-timer" data-deadline="2026-05-15T23:59:59">
+        <div class="countdown-unit"><span class="countdown-value days">--</span><span class="countdown-label">Days</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value hours">--</span><span class="countdown-label">Hours</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value mins">--</span><span class="countdown-label">Mins</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value secs">--</span><span class="countdown-label">Secs</span></div>
+      </div>
+    </div>
+    <div class="conf-links">
+      <a href="#" class="conf-link"><i class="fas fa-external-link-alt"></i> Conference Website</a>
+      <a href="#" class="conf-link secondary"><i class="fas fa-file-alt"></i> CFP</a>
+    </div>
+  </div>
+</div>
+
+<!-- ICML 2026 -->
+<div class="conference-card" data-tags="ml ai" data-deadline="2026-01-30">
+  <div class="conf-header">
+    <div class="conf-info">
+      <h3 class="conf-name"><a href="#" target="_blank">ICML 2026</a></h3>
+      <div class="conf-fullname">International Conference on Machine Learning</div>
+      <div class="conf-location"><i class="fas fa-map-marker-alt"></i> TBD</div>
+    </div>
+    <div class="conf-hindex">
+      <span class="conf-hindex-value">299</span>
+      <span class="conf-hindex-label">h-index</span>
+    </div>
+  </div>
+  <div class="conf-body">
+    <div class="conf-tags">
+      <span class="conf-tag">Machine Learning</span>
+      <span class="conf-tag">AI</span>
+      <span class="conf-tag">Deep Learning</span>
+      <span class="conf-tag">Theory</span>
+    </div>
+    <div class="conf-deadline-section">
+      <div class="conf-dates">
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-paper-plane"></i> Deadline:</span>
+          <span class="conf-date-value">Jan 30, 2026 (est.)</span>
+        </div>
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-calendar"></i> Conference:</span>
+          <span class="conf-date-value">Jul 2026</span>
+        </div>
+      </div>
+      <div class="countdown-timer" data-deadline="2026-01-30T23:59:59">
+        <div class="countdown-unit"><span class="countdown-value days">--</span><span class="countdown-label">Days</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value hours">--</span><span class="countdown-label">Hours</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value mins">--</span><span class="countdown-label">Mins</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value secs">--</span><span class="countdown-label">Secs</span></div>
+      </div>
+    </div>
+    <div class="conf-links">
+      <a href="#" class="conf-link"><i class="fas fa-external-link-alt"></i> Conference Website</a>
+      <a href="#" class="conf-link secondary"><i class="fas fa-file-alt"></i> CFP</a>
+    </div>
+  </div>
+</div>
+
+<!-- CVPR 2026 -->
+<div class="conference-card" data-tags="cv ai ml" data-deadline="2025-11-15">
+  <div class="conf-header">
+    <div class="conf-info">
+      <h3 class="conf-name"><a href="#" target="_blank">CVPR 2026</a></h3>
+      <div class="conf-fullname">IEEE/CVF Conference on Computer Vision and Pattern Recognition</div>
+      <div class="conf-location"><i class="fas fa-map-marker-alt"></i> TBD</div>
+    </div>
+    <div class="conf-hindex">
+      <span class="conf-hindex-value">422</span>
+      <span class="conf-hindex-label">h-index</span>
+    </div>
+  </div>
+  <div class="conf-body">
+    <div class="conf-tags">
+      <span class="conf-tag">Computer Vision</span>
+      <span class="conf-tag">AI</span>
+      <span class="conf-tag">Deep Learning</span>
+      <span class="conf-tag">Pattern Recognition</span>
+    </div>
+    <div class="conf-deadline-section">
+      <div class="conf-dates">
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-paper-plane"></i> Deadline:</span>
+          <span class="conf-date-value">Nov 15, 2025 (est.)</span>
+        </div>
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-calendar"></i> Conference:</span>
+          <span class="conf-date-value">Jun 2026</span>
+        </div>
+      </div>
+      <div class="countdown-timer" data-deadline="2025-11-15T23:59:59">
+        <div class="countdown-unit"><span class="countdown-value days">--</span><span class="countdown-label">Days</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value hours">--</span><span class="countdown-label">Hours</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value mins">--</span><span class="countdown-label">Mins</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value secs">--</span><span class="countdown-label">Secs</span></div>
+      </div>
+    </div>
+    <div class="conf-links">
+      <a href="#" class="conf-link"><i class="fas fa-external-link-alt"></i> Conference Website</a>
+      <a href="#" class="conf-link secondary"><i class="fas fa-file-alt"></i> CFP</a>
+    </div>
+  </div>
+</div>
+
+<!-- ICLR 2026 -->
+<div class="conference-card" data-tags="ml ai" data-deadline="2025-10-01">
+  <div class="conf-header">
+    <div class="conf-info">
+      <h3 class="conf-name"><a href="#" target="_blank">ICLR 2026</a></h3>
+      <div class="conf-fullname">International Conference on Learning Representations</div>
+      <div class="conf-location"><i class="fas fa-map-marker-alt"></i> TBD</div>
+    </div>
+    <div class="conf-hindex">
+      <span class="conf-hindex-value">286</span>
+      <span class="conf-hindex-label">h-index</span>
+    </div>
+  </div>
+  <div class="conf-body">
+    <div class="conf-tags">
+      <span class="conf-tag">Machine Learning</span>
+      <span class="conf-tag">Deep Learning</span>
+      <span class="conf-tag">Representation Learning</span>
+      <span class="conf-tag">AI</span>
+    </div>
+    <div class="conf-deadline-section">
+      <div class="conf-dates">
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-paper-plane"></i> Deadline:</span>
+          <span class="conf-date-value">Oct 1, 2025 (est.)</span>
+        </div>
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-calendar"></i> Conference:</span>
+          <span class="conf-date-value">Apr 2026</span>
+        </div>
+      </div>
+      <div class="countdown-timer" data-deadline="2025-10-01T23:59:59">
+        <div class="countdown-unit"><span class="countdown-value days">--</span><span class="countdown-label">Days</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value hours">--</span><span class="countdown-label">Hours</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value mins">--</span><span class="countdown-label">Mins</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value secs">--</span><span class="countdown-label">Secs</span></div>
+      </div>
+    </div>
+    <div class="conf-links">
+      <a href="#" class="conf-link"><i class="fas fa-external-link-alt"></i> Conference Website</a>
+      <a href="#" class="conf-link secondary"><i class="fas fa-file-alt"></i> CFP</a>
+    </div>
+  </div>
+</div>
+
+<!-- ICRA 2026 -->
+<div class="conference-card" data-tags="robotics ai" data-deadline="2025-09-15">
+  <div class="conf-header">
+    <div class="conf-info">
+      <h3 class="conf-name"><a href="#" target="_blank">ICRA 2026</a></h3>
+      <div class="conf-fullname">IEEE International Conference on Robotics and Automation</div>
+      <div class="conf-location"><i class="fas fa-map-marker-alt"></i> TBD</div>
+    </div>
+    <div class="conf-hindex">
+      <span class="conf-hindex-value">148</span>
+      <span class="conf-hindex-label">h-index</span>
+    </div>
+  </div>
+  <div class="conf-body">
+    <div class="conf-tags">
+      <span class="conf-tag">Robotics</span>
+      <span class="conf-tag">Automation</span>
+      <span class="conf-tag">AI</span>
+      <span class="conf-tag">Control</span>
+    </div>
+    <div class="conf-deadline-section">
+      <div class="conf-dates">
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-paper-plane"></i> Deadline:</span>
+          <span class="conf-date-value">Sep 15, 2025 (est.)</span>
+        </div>
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-calendar"></i> Conference:</span>
+          <span class="conf-date-value">May 2026</span>
+        </div>
+      </div>
+      <div class="countdown-timer" data-deadline="2025-09-15T23:59:59">
+        <div class="countdown-unit"><span class="countdown-value days">--</span><span class="countdown-label">Days</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value hours">--</span><span class="countdown-label">Hours</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value mins">--</span><span class="countdown-label">Mins</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value secs">--</span><span class="countdown-label">Secs</span></div>
+      </div>
+    </div>
+    <div class="conf-links">
+      <a href="#" class="conf-link"><i class="fas fa-external-link-alt"></i> Conference Website</a>
+      <a href="#" class="conf-link secondary"><i class="fas fa-file-alt"></i> CFP</a>
+    </div>
+  </div>
+</div>
+
+<!-- ACL 2026 -->
+<div class="conference-card" data-tags="nlp ai" data-deadline="2026-02-15">
+  <div class="conf-header">
+    <div class="conf-info">
+      <h3 class="conf-name"><a href="#" target="_blank">ACL 2026</a></h3>
+      <div class="conf-fullname">Annual Meeting of the Association for Computational Linguistics</div>
+      <div class="conf-location"><i class="fas fa-map-marker-alt"></i> TBD</div>
+    </div>
+    <div class="conf-hindex">
+      <span class="conf-hindex-value">192</span>
+      <span class="conf-hindex-label">h-index</span>
+    </div>
+  </div>
+  <div class="conf-body">
+    <div class="conf-tags">
+      <span class="conf-tag">NLP</span>
+      <span class="conf-tag">Computational Linguistics</span>
+      <span class="conf-tag">AI</span>
+      <span class="conf-tag">Language Models</span>
+    </div>
+    <div class="conf-deadline-section">
+      <div class="conf-dates">
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-paper-plane"></i> Deadline:</span>
+          <span class="conf-date-value">Feb 15, 2026 (est.)</span>
+        </div>
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-calendar"></i> Conference:</span>
+          <span class="conf-date-value">Jul 2026</span>
+        </div>
+      </div>
+      <div class="countdown-timer" data-deadline="2026-02-15T23:59:59">
+        <div class="countdown-unit"><span class="countdown-value days">--</span><span class="countdown-label">Days</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value hours">--</span><span class="countdown-label">Hours</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value mins">--</span><span class="countdown-label">Mins</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value secs">--</span><span class="countdown-label">Secs</span></div>
+      </div>
+    </div>
+    <div class="conf-links">
+      <a href="#" class="conf-link"><i class="fas fa-external-link-alt"></i> Conference Website</a>
+      <a href="#" class="conf-link secondary"><i class="fas fa-file-alt"></i> CFP</a>
+    </div>
+  </div>
+</div>
+
+<!-- EMNLP 2026 -->
+<div class="conference-card" data-tags="nlp ai" data-deadline="2026-06-01">
+  <div class="conf-header">
+    <div class="conf-info">
+      <h3 class="conf-name"><a href="#" target="_blank">EMNLP 2026</a></h3>
+      <div class="conf-fullname">Conference on Empirical Methods in Natural Language Processing</div>
+      <div class="conf-location"><i class="fas fa-map-marker-alt"></i> TBD</div>
+    </div>
+    <div class="conf-hindex">
+      <span class="conf-hindex-value">166</span>
+      <span class="conf-hindex-label">h-index</span>
+    </div>
+  </div>
+  <div class="conf-body">
+    <div class="conf-tags">
+      <span class="conf-tag">NLP</span>
+      <span class="conf-tag">AI</span>
+      <span class="conf-tag">Language Models</span>
+      <span class="conf-tag">Empirical Methods</span>
+    </div>
+    <div class="conf-deadline-section">
+      <div class="conf-dates">
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-paper-plane"></i> Deadline:</span>
+          <span class="conf-date-value">Jun 1, 2026 (est.)</span>
+        </div>
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-calendar"></i> Conference:</span>
+          <span class="conf-date-value">Nov 2026</span>
+        </div>
+      </div>
+      <div class="countdown-timer" data-deadline="2026-06-01T23:59:59">
+        <div class="countdown-unit"><span class="countdown-value days">--</span><span class="countdown-label">Days</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value hours">--</span><span class="countdown-label">Hours</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value mins">--</span><span class="countdown-label">Mins</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value secs">--</span><span class="countdown-label">Secs</span></div>
+      </div>
+    </div>
+    <div class="conf-links">
+      <a href="#" class="conf-link"><i class="fas fa-external-link-alt"></i> Conference Website</a>
+      <a href="#" class="conf-link secondary"><i class="fas fa-file-alt"></i> CFP</a>
+    </div>
+  </div>
+</div>
+
+<!-- CHI 2026 -->
+<div class="conference-card" data-tags="hci" data-deadline="2025-09-12">
+  <div class="conf-header">
+    <div class="conf-info">
+      <h3 class="conf-name"><a href="#" target="_blank">CHI 2026</a></h3>
+      <div class="conf-fullname">ACM CHI Conference on Human Factors in Computing Systems</div>
+      <div class="conf-location"><i class="fas fa-map-marker-alt"></i> TBD</div>
+    </div>
+    <div class="conf-hindex">
+      <span class="conf-hindex-value">173</span>
+      <span class="conf-hindex-label">h-index</span>
+    </div>
+  </div>
+  <div class="conf-body">
+    <div class="conf-tags">
+      <span class="conf-tag">HCI</span>
+      <span class="conf-tag">Human Factors</span>
+      <span class="conf-tag">User Experience</span>
+      <span class="conf-tag">Interaction Design</span>
+    </div>
+    <div class="conf-deadline-section">
+      <div class="conf-dates">
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-paper-plane"></i> Deadline:</span>
+          <span class="conf-date-value">Sep 12, 2025 (est.)</span>
+        </div>
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-calendar"></i> Conference:</span>
+          <span class="conf-date-value">Apr 2026</span>
+        </div>
+      </div>
+      <div class="countdown-timer" data-deadline="2025-09-12T23:59:59">
+        <div class="countdown-unit"><span class="countdown-value days">--</span><span class="countdown-label">Days</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value hours">--</span><span class="countdown-label">Hours</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value mins">--</span><span class="countdown-label">Mins</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value secs">--</span><span class="countdown-label">Secs</span></div>
+      </div>
+    </div>
+    <div class="conf-links">
+      <a href="#" class="conf-link"><i class="fas fa-external-link-alt"></i> Conference Website</a>
+      <a href="#" class="conf-link secondary"><i class="fas fa-file-alt"></i> CFP</a>
+    </div>
+  </div>
+</div>
+
+<!-- KDD 2026 -->
+<div class="conference-card" data-tags="data ml ai" data-deadline="2026-02-08">
+  <div class="conf-header">
+    <div class="conf-info">
+      <h3 class="conf-name"><a href="#" target="_blank">KDD 2026</a></h3>
+      <div class="conf-fullname">ACM SIGKDD Conference on Knowledge Discovery and Data Mining</div>
+      <div class="conf-location"><i class="fas fa-map-marker-alt"></i> TBD</div>
+    </div>
+    <div class="conf-hindex">
+      <span class="conf-hindex-value">180</span>
+      <span class="conf-hindex-label">h-index</span>
+    </div>
+  </div>
+  <div class="conf-body">
+    <div class="conf-tags">
+      <span class="conf-tag">Data Mining</span>
+      <span class="conf-tag">Machine Learning</span>
+      <span class="conf-tag">AI</span>
+      <span class="conf-tag">Knowledge Discovery</span>
+    </div>
+    <div class="conf-deadline-section">
+      <div class="conf-dates">
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-paper-plane"></i> Deadline:</span>
+          <span class="conf-date-value">Feb 8, 2026 (est.)</span>
+        </div>
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-calendar"></i> Conference:</span>
+          <span class="conf-date-value">Aug 2026</span>
+        </div>
+      </div>
+      <div class="countdown-timer" data-deadline="2026-02-08T23:59:59">
+        <div class="countdown-unit"><span class="countdown-value days">--</span><span class="countdown-label">Days</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value hours">--</span><span class="countdown-label">Hours</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value mins">--</span><span class="countdown-label">Mins</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value secs">--</span><span class="countdown-label">Secs</span></div>
+      </div>
+    </div>
+    <div class="conf-links">
+      <a href="#" class="conf-link"><i class="fas fa-external-link-alt"></i> Conference Website</a>
+      <a href="#" class="conf-link secondary"><i class="fas fa-file-alt"></i> CFP</a>
+    </div>
+  </div>
+</div>
+
+<!-- SIGGRAPH 2026 -->
+<div class="conference-card" data-tags="graphics cv" data-deadline="2026-01-22">
+  <div class="conf-header">
+    <div class="conf-info">
+      <h3 class="conf-name"><a href="#" target="_blank">SIGGRAPH 2026</a></h3>
+      <div class="conf-fullname">ACM SIGGRAPH Conference on Computer Graphics</div>
+      <div class="conf-location"><i class="fas fa-map-marker-alt"></i> TBD</div>
+    </div>
+    <div class="conf-hindex">
+      <span class="conf-hindex-value">127</span>
+      <span class="conf-hindex-label">h-index</span>
+    </div>
+  </div>
+  <div class="conf-body">
+    <div class="conf-tags">
+      <span class="conf-tag">Computer Graphics</span>
+      <span class="conf-tag">Rendering</span>
+      <span class="conf-tag">Animation</span>
+      <span class="conf-tag">Visualization</span>
+    </div>
+    <div class="conf-deadline-section">
+      <div class="conf-dates">
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-paper-plane"></i> Deadline:</span>
+          <span class="conf-date-value">Jan 22, 2026 (est.)</span>
+        </div>
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-calendar"></i> Conference:</span>
+          <span class="conf-date-value">Aug 2026</span>
+        </div>
+      </div>
+      <div class="countdown-timer" data-deadline="2026-01-22T23:59:59">
+        <div class="countdown-unit"><span class="countdown-value days">--</span><span class="countdown-label">Days</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value hours">--</span><span class="countdown-label">Hours</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value mins">--</span><span class="countdown-label">Mins</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value secs">--</span><span class="countdown-label">Secs</span></div>
+      </div>
+    </div>
+    <div class="conf-links">
+      <a href="#" class="conf-link"><i class="fas fa-external-link-alt"></i> Conference Website</a>
+      <a href="#" class="conf-link secondary"><i class="fas fa-file-alt"></i> CFP</a>
+    </div>
+  </div>
+</div>
+
+<!-- AAAI 2027 -->
+<div class="conference-card" data-tags="ai ml" data-deadline="2026-08-15">
+  <div class="conf-header">
+    <div class="conf-info">
+      <h3 class="conf-name"><a href="#" target="_blank">AAAI 2027</a></h3>
+      <div class="conf-fullname">AAAI Conference on Artificial Intelligence</div>
+      <div class="conf-location"><i class="fas fa-map-marker-alt"></i> TBD</div>
+    </div>
+    <div class="conf-hindex">
+      <span class="conf-hindex-value">212</span>
+      <span class="conf-hindex-label">h-index</span>
+    </div>
+  </div>
+  <div class="conf-body">
+    <div class="conf-tags">
+      <span class="conf-tag">AI</span>
+      <span class="conf-tag">Machine Learning</span>
+      <span class="conf-tag">Reasoning</span>
+      <span class="conf-tag">Planning</span>
+    </div>
+    <div class="conf-deadline-section">
+      <div class="conf-dates">
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-paper-plane"></i> Deadline:</span>
+          <span class="conf-date-value">Aug 15, 2026 (est.)</span>
+        </div>
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-calendar"></i> Conference:</span>
+          <span class="conf-date-value">Feb 2027</span>
+        </div>
+      </div>
+      <div class="countdown-timer" data-deadline="2026-08-15T23:59:59">
+        <div class="countdown-unit"><span class="countdown-value days">--</span><span class="countdown-label">Days</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value hours">--</span><span class="countdown-label">Hours</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value mins">--</span><span class="countdown-label">Mins</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value secs">--</span><span class="countdown-label">Secs</span></div>
+      </div>
+    </div>
+    <div class="conf-links">
+      <a href="#" class="conf-link"><i class="fas fa-external-link-alt"></i> Conference Website</a>
+      <a href="#" class="conf-link secondary"><i class="fas fa-file-alt"></i> CFP</a>
+    </div>
+  </div>
+</div>
+
+<!-- IDETC 2026 -->
+<div class="conference-card" data-tags="manufacturing software" data-deadline="2026-02-20">
+  <div class="conf-header">
+    <div class="conf-info">
+      <h3 class="conf-name"><a href="#" target="_blank">ASME IDETC 2026</a></h3>
+      <div class="conf-fullname">ASME International Design Engineering Technical Conferences</div>
+      <div class="conf-location"><i class="fas fa-map-marker-alt"></i> TBD</div>
+    </div>
+    <div class="conf-hindex">
+      <span class="conf-hindex-value">-</span>
+      <span class="conf-hindex-label">h-index</span>
+    </div>
+  </div>
+  <div class="conf-body">
+    <div class="conf-tags">
+      <span class="conf-tag">Design Engineering</span>
+      <span class="conf-tag">Manufacturing</span>
+      <span class="conf-tag">Mechanical Engineering</span>
+      <span class="conf-tag">Systems Engineering</span>
+    </div>
+    <div class="conf-deadline-section">
+      <div class="conf-dates">
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-paper-plane"></i> Deadline:</span>
+          <span class="conf-date-value">Feb 20, 2026 (est.)</span>
+        </div>
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-calendar"></i> Conference:</span>
+          <span class="conf-date-value">Aug 2026</span>
+        </div>
+      </div>
+      <div class="countdown-timer" data-deadline="2026-02-20T23:59:59">
+        <div class="countdown-unit"><span class="countdown-value days">--</span><span class="countdown-label">Days</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value hours">--</span><span class="countdown-label">Hours</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value mins">--</span><span class="countdown-label">Mins</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value secs">--</span><span class="countdown-label">Secs</span></div>
+      </div>
+    </div>
+    <div class="conf-links">
+      <a href="#" class="conf-link"><i class="fas fa-external-link-alt"></i> Conference Website</a>
+      <a href="#" class="conf-link secondary"><i class="fas fa-file-alt"></i> CFP</a>
+    </div>
+  </div>
+</div>
+
+<!-- IEEE Aerospace 2027 -->
+<div class="conference-card" data-tags="software robotics" data-deadline="2026-06-25">
+  <div class="conf-header">
+    <div class="conf-info">
+      <h3 class="conf-name"><a href="#" target="_blank">IEEE Aerospace 2027</a></h3>
+      <div class="conf-fullname">IEEE Aerospace Conference</div>
+      <div class="conf-location"><i class="fas fa-map-marker-alt"></i> Big Sky, MT, USA</div>
+    </div>
+    <div class="conf-hindex">
+      <span class="conf-hindex-value">66</span>
+      <span class="conf-hindex-label">h-index</span>
+    </div>
+  </div>
+  <div class="conf-body">
+    <div class="conf-tags">
+      <span class="conf-tag">Aerospace</span>
+      <span class="conf-tag">Systems Engineering</span>
+      <span class="conf-tag">Space Systems</span>
+      <span class="conf-tag">Autonomy</span>
+    </div>
+    <div class="conf-deadline-section">
+      <div class="conf-dates">
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-paper-plane"></i> Deadline:</span>
+          <span class="conf-date-value">Jun 25, 2026 (est.)</span>
+        </div>
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-calendar"></i> Conference:</span>
+          <span class="conf-date-value">Mar 2027</span>
+        </div>
+      </div>
+      <div class="countdown-timer" data-deadline="2026-06-25T23:59:59">
+        <div class="countdown-unit"><span class="countdown-value days">--</span><span class="countdown-label">Days</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value hours">--</span><span class="countdown-label">Hours</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value mins">--</span><span class="countdown-label">Mins</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value secs">--</span><span class="countdown-label">Secs</span></div>
+      </div>
+    </div>
+    <div class="conf-links">
+      <a href="#" class="conf-link"><i class="fas fa-external-link-alt"></i> Conference Website</a>
+      <a href="#" class="conf-link secondary"><i class="fas fa-file-alt"></i> CFP</a>
+    </div>
+  </div>
+</div>
+
+<!-- IJCAI 2026 -->
+<div class="conference-card" data-tags="ai ml" data-deadline="2026-01-16">
+  <div class="conf-header">
+    <div class="conf-info">
+      <h3 class="conf-name"><a href="#" target="_blank">IJCAI 2026</a></h3>
+      <div class="conf-fullname">International Joint Conference on Artificial Intelligence</div>
+      <div class="conf-location"><i class="fas fa-map-marker-alt"></i> TBD</div>
+    </div>
+    <div class="conf-hindex">
+      <span class="conf-hindex-value">133</span>
+      <span class="conf-hindex-label">h-index</span>
+    </div>
+  </div>
+  <div class="conf-body">
+    <div class="conf-tags">
+      <span class="conf-tag">AI</span>
+      <span class="conf-tag">Machine Learning</span>
+      <span class="conf-tag">Knowledge Representation</span>
+      <span class="conf-tag">Multi-Agent Systems</span>
+    </div>
+    <div class="conf-deadline-section">
+      <div class="conf-dates">
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-paper-plane"></i> Deadline:</span>
+          <span class="conf-date-value">Jan 16, 2026 (est.)</span>
+        </div>
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-calendar"></i> Conference:</span>
+          <span class="conf-date-value">Aug 2026</span>
+        </div>
+      </div>
+      <div class="countdown-timer" data-deadline="2026-01-16T23:59:59">
+        <div class="countdown-unit"><span class="countdown-value days">--</span><span class="countdown-label">Days</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value hours">--</span><span class="countdown-label">Hours</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value mins">--</span><span class="countdown-label">Mins</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value secs">--</span><span class="countdown-label">Secs</span></div>
+      </div>
+    </div>
+    <div class="conf-links">
+      <a href="#" class="conf-link"><i class="fas fa-external-link-alt"></i> Conference Website</a>
+      <a href="#" class="conf-link secondary"><i class="fas fa-file-alt"></i> CFP</a>
+    </div>
+  </div>
+</div>
+
+<!-- ECCV 2026 -->
+<div class="conference-card" data-tags="cv ai ml" data-deadline="2026-03-06">
+  <div class="conf-header">
+    <div class="conf-info">
+      <h3 class="conf-name"><a href="#" target="_blank">ECCV 2026</a></h3>
+      <div class="conf-fullname">European Conference on Computer Vision</div>
+      <div class="conf-location"><i class="fas fa-map-marker-alt"></i> TBD</div>
+    </div>
+    <div class="conf-hindex">
+      <span class="conf-hindex-value">239</span>
+      <span class="conf-hindex-label">h-index</span>
+    </div>
+  </div>
+  <div class="conf-body">
+    <div class="conf-tags">
+      <span class="conf-tag">Computer Vision</span>
+      <span class="conf-tag">AI</span>
+      <span class="conf-tag">Deep Learning</span>
+      <span class="conf-tag">Image Analysis</span>
+    </div>
+    <div class="conf-deadline-section">
+      <div class="conf-dates">
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-paper-plane"></i> Deadline:</span>
+          <span class="conf-date-value">Mar 6, 2026 (est.)</span>
+        </div>
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-calendar"></i> Conference:</span>
+          <span class="conf-date-value">Sep 2026</span>
+        </div>
+      </div>
+      <div class="countdown-timer" data-deadline="2026-03-06T23:59:59">
+        <div class="countdown-unit"><span class="countdown-value days">--</span><span class="countdown-label">Days</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value hours">--</span><span class="countdown-label">Hours</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value mins">--</span><span class="countdown-label">Mins</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value secs">--</span><span class="countdown-label">Secs</span></div>
+      </div>
+    </div>
+    <div class="conf-links">
+      <a href="#" class="conf-link"><i class="fas fa-external-link-alt"></i> Conference Website</a>
+      <a href="#" class="conf-link secondary"><i class="fas fa-file-alt"></i> CFP</a>
+    </div>
+  </div>
+</div>
+
+<!-- ICCV 2027 -->
+<div class="conference-card" data-tags="cv ai ml" data-deadline="2027-03-10">
+  <div class="conf-header">
+    <div class="conf-info">
+      <h3 class="conf-name"><a href="#" target="_blank">ICCV 2027</a></h3>
+      <div class="conf-fullname">IEEE/CVF International Conference on Computer Vision</div>
+      <div class="conf-location"><i class="fas fa-map-marker-alt"></i> TBD</div>
+    </div>
+    <div class="conf-hindex">
+      <span class="conf-hindex-value">330</span>
+      <span class="conf-hindex-label">h-index</span>
+    </div>
+  </div>
+  <div class="conf-body">
+    <div class="conf-tags">
+      <span class="conf-tag">Computer Vision</span>
+      <span class="conf-tag">AI</span>
+      <span class="conf-tag">Deep Learning</span>
+      <span class="conf-tag">3D Vision</span>
+    </div>
+    <div class="conf-deadline-section">
+      <div class="conf-dates">
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-paper-plane"></i> Deadline:</span>
+          <span class="conf-date-value">Mar 10, 2027 (est.)</span>
+        </div>
+        <div class="conf-date-item">
+          <span class="conf-date-label"><i class="fas fa-calendar"></i> Conference:</span>
+          <span class="conf-date-value">Oct 2027</span>
+        </div>
+      </div>
+      <div class="countdown-timer" data-deadline="2027-03-10T23:59:59">
+        <div class="countdown-unit"><span class="countdown-value days">--</span><span class="countdown-label">Days</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value hours">--</span><span class="countdown-label">Hours</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value mins">--</span><span class="countdown-label">Mins</span></div>
+        <span class="countdown-separator">:</span>
+        <div class="countdown-unit"><span class="countdown-value secs">--</span><span class="countdown-label">Secs</span></div>
+      </div>
+    </div>
+    <div class="conf-links">
+      <a href="#" class="conf-link"><i class="fas fa-external-link-alt"></i> Conference Website</a>
+      <a href="#" class="conf-link secondary"><i class="fas fa-file-alt"></i> CFP</a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</div>
+
+<script>
+// Countdown Timer Logic
+function updateCountdowns() {
+  const timers = document.querySelectorAll('.countdown-timer');
+  const now = new Date().getTime();
+  
+  timers.forEach(timer => {
+    const deadline = new Date(timer.dataset.deadline).getTime();
+    const distance = deadline - now;
+    
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    if (distance < 0) {
+      timer.classList.add('expired');
+      timer.querySelector('.days').textContent = '0';
+      timer.querySelector('.hours').textContent = '0';
+      timer.querySelector('.mins').textContent = '0';
+      timer.querySelector('.secs').textContent = '0';
+      timer.closest('.conference-card').classList.add('expired');
+    } else {
+      timer.querySelector('.days').textContent = days;
+      timer.querySelector('.hours').textContent = hours.toString().padStart(2, '0');
+      timer.querySelector('.mins').textContent = mins.toString().padStart(2, '0');
+      timer.querySelector('.secs').textContent = secs.toString().padStart(2, '0');
+      
+      // Add urgent class if less than 7 days
+      if (days < 7) {
+        timer.classList.add('urgent');
+      }
+    }
+  });
+}
+
+// Sort conferences by deadline
+function sortConferences() {
+  const stack = document.getElementById('conferenceStack');
+  const cards = Array.from(stack.querySelectorAll('.conference-card'));
+  
+  cards.sort((a, b) => {
+    const deadlineA = new Date(a.dataset.deadline);
+    const deadlineB = new Date(b.dataset.deadline);
+    return deadlineA - deadlineB;
+  });
+  
+  cards.forEach(card => stack.appendChild(card));
+}
+
+// Filter functionality
+document.querySelectorAll('.filter-tag').forEach(tag => {
+  tag.addEventListener('click', function() {
+    const filter = this.dataset.filter;
+    
+    // Update active state
+    document.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+    
+    // Filter cards
+    document.querySelectorAll('.conference-card').forEach(card => {
+      if (filter === 'all') {
+        card.style.display = 'block';
+      } else {
+        const tags = card.dataset.tags.split(' ');
+        card.style.display = tags.includes(filter) ? 'block' : 'none';
+      }
+    });
+  });
+});
+
+// Initialize
+sortConferences();
+updateCountdowns();
+setInterval(updateCountdowns, 1000);
+</script>

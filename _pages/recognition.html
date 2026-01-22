@@ -1,0 +1,556 @@
+---
+layout: archive
+title: "Impact"
+permalink: /recognition/
+author_profile: true
+---
+
+<style>
+/* Recognition Page Styles */
+.recognition-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.recognition-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 40px;
+  background: #494e52;
+  border-radius: 8px;
+  color: white;
+}
+
+.recognition-header h1 {
+  margin: 0 0 15px 0;
+  font-size: 2.4em;
+}
+
+.recognition-header p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 1.1em;
+}
+
+/* Stats Cards */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.stat-icon {
+  font-size: 2.5em;
+  margin-bottom: 15px;
+  color: #494e52;
+}
+
+.stat-value {
+  font-size: 2.8em;
+  font-weight: 700;
+  color: #2d3748;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 0.9em;
+  color: #718096;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Section Styles */
+.recognition-section {
+  margin-bottom: 50px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: 1.6em;
+  color: #2d3748;
+}
+
+.section-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #494e52;
+  border-radius: 6px;
+  color: white;
+  font-size: 1.4em;
+}
+
+/* Citation Map Container */
+.citation-map-container {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+}
+
+.map-header {
+  padding: 20px 25px;
+  background: linear-gradient(135deg, #f8f9fc 0%, #fff 100%);
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.map-title {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0;
+}
+
+.map-stats {
+  display: flex;
+  gap: 20px;
+}
+
+.map-stat {
+  text-align: center;
+}
+
+.map-stat-value {
+  font-size: 1.4em;
+  font-weight: 700;
+  color: #494e52;
+}
+
+.map-stat-label {
+  font-size: 0.75em;
+  color: #718096;
+  text-transform: uppercase;
+}
+
+.map-frame {
+  width: 100%;
+  height: 500px;
+  border: none;
+}
+
+.map-placeholder {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+  color: #718096;
+}
+
+.map-placeholder i {
+  font-size: 4em;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.map-placeholder p {
+  font-size: 1.1em;
+  margin: 0;
+}
+
+/* Citing Institutions List */
+.institutions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.institution-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
+  transition: transform 0.2s ease;
+}
+
+.institution-card:hover {
+  transform: translateX(5px);
+}
+
+.institution-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f0f0;
+  border-radius: 6px;
+  color: #494e52;
+}
+
+.institution-info {
+  flex: 1;
+}
+
+.institution-name {
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 0.95em;
+}
+
+.institution-location {
+  font-size: 0.8em;
+  color: #718096;
+}
+
+.institution-count {
+  font-weight: 700;
+  color: #494e52;
+  font-size: 1.1em;
+}
+
+/* Awards Section */
+.awards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.award-card {
+  display: flex;
+  gap: 20px;
+  padding: 25px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+  transition: transform 0.3s ease;
+}
+
+.award-card:hover {
+  transform: translateY(-2px);
+}
+
+.award-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+  border-radius: 50%;
+  color: white;
+  font-size: 1.5em;
+  flex-shrink: 0;
+}
+
+.award-content {
+  flex: 1;
+}
+
+.award-title {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 5px;
+}
+
+.award-org {
+  font-size: 0.95em;
+  color: #494e52;
+  margin-bottom: 8px;
+}
+
+.award-year {
+  font-size: 0.85em;
+  color: #718096;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .map-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .award-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .award-icon {
+    margin: 0 auto;
+  }
+}
+</style>
+
+<div class="recognition-container">
+
+<div class="recognition-header">
+  <h1><i class="fas fa-bolt"></i> Impact</h1>
+  <p>Research contributions making real-world difference in industry and academia</p>
+</div>
+
+<!-- Stats Overview -->
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-icon"><i class="fas fa-quote-left"></i></div>
+    <div class="stat-value" id="totalCitations">--</div>
+    <div class="stat-label">Total Citations</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+    <div class="stat-value" id="hIndex">--</div>
+    <div class="stat-label">h-index</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon"><i class="fas fa-users"></i></div>
+    <div class="stat-value" id="uniqueCiters">--</div>
+    <div class="stat-label">Unique Citing Authors</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon"><i class="fas fa-university"></i></div>
+    <div class="stat-value" id="institutions">--</div>
+    <div class="stat-label">Institutions</div>
+  </div>
+</div>
+
+<!-- Citation Map Section -->
+<div class="recognition-section">
+  <div class="section-header">
+    <div class="section-icon"><i class="fas fa-globe-americas"></i></div>
+    <h2>Global Citation Map</h2>
+  </div>
+  
+  <div class="citation-map-container">
+    <div class="map-header">
+      <h3 class="map-title">Institutions Citing My Work</h3>
+      <div class="map-stats">
+        <div class="map-stat">
+          <div class="map-stat-value" id="mapCountries">--</div>
+          <div class="map-stat-label">Countries</div>
+        </div>
+        <div class="map-stat">
+          <div class="map-stat-value" id="mapInstitutions">--</div>
+          <div class="map-stat-label">Institutions</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Map will be embedded here -->
+    <div id="citationMap">
+      <div class="map-placeholder">
+        <i class="fas fa-map-marked-alt"></i>
+        <p>Citation map loading...</p>
+        <p style="font-size: 0.85em; margin-top: 10px;">Run <code>python scripts/generate_citation_map.py</code> to generate the map</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Top Citing Institutions -->
+  <h3 style="margin-top: 30px; margin-bottom: 20px; color: #2d3748;">Top Citing Institutions</h3>
+  <div class="institutions-grid" id="institutionsList">
+    <!-- Placeholder institutions - will be populated by script -->
+    <div class="institution-card">
+      <div class="institution-icon"><i class="fas fa-university"></i></div>
+      <div class="institution-info">
+        <div class="institution-name">Loading...</div>
+        <div class="institution-location">Run citation map script</div>
+      </div>
+      <div class="institution-count">--</div>
+    </div>
+  </div>
+</div>
+
+<!-- Google Scholar Link -->
+<div class="recognition-section">
+  <div class="section-header">
+    <div class="section-icon"><i class="fas fa-graduation-cap"></i></div>
+    <h2>Google Scholar Profile</h2>
+  </div>
+  
+  <div style="background: white; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid #f0f0f0;">
+    <p style="margin-bottom: 20px; color: #4a5568;">
+      View my complete publication record, citation metrics, and co-author network on Google Scholar.
+    </p>
+    <a href="https://scholar.google.com/citations?user=nfZ5Jc0AAAAJ&hl=en" target="_blank" 
+       style="display: inline-flex; align-items: center; gap: 10px; padding: 12px 24px; background: #494e52; color: white; text-decoration: none; border-radius: 4px; font-weight: 600; transition: background 0.2s ease;">
+      <i class="fas fa-external-link-alt"></i> View Google Scholar Profile
+    </a>
+  </div>
+</div>
+
+<!-- Industry Recognition Section -->
+<div class="recognition-section">
+  <div class="section-header">
+    <div class="section-icon"><i class="fas fa-industry"></i></div>
+    <h2>Industry Recognition</h2>
+  </div>
+  
+  <div class="awards-list">
+    <div class="award-card">
+      <div class="award-icon" style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);"><i class="fas fa-building"></i></div>
+      <div class="award-content">
+        <div class="award-title">ReqCity Listed as Transformative Entry</div>
+        <div class="award-org">National Center for Manufacturing Sciences (NCMS) - DTC Technology Competition 2024</div>
+        <div class="award-year">2024</div>
+        <p style="margin-top: 10px; font-size: 0.9em; color: #4a5568;">
+          ReqCity was recognized as a transformative entry in the NCMS Defense Technology Challenge, showcasing its potential to revolutionize requirements engineering in defense manufacturing.
+        </p>
+        <a href="https://ncms.org/wp-content/uploads/2024/11/2024_DTC_book_241121_FINAL_WEB.pdf#page=17.07" target="_blank" style="display: inline-flex; align-items: center; gap: 5px; margin-top: 10px; color: #494e52; font-size: 0.85em; text-decoration: none;">
+          <i class="fas fa-external-link-alt"></i> View Publication
+        </a>
+      </div>
+    </div>
+    
+    <div class="award-card">
+      <div class="award-icon" style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);"><i class="fas fa-lightbulb"></i></div>
+      <div class="award-content">
+        <div class="award-title">ReqCity++ - Top 35 Innovative Solutions</div>
+        <div class="award-org">NCMS CTMA Technology Competition 2025</div>
+        <div class="award-year">2025</div>
+        <p style="margin-top: 10px; font-size: 0.9em; color: #4a5568;">
+          ReqCity++ was recognized as one of the 35 innovative solutions for manufacturing technology advancement in the CTMA Technology Competition.
+        </p>
+        <a href="https://publications.ncms.org/2025-ctma-technology-competition-booklet/full-view.html" target="_blank" style="display: inline-flex; align-items: center; gap: 5px; margin-top: 10px; color: #494e52; font-size: 0.85em; text-decoration: none;">
+          <i class="fas fa-external-link-alt"></i> View Publication
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Awards & Competitions Section -->
+<div class="recognition-section">
+  <div class="section-header">
+    <div class="section-icon"><i class="fas fa-trophy"></i></div>
+    <h2>Awards & Competitions</h2>
+  </div>
+  
+  <div class="awards-list">
+    <div class="award-card">
+      <div class="award-icon" style="background: linear-gradient(135deg, #ffd700 0%, #f59e0b 100%);"><i class="fas fa-medal"></i></div>
+      <div class="award-content">
+        <div class="award-title">🥇 First Position - ASME IDETC-CIE Hackathon</div>
+        <div class="award-org">ASME International Design Engineering Technical Conferences</div>
+        <div class="award-year">2020</div>
+        <p style="margin-top: 10px; font-size: 0.9em; color: #4a5568;">
+          Won first place for developing physics-guided machine learning solutions for additive manufacturing quality prediction and process optimization.
+        </p>
+      </div>
+    </div>
+    
+    <div class="award-card">
+      <div class="award-icon" style="background: linear-gradient(135deg, #c0c0c0 0%, #6b7280 100%);"><i class="fas fa-medal"></i></div>
+      <div class="award-content">
+        <div class="award-title">🥈 Second Position - ASME IMECE Hackathon</div>
+        <div class="award-org">ASME International Mechanical Engineering Congress & Exposition</div>
+        <div class="award-year">2020</div>
+        <p style="margin-top: 10px; font-size: 0.9em; color: #4a5568;">
+          Secured second place for innovative AI-driven solutions in additive manufacturing process monitoring and defect prediction.
+        </p>
+      </div>
+    </div>
+    
+    <div class="award-card">
+      <div class="award-icon"><i class="fas fa-certificate"></i></div>
+      <div class="award-content">
+        <div class="award-title">Merit Certificate in Mathematics - Top 0.1%</div>
+        <div class="award-org">All India Senior School Certificate Examination (AISSCE)</div>
+        <div class="award-year">2010</div>
+        <p style="margin-top: 10px; font-size: 0.9em; color: #4a5568;">
+          Recognized for being among the top 0.1% of successful candidates in Mathematics in the national board examination.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Community Service Section -->
+<div class="recognition-section">
+  <div class="section-header">
+    <div class="section-icon"><i class="fas fa-hands-helping"></i></div>
+    <h2>Community Service</h2>
+  </div>
+  
+  <div class="awards-list">
+    <div class="award-card">
+      <div class="award-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);"><i class="fas fa-mobile-alt"></i></div>
+      <div class="award-content">
+        <div class="award-title">STEM Workshop Organizer - RasPi Phone Building</div>
+        <div class="award-org">K-12 Education Outreach, Western Region</div>
+        <div class="award-year">Workshop Series</div>
+        <p style="margin-top: 10px; font-size: 0.9em; color: #4a5568;">
+          Organized hands-on workshops for K-12 students to build Raspberry Pi phones, aimed at increasing STEM interest and reducing dropout rates in underserved communities in Western regions.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+// This script will be updated when the citation data is generated
+// For now, it shows placeholder values
+
+// You can update these values manually or via the Python script
+const citationData = {
+  totalCitations: '--',
+  hIndex: '--',
+  uniqueCiters: '--',
+  institutions: '--',
+  countries: '--'
+};
+
+// Update stats display
+document.getElementById('totalCitations').textContent = citationData.totalCitations;
+document.getElementById('hIndex').textContent = citationData.hIndex;
+document.getElementById('uniqueCiters').textContent = citationData.uniqueCiters;
+document.getElementById('institutions').textContent = citationData.institutions;
+document.getElementById('mapCountries').textContent = citationData.countries;
+document.getElementById('mapInstitutions').textContent = citationData.institutions;
+
+// Check if citation map exists and load it
+fetch('{{ site.baseurl }}/assets/citation_map.html')
+  .then(response => {
+    if (response.ok) {
+      document.getElementById('citationMap').innerHTML = 
+        '<iframe src="{{ site.baseurl }}/assets/citation_map.html" class="map-frame"></iframe>';
+    }
+  })
+  .catch(err => console.log('Citation map not yet generated'));
+</script>

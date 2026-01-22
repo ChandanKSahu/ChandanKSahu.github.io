@@ -5,32 +5,696 @@ permalink: /publications/
 author_profile: true
 ---
 
+<style>
+/* Timeline Publications Styles - Academic Pages Theme */
+.publications-timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.publications-timeline::before {
+  content: '';
+  position: absolute;
+  left: 30px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #494e52 0%, #999 100%);
+}
+
+.year-marker {
+  position: relative;
+  margin: 40px 0 20px 0;
+  padding-left: 70px;
+}
+
+.year-marker::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background: #494e52;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.year-marker h2 {
+  font-size: 1.8em;
+  color: #494e52;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.publication-card {
+  position: relative;
+  margin: 20px 0;
+  margin-left: 70px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #e0e0e0;
+}
+
+.publication-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.publication-card::before {
+  content: '';
+  position: absolute;
+  left: -52px;
+  top: 30px;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border: 3px solid #494e52;
+  border-radius: 50%;
+}
+
+.publication-card::after {
+  content: '';
+  position: absolute;
+  left: -38px;
+  top: 36px;
+  width: 38px;
+  height: 2px;
+  background: linear-gradient(90deg, #494e52, #ccc);
+}
+
+.pub-content {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.pub-image {
+  flex: 0 0 280px;
+  min-height: 180px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.pub-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pub-image-placeholder {
+  color: #aaa;
+  font-size: 0.9em;
+  text-align: center;
+  padding: 20px;
+}
+
+.pub-details {
+  flex: 1;
+  padding: 24px;
+  padding-left: 0;
+}
+
+.pub-title {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: #2d3748;
+  margin: 0 0 10px 0;
+  line-height: 1.4;
+}
+
+.pub-title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.pub-title a:hover {
+  color: #667eea;
+}
+
+.pub-venue {
+  font-size: 0.95em;
+  color: #494e52;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.pub-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.pub-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #f0f0f0;
+  color: #494e52;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pub-description {
+  margin: 15px 0;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 6px;
+  border-left: 3px solid #494e52;
+}
+
+.pub-description p {
+  margin: 6px 0;
+  font-size: 0.9em;
+  color: #4a5568;
+  line-height: 1.5;
+}
+
+.pub-description strong {
+  color: #2d3748;
+  font-weight: 600;
+}
+
+.pub-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.pub-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: #494e52;
+  color: #fff !important;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.pub-link:hover {
+  background: #333;
+}
+
+.pub-link.secondary {
+  background: #fff;
+  color: #494e52 !important;
+  border: 1px solid #494e52;
+}
+
+.pub-link.secondary:hover {
+  background: #494e52;
+  color: #fff !important;
+}
+
+.pub-doi {
+  font-size: 0.85em;
+  color: #666;
+  margin-top: 10px;
+}
+
+.pub-doi a {
+  color: #494e52;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .publications-timeline::before {
+    left: 15px;
+  }
+  
+  .year-marker {
+    padding-left: 50px;
+  }
+  
+  .year-marker::before {
+    left: 5px;
+    width: 20px;
+    height: 20px;
+  }
+  
+  .publication-card {
+    margin-left: 50px;
+  }
+  
+  .publication-card::before {
+    left: -37px;
+    width: 12px;
+    height: 12px;
+  }
+  
+  .publication-card::after {
+    left: -25px;
+    width: 25px;
+  }
+  
+  .pub-content {
+    flex-direction: column;
+  }
+  
+  .pub-image {
+    flex: none;
+    width: 100%;
+    height: 200px;
+  }
+  
+  .pub-details {
+    padding: 20px;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .publications-timeline::before {
+    background: linear-gradient(180deg, #999 0%, #666 100%);
+  }
+  
+  .year-marker::before {
+    background: #999;
+    border-color: #1a1a1a;
+  }
+  
+  .year-marker h2 {
+    color: #e0e0e0;
+  }
+  
+  .publication-card {
+    background: #252525;
+    border-color: #333;
+  }
+  
+  .publication-card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  }
+  
+  .publication-card::before {
+    background: #252525;
+    border-color: #999;
+  }
+  
+  .pub-title {
+    color: #f0f0f0;
+  }
+  
+  .pub-title a {
+    color: #f0f0f0;
+  }
+  
+  .pub-venue {
+    color: #bbb;
+  }
+  
+  .pub-tag {
+    background: #333;
+    color: #ccc;
+  }
+  
+  .pub-description {
+    background: #1a1a1a;
+    border-left-color: #666;
+  }
+  
+  .pub-description p {
+    color: #bbb;
+  }
+  
+  .pub-description strong {
+    color: #e0e0e0;
+  }
+  
+  .pub-link {
+    background: #555;
+  }
+  
+  .pub-link:hover {
+    background: #666;
+  }
+  
+  .pub-link.secondary {
+    background: transparent;
+    color: #ccc !important;
+    border-color: #666;
+  }
+  
+  .pub-doi {
+    color: #999;
+  }
+  
+  .pub-doi a {
+    color: #bbb;
+  }
+  
+  .pub-image {
+    background: linear-gradient(135deg, #1a1a1a 0%, #252525 100%);
+  }
+  
+  .pub-image-placeholder {
+    color: #666;
+  }
+}
+</style>
+
 {% if site.author.googlescholar %}
-  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
+<div class="wordwrap" style="margin-bottom: 30px; padding: 15px; background: #f9f9f9; border-radius: 6px; border-left: 3px solid #494e52;">
+  <i class="fas fa-graduation-cap"></i> You can also find my articles on <a href="{{site.author.googlescholar}}" target="_blank">my Google Scholar profile</a>.
+</div>
 {% endif %}
 
-{% include base_path %}
+<div class="publications-timeline">
 
-<!-- New style rendering if publication categories are defined -->
-{% if site.publication_category %}
-  {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
-      {% endif %}
-      {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
-        {% assign title_shown = true %}
-      {% endunless %}
-      {% include archive-single.html %}
-    {% endfor %}
-  {% endfor %}
-{% else %}
-  {% for post in site.publications reversed %}
-    {% include archive-single.html %}
-  {% endfor %}
-{% endif %}
+<!-- 2024 -->
+<div class="year-marker">
+  <h2>2024</h2>
+</div>
 
+<div class="publication-card">
+  <div class="pub-content">
+    <div class="pub-image">
+      <!-- Replace with: <img src="{{ site.baseurl }}/images/publications/jcise_reqnet.png" alt="ReqNet Framework"> -->
+      <div class="pub-image-placeholder">
+        <i class="fas fa-image" style="font-size: 3em; margin-bottom: 10px;"></i><br>
+        Add: images/publications/jcise_reqnet.png
+      </div>
+    </div>
+    <div class="pub-details">
+      <h3 class="pub-title">
+        <a href="{{ site.baseurl }}/files/JCISE_ReqList_ReqNet_ReqSim.pdf">ReqNet and ReqSim: A Network and Semantic Similarity Dataset of Requirements from the Tree Structure of System Requirement Specifications</a>
+      </h3>
+      <div class="pub-venue">
+        <i class="fas fa-journal-whills"></i> ASME Journal of Computing and Information Science in Engineering (JCISE)
+      </div>
+      <div class="pub-tags">
+        <span class="pub-tag">Requirements Engineering</span>
+        <span class="pub-tag">Deep Learning</span>
+        <span class="pub-tag">NLP</span>
+        <span class="pub-tag">Semantic Similarity</span>
+      </div>
+      <div class="pub-description">
+        <p><strong>Problem:</strong> Lack of structured datasets for training ML models on requirements engineering tasks, hindering traceability and change propagation analysis.</p>
+        <p><strong>Solution:</strong> Fine-tuned Sentence-BERT for requirements domain; created requirement networks using embeddings and graph theory for traceability.</p>
+        <p><strong>Novelty:</strong> First publicly available dataset of requirement networks and semantic similarity scores extracted from system requirement specification documents.</p>
+      </div>
+      <div class="pub-links">
+        <a href="{{ site.baseurl }}/files/JCISE_ReqList_ReqNet_ReqSim.pdf" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
+        <a href="https://doi.org/10.1115/1.4065786" class="pub-link secondary" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+      </div>
+      <div class="pub-doi">
+        DOI: <a href="https://doi.org/10.1115/1.4065786" target="_blank">10.1115/1.4065786</a>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="publication-card">
+  <div class="pub-content">
+    <div class="pub-image">
+      <!-- Replace with: <img src="{{ site.baseurl }}/images/publications/idetc_reqquality.png" alt="Requirements Quality Assessment"> -->
+      <div class="pub-image-placeholder">
+        <i class="fas fa-image" style="font-size: 3em; margin-bottom: 10px;"></i><br>
+        Add: images/publications/idetc_reqquality.png
+      </div>
+    </div>
+    <div class="pub-details">
+      <h3 class="pub-title">
+        <a href="{{ site.baseurl }}/files/IDETC_RequirementQuality.pdf">Well-Formed Quality of System Requirements for Verifying to ISO 29148-2018: A Natural Language Processing (NLP) Based Framework and Quantitative Metric</a>
+      </h3>
+      <div class="pub-venue">
+        <i class="fas fa-users"></i> ASME IDETC-CIE Conference 2024
+      </div>
+      <div class="pub-tags">
+        <span class="pub-tag">Requirements Engineering</span>
+        <span class="pub-tag">ISO 29148</span>
+        <span class="pub-tag">NLP</span>
+        <span class="pub-tag">Quality Metrics</span>
+      </div>
+      <div class="pub-description">
+        <p><strong>Problem:</strong> System requirements often fail to conform to ISO 29148-2018 standards, leading to ambiguity and verification challenges.</p>
+        <p><strong>Solution:</strong> NLP-based framework with quantitative metrics to assess requirement well-formedness against ISO 29148 criteria.</p>
+        <p><strong>Novelty:</strong> First automated framework providing quantitative quality scores for ISO 29148 compliance with actionable improvement suggestions.</p>
+      </div>
+      <div class="pub-links">
+        <a href="{{ site.baseurl }}/files/IDETC_RequirementQuality.pdf" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
+        <a href="https://doi.org/10.1115/DETC2024-139583" class="pub-link secondary" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+      </div>
+      <div class="pub-doi">
+        DOI: <a href="https://doi.org/10.1115/DETC2024-139583" target="_blank">10.1115/DETC2024-139583</a>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- 2023 -->
+<div class="year-marker">
+  <h2>2023</h2>
+</div>
+
+<div class="publication-card">
+  <div class="pub-content">
+    <div class="pub-image">
+      <!-- Replace with: <img src="{{ site.baseurl }}/images/publications/ijpr_meltpool.png" alt="Melt Pool GAN"> -->
+      <div class="pub-image-placeholder">
+        <i class="fas fa-image" style="font-size: 3em; margin-bottom: 10px;"></i><br>
+        Add: images/publications/ijpr_meltpool.png
+      </div>
+    </div>
+    <div class="pub-details">
+      <h3 class="pub-title">
+        <a href="{{ site.baseurl }}/files/IJPR_MeltPool_GAN.pdf">Machine Learning Based Prediction of Melt Pool Morphology in a Laser-Based Powder Bed Fusion Additive Manufacturing Process</a>
+      </h3>
+      <div class="pub-venue">
+        <i class="fas fa-journal-whills"></i> International Journal of Production Research (IJPR)
+      </div>
+      <div class="pub-tags">
+        <span class="pub-tag">Additive Manufacturing</span>
+        <span class="pub-tag">LSTM</span>
+        <span class="pub-tag">cGAN</span>
+        <span class="pub-tag">Melt Pool Morphology</span>
+      </div>
+      <div class="pub-description">
+        <p><strong>Problem:</strong> Predicting melt pool size and shape in laser powder bed fusion is critical for quality but challenging due to complex physics.</p>
+        <p><strong>Solution:</strong> LSTM network predicting melt pool size (90.7% accuracy) and cGAN synthesizing melt pool shape (SSIM: 0.91).</p>
+        <p><strong>Novelty:</strong> First combined approach using LSTM for size prediction and conditional GAN for morphology synthesis in LPBF process.</p>
+      </div>
+      <div class="pub-links">
+        <a href="{{ site.baseurl }}/files/IJPR_MeltPool_GAN.pdf" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
+        <a href="https://doi.org/10.1080/00207543.2023.2201860" class="pub-link secondary" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+      </div>
+      <div class="pub-doi">
+        DOI: <a href="https://doi.org/10.1080/00207543.2023.2201860" target="_blank">10.1080/00207543.2023.2201860</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="publication-card">
+  <div class="pub-content">
+    <div class="pub-image">
+      <!-- Replace with: <img src="{{ site.baseurl }}/images/publications/ijpr_blockchain.png" alt="Blockchain AI Manufacturing"> -->
+      <div class="pub-image-placeholder">
+        <i class="fas fa-image" style="font-size: 3em; margin-bottom: 10px;"></i><br>
+        Add: images/publications/ijpr_blockchain.png
+      </div>
+    </div>
+    <div class="pub-details">
+      <h3 class="pub-title">
+        <a href="{{ site.baseurl }}/files/IJPR_BlockChain_AI_Mfg.pdf">Security in Modern Manufacturing Systems: Integrating Blockchain in Artificial Intelligence-Assisted Manufacturing</a>
+      </h3>
+      <div class="pub-venue">
+        <i class="fas fa-journal-whills"></i> International Journal of Production Research (IJPR)
+      </div>
+      <div class="pub-tags">
+        <span class="pub-tag">Blockchain</span>
+        <span class="pub-tag">AI Security</span>
+        <span class="pub-tag">Smart Manufacturing</span>
+        <span class="pub-tag">Industry 4.0</span>
+      </div>
+      <div class="pub-description">
+        <p><strong>Problem:</strong> AI-assisted manufacturing systems face security vulnerabilities in data integrity, model tampering, and supply chain trust.</p>
+        <p><strong>Solution:</strong> Framework integrating blockchain technology to secure AI pipelines and ensure data provenance in manufacturing.</p>
+        <p><strong>Novelty:</strong> First comprehensive analysis of blockchain-AI integration patterns specifically for securing modern manufacturing systems.</p>
+      </div>
+      <div class="pub-links">
+        <a href="{{ site.baseurl }}/files/IJPR_BlockChain_AI_Mfg.pdf" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
+        <a href="https://doi.org/10.1080/00207543.2023.2262050" class="pub-link secondary" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+      </div>
+      <div class="pub-doi">
+        DOI: <a href="https://doi.org/10.1080/00207543.2023.2262050" target="_blank">10.1080/00207543.2023.2262050</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 2020 -->
+<div class="year-marker">
+  <h2>2020</h2>
+</div>
+
+<div class="publication-card">
+  <div class="pub-content">
+    <div class="pub-image">
+      <!-- Replace with: <img src="{{ site.baseurl }}/images/publications/ijpr_ai_ar.png" alt="AI AR Manufacturing"> -->
+      <div class="pub-image-placeholder">
+        <i class="fas fa-image" style="font-size: 3em; margin-bottom: 10px;"></i><br>
+        Add: images/publications/ijpr_ai_ar.png
+      </div>
+    </div>
+    <div class="pub-details">
+      <h3 class="pub-title">
+        <a href="{{ site.baseurl }}/files/IJPR_AIinAR-assistedManufacturing.pdf">Artificial Intelligence (AI) in Augmented Reality (AR)-Assisted Manufacturing Applications: A Review</a>
+      </h3>
+      <div class="pub-venue">
+        <i class="fas fa-journal-whills"></i> International Journal of Production Research (IJPR)
+      </div>
+      <div class="pub-tags">
+        <span class="pub-tag">Augmented Reality</span>
+        <span class="pub-tag">AI</span>
+        <span class="pub-tag">Manufacturing</span>
+        <span class="pub-tag">Human-Machine Interaction</span>
+      </div>
+      <div class="pub-description">
+        <p><strong>Problem:</strong> Fragmented understanding of how AI techniques enhance AR applications in manufacturing contexts.</p>
+        <p><strong>Solution:</strong> Systematic review categorizing AI methods (computer vision, ML, NLP) used in AR-assisted manufacturing.</p>
+        <p><strong>Novelty:</strong> First comprehensive taxonomy mapping AI techniques to AR manufacturing use cases with future research directions.</p>
+      </div>
+      <div class="pub-links">
+        <a href="{{ site.baseurl }}/files/IJPR_AIinAR-assistedManufacturing.pdf" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
+        <a href="https://doi.org/10.1080/00207543.2020.1859636" class="pub-link secondary" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+      </div>
+      <div class="pub-doi">
+        DOI: <a href="https://doi.org/10.1080/00207543.2020.1859636" target="_blank">10.1080/00207543.2020.1859636</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="publication-card">
+  <div class="pub-content">
+    <div class="pub-image">
+      <!-- Replace with: <img src="{{ site.baseurl }}/images/publications/ieee_cps.png" alt="Cyber Physical Systems"> -->
+      <div class="pub-image-placeholder">
+        <i class="fas fa-image" style="font-size: 3em; margin-bottom: 10px;"></i><br>
+        Add: images/publications/ieee_cps.png
+      </div>
+    </div>
+    <div class="pub-details">
+      <h3 class="pub-title">
+        <a href="{{ site.baseurl }}/files/IEEE_Access_CyberPhysicalSystems_HybridModeling.pdf">Driven by Data or Derived Through Physics? A Review of Hybrid Physics Guided Machine Learning Techniques with Cyber-Physical System (CPS) Focus</a>
+      </h3>
+      <div class="pub-venue">
+        <i class="fas fa-journal-whills"></i> IEEE Access
+      </div>
+      <div class="pub-tags">
+        <span class="pub-tag">Physics-Guided ML</span>
+        <span class="pub-tag">Cyber-Physical Systems</span>
+        <span class="pub-tag">Hybrid Modeling</span>
+        <span class="pub-tag">Review</span>
+      </div>
+      <div class="pub-description">
+        <p><strong>Problem:</strong> Pure data-driven ML models lack physical interpretability while physics-only models struggle with complex real-world CPS.</p>
+        <p><strong>Solution:</strong> Comprehensive review of hybrid approaches that integrate physical laws into ML architectures for CPS applications.</p>
+        <p><strong>Novelty:</strong> First systematic taxonomy of physics-guided ML techniques with specific focus on cyber-physical systems applications.</p>
+      </div>
+      <div class="pub-links">
+        <a href="{{ site.baseurl }}/files/IEEE_Access_CyberPhysicalSystems_HybridModeling.pdf" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
+        <a href="https://doi.org/10.1109/ACCESS.2020.2987324" class="pub-link secondary" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
+      </div>
+      <div class="pub-doi">
+        DOI: <a href="https://doi.org/10.1109/ACCESS.2020.2987324" target="_blank">10.1109/ACCESS.2020.2987324</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Theses Section -->
+<div class="year-marker">
+  <h2>Theses</h2>
+</div>
+
+<div class="publication-card">
+  <div class="pub-content">
+    <div class="pub-image">
+      <!-- Replace with: <img src="{{ site.baseurl }}/images/publications/phd_dissertation.png" alt="PhD Dissertation"> -->
+      <div class="pub-image-placeholder">
+        <i class="fas fa-graduation-cap" style="font-size: 3em; margin-bottom: 10px;"></i><br>
+        Add: images/publications/phd_dissertation.png
+      </div>
+    </div>
+    <div class="pub-details">
+      <h3 class="pub-title">
+        <a href="{{ site.baseurl }}/files/Dissertation_PhD_RequirementsEngineering.pdf">Deep Learning for Requirements Engineering: Methods and Applications</a>
+      </h3>
+      <div class="pub-venue">
+        <i class="fas fa-university"></i> PhD Dissertation, Clemson University
+      </div>
+      <div class="pub-tags">
+        <span class="pub-tag">PhD Thesis</span>
+        <span class="pub-tag">Requirements Engineering</span>
+        <span class="pub-tag">Deep Learning</span>
+        <span class="pub-tag">NLP</span>
+      </div>
+      <div class="pub-description">
+        <p><strong>Problem:</strong> Requirements engineering lacks automated tools for complex system development.</p>
+        <p><strong>Solution:</strong> Comprehensive deep learning framework for requirements extraction, analysis, and validation.</p>
+        <p><strong>Novelty:</strong> End-to-end deep learning pipeline for requirements engineering with novel architectures.</p>
+      </div>
+      <div class="pub-links">
+        <a href="{{ site.baseurl }}/files/Dissertation_PhD_RequirementsEngineering.pdf" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="publication-card">
+  <div class="pub-content">
+    <div class="pub-image">
+      <!-- Replace with: <img src="{{ site.baseurl }}/images/publications/ms_thesis.png" alt="MS Thesis"> -->
+      <div class="pub-image-placeholder">
+        <i class="fas fa-graduation-cap" style="font-size: 3em; margin-bottom: 10px;"></i><br>
+        Add: images/publications/ms_thesis.png
+      </div>
+    </div>
+    <div class="pub-details">
+      <h3 class="pub-title">
+        <a href="{{ site.baseurl }}/files/Thesis_MS_CPS_Hybrid.pdf">Hybrid Modeling Approaches for Cyber-Physical Systems</a>
+      </h3>
+      <div class="pub-venue">
+        <i class="fas fa-university"></i> MS Thesis, Clemson University
+      </div>
+      <div class="pub-tags">
+        <span class="pub-tag">MS Thesis</span>
+        <span class="pub-tag">Cyber-Physical Systems</span>
+        <span class="pub-tag">Hybrid Modeling</span>
+        <span class="pub-tag">Simulation</span>
+      </div>
+      <div class="pub-description">
+        <p><strong>Problem:</strong> Traditional modeling approaches fail to capture CPS complexity.</p>
+        <p><strong>Solution:</strong> Hybrid modeling methodology integrating continuous and discrete system dynamics.</p>
+        <p><strong>Novelty:</strong> Novel hybrid automata-based framework for CPS modeling and simulation.</p>
+      </div>
+      <div class="pub-links">
+        <a href="{{ site.baseurl }}/files/Thesis_MS_CPS_Hybrid.pdf" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>

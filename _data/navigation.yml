@@ -11,8 +11,11 @@ main:
   - title: "Research"
     url: /research/
 
-  - title: "Achievements"
-    url: /achievements/
+  - title: "Impact"
+    url: /recognition/
+
+  - title: "Deadlines"
+    url: /deadlines/
 
   # - title: "Talks"
   #  url: /talks/    
