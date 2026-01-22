@@ -304,3 +304,4 @@ My research focuses on bridging the gap between AI capabilities and real-world e
 - **2025**: ReqCity++ recognized as Top 35 Innovative Solutions in NCMS CTMA Technology Competition
 - **2024**: ReqCity listed as Transformative Entry in NCMS Army Digital Transformation Challenge
 - **2024**: Published in ASME JCISE and IDETC conferences
+
