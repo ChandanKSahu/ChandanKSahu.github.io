@@ -3,6 +3,18 @@
    ========================================================================== */
 
 $(document).ready(function(){
+  var themeKey = 'site-theme';
+  function applyTheme(dark) {
+    if (dark) $('html').addClass('site-theme-dark');
+    else $('html').removeClass('site-theme-dark');
+    try {
+      localStorage.setItem(themeKey, dark ? 'dark' : 'light');
+    } catch (e) {}
+  }
+  $('#theme-toggle').on('click', function () {
+    applyTheme(!$('html').hasClass('site-theme-dark'));
+  });
+
   // Sticky footer
   var bumpIt = function() {
       $("body").css("margin-bottom", $(".page__footer").outerHeight(true));

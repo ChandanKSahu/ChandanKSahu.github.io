@@ -1,5 +1,17 @@
 {% include base_path %}
 
+<script>
+(function () {
+  try {
+    var k = 'site-theme';
+    var stored = localStorage.getItem(k);
+    var dark = stored === 'dark' || (stored !== 'light' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    if (dark) document.documentElement.classList.add('site-theme-dark');
+    else document.documentElement.classList.remove('site-theme-dark');
+  } catch (e) {}
+})();
+</script>
+
 <!-- start custom head snippets -->
 
 <link rel="apple-touch-icon" sizes="57x57" href="{{ base_path }}/images/apple-touch-icon-57x57.png?v=M44lzPylqQ">

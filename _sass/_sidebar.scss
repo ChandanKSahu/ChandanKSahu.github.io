@@ -76,6 +76,18 @@
    Author profile and links
    ========================================================================== */
 
+.sidebar .sidebar-author {
+  @media screen and (max-width: $large - 1px) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  @include breakpoint($large) {
+    display: block;
+  }
+}
+
 .author__avatar {
   display: table-cell;
   vertical-align: top;
@@ -83,10 +95,21 @@
   // set width only, for non-square avatars
   // height: 36px;
 
+  @media screen and (max-width: $large - 1px) {
+    .sidebar .sidebar-author & {
+      display: block;
+      flex: 0 0 36px;
+      order: 1;
+    }
+  }
+
   @include breakpoint($large) {
     display: block;
     width: auto;
     height: auto;
+    order: 0;
+    flex: none;
+    text-align: center;
   }
 
   img {
@@ -94,9 +117,45 @@
     border-radius: 50%;
 
     @include breakpoint($large) {
+      margin-left: auto;
+      margin-right: auto;
       padding: 5px;
       border: 1px solid $border-color;
     }
+  }
+}
+
+.author__tagline {
+  text-align: center;
+  margin: 0.35em 0 0.25em;
+
+  @media screen and (max-width: $large - 1px) {
+    .sidebar .sidebar-author & {
+      order: 2;
+      flex: 1 0 100%;
+      margin-top: 0.35em;
+    }
+  }
+
+  @include breakpoint($large) {
+    order: 0;
+    flex: none;
+    width: 100%;
+  }
+}
+
+.author__tagline-line {
+  margin: 0;
+  line-height: 1.45;
+  font-size: $type-size-6;
+  color: $text-color;
+
+  &:first-child {
+    font-weight: 600;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 0.2em;
   }
 }
 
@@ -107,16 +166,28 @@
   padding-right: 25px;
   line-height: 1;
 
+  @media screen and (max-width: $large - 1px) {
+    .sidebar .sidebar-author & {
+      display: block;
+      flex: 1 1 0;
+      min-width: 0;
+      order: 1;
+    }
+  }
+
   @include breakpoint($large) {
     display: block;
     width: 100%;
     padding-left: 0;
     padding-right: 0;
+    order: 0;
+    flex: none;
   }
 }
 
 .author__name {
   margin: 0;
+  text-align: center;
 
   @include breakpoint($large) {
     margin-top: 10px;
@@ -146,6 +217,7 @@
 
 .author__bio {
   margin: 0;
+  text-align: center;
 
   @include breakpoint($large) {
     margin-top: 10px;
@@ -161,6 +233,21 @@
   z-index: 10;
   position: relative;
   cursor: pointer;
+
+  @media screen and (max-width: $large - 1px) {
+    .sidebar .sidebar-author & {
+      display: block;
+      flex: 0 0 auto;
+      order: 1;
+      align-self: center;
+    }
+  }
+
+  @include breakpoint($large) {
+    order: 0;
+    flex: none;
+    align-self: stretch;
+  }
 
   li:last-child {
     a {

@@ -24,7 +24,7 @@ author:
   avatar           : "ChandanKSahu.jpg"
   name             : "Chandan Kumar Sahu"
   pronouns         : # example: "she/her"  
-  bio              : "Research Scientist<br>Generative AI and Agentic Systems<br>ABB US Corporate Research Center"
+  bio              : "Research Scientist at ABB Inc. Generative AI and Agentic systems."
   location         : "USA"
   employer         : "ABB Inc."
   uri              : # URL
@@ -34,7 +34,7 @@ author:
   arxiv            : # URL - Update with the correct link to your profile
   googlescholar    : "https://scholar.google.com/citations?user=nfZ5Jc0AAAAJ&hl=en"
   impactstory      : # URL
-  orcid            : "https://orcid.org/0000-0001-5893-4031"
+  orcid            : # "http://orcid.org/yourorcidurl"
   semantic         : # URL
   pubmed           : # "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   researchgate     : "https://www.researchgate.net/profile/Chandan-Kumar-Sahu"
