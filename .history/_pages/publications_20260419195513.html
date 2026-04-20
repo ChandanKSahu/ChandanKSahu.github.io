@@ -389,105 +389,19 @@ html.site-theme-dark .pub-note {
   border-color: #3d4247;
   border-left-color: #7a8288;
 }
-
-.pub-heading-scholar {
-  margin-left: 10px;
-  font-size: 0.52em;
-  font-weight: 600;
-  vertical-align: middle;
-  white-space: nowrap;
-}
-
-.pub-heading-scholar i {
-  margin-right: 4px;
-}
 </style>
 
 {% if site.author.googlescholar %}
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  var title = document.querySelector('.page__title');
-  if (!title || title.querySelector('.pub-heading-scholar')) return;
-
-  var link = document.createElement('a');
-  link.href = '{{site.author.googlescholar}}';
-  link.target = '_blank';
-  link.rel = 'noopener noreferrer';
-  link.className = 'pub-heading-scholar';
-  link.innerHTML = '<i class="fas fa-graduation-cap"></i>Google Scholar';
-  title.appendChild(link);
-});
-</script>
+<div class="wordwrap pub-note">
+  <i class="fas fa-graduation-cap"></i> You can also find my articles on <a href="{{site.author.googlescholar}}" target="_blank">my Google Scholar profile</a>.
+</div>
 {% endif %}
 
 <div class="publications-timeline">
 
-<!-- 2026 -->
+<!-- 2024 -->
 <div class="year-marker">
-  <h2>2026</h2>
-</div>
-
-<div class="publication-card">
-  <h3 class="pub-title">
-    <a href="https://doi.org/10.31224/6706" target="_blank">Power Circuit AI: Designing Power Electronic Circuits for Motor Drives with Generative Artificial Intelligence</a>
-    <a href="https://doi.org/10.31224/6706" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> Link</a>
-  </h3>
-  <div class="pub-content">
-    <div class="pub-image">
-      <img src="{{ site.baseurl }}/assets/graphical_abstracts/IEEE_IDCD.png" alt="Power Circuit AI graphical abstract">
-    </div>
-    <div class="pub-details">
-      <div class="pub-venue">
-        <span><i class="fas fa-file-alt"></i> IEEE Intelligent Design and Control of Automation and Drive Systems (2026)</span>
-        <a href="https://doi.org/10.31224/6706" class="pub-link secondary" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
-      </div>
-      <div class="pub-tags">
-        <span class="pub-tag">Power Electronics</span>
-        <span class="pub-tag">Generative AI</span>
-        <span class="pub-tag">EDA</span>
-        <span class="pub-tag">Circuit Design</span>
-      </div>
-      <div class="pub-description">
-        <p><strong>Problem:</strong> Accelerating the design of power electronic circuits for motor drives</p>
-        <p><strong>Solution:</strong> Multi-agent workflow from NL specifications to logically valid netlists and routed PCBs.</p>
-        <p><strong>Novelty:</strong> Autonomous constrained orchestration between AI agents and deterministic EDA tools</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="publication-card">
-  <h3 class="pub-title">
-    <a href="https://arxiv.org/abs/2601.15487" target="_blank">MiRAGE: A Multiagent Framework for Generating Multimodal Multihop Question-Answer Dataset for RAG Evaluation</a>
-    <a href="https://arxiv.org/abs/2601.15487" class="pub-link" target="_blank"><i class="fas fa-external-link-alt"></i> Link</a>
-  </h3>
-  <div class="pub-content">
-    <div class="pub-image">
-      <img src="{{ site.baseurl }}/assets/graphical_abstracts/MiRAGE.png" alt="MiRAGE graphical abstract">
-    </div>
-    <div class="pub-details">
-      <div class="pub-venue">
-        <span><i class="fas fa-file-alt"></i> arXiv Preprint (2026)</span>
-        <a href="https://doi.org/10.48550/arXiv.2601.15487" class="pub-link secondary" target="_blank"><i class="fas fa-external-link-alt"></i> DOI</a>
-      </div>
-      <div class="pub-tags">
-        <span class="pub-tag">RAG Evaluation</span>
-        <span class="pub-tag">Multi-Agent Systems</span>
-        <span class="pub-tag">Multimodal QA</span>
-        <span class="pub-tag">Benchmarking</span>
-      </div>
-      <div class="pub-description">
-        <p><strong>Problem:</strong> Evaluation of proprietary information retrieval systems</p>
-        <p><strong>Solution:</strong> Multi-agent framework to generate QA datasets from multimodal corpora</p>
-        <p><strong>Novelity:</strong> Corpus-specific multi-hop QA datasets</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- 2025 -->
-<div class="year-marker">
-  <h2>2025</h2>
+  <h2>2024</h2>
 </div>
 
 <div class="publication-card">
@@ -517,12 +431,6 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
     </div>
   </div>
-</div>
-
-
-<!-- 2024 -->
-<div class="year-marker">
-  <h2>2024</h2>
 </div>
 
 <div class="publication-card">
@@ -697,7 +605,6 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="pub-details">
       <div class="pub-venue">
         <span><i class="fas fa-university"></i> PhD Dissertation, Clemson University</span>
-        <a href="https://www.proquest.com/openview/767cc102f639e076477ee70ff39f7a8a/" class="pub-link secondary" target="_blank"><i class="fas fa-external-link-alt"></i> ProQuest</a>
       </div>
       <div class="pub-tags">
         <span class="pub-tag">PhD Thesis</span>
@@ -716,7 +623,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <div class="publication-card">
   <h3 class="pub-title">
-    <a href="{{ site.baseurl }}/files/Thesis_MS_CPS_Hybrid.pdf">Boon of Hybrid Approaches over the Bane of Model Based and Machine Learning Approaches in Modelling Cyber-physical Systems</a>
+    <a href="{{ site.baseurl }}/files/Thesis_MS_CPS_Hybrid.pdf">Hybrid Modeling Approaches for Cyber-Physical Systems</a>
     <a href="{{ site.baseurl }}/files/Thesis_MS_CPS_Hybrid.pdf" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
   </h3>
   <div class="pub-content">
@@ -726,7 +633,6 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="pub-details">
       <div class="pub-venue">
         <span><i class="fas fa-university"></i> MS Thesis, Clemson University</span>
-        <a href="https://www.proquest.com/openview/4f97a6a049c95898405060e5aaf8899c/" class="pub-link secondary" target="_blank"><i class="fas fa-external-link-alt"></i> ProQuest</a>
       </div>
       <div class="pub-tags">
         <span class="pub-tag">MS Thesis</span>

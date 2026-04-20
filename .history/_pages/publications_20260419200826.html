@@ -389,35 +389,12 @@ html.site-theme-dark .pub-note {
   border-color: #3d4247;
   border-left-color: #7a8288;
 }
-
-.pub-heading-scholar {
-  margin-left: 10px;
-  font-size: 0.52em;
-  font-weight: 600;
-  vertical-align: middle;
-  white-space: nowrap;
-}
-
-.pub-heading-scholar i {
-  margin-right: 4px;
-}
 </style>
 
 {% if site.author.googlescholar %}
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  var title = document.querySelector('.page__title');
-  if (!title || title.querySelector('.pub-heading-scholar')) return;
-
-  var link = document.createElement('a');
-  link.href = '{{site.author.googlescholar}}';
-  link.target = '_blank';
-  link.rel = 'noopener noreferrer';
-  link.className = 'pub-heading-scholar';
-  link.innerHTML = '<i class="fas fa-graduation-cap"></i>Google Scholar';
-  title.appendChild(link);
-});
-</script>
+<div class="wordwrap pub-note">
+  <i class="fas fa-graduation-cap"></i> You can also find my articles on <a href="{{site.author.googlescholar}}" target="_blank">my Google Scholar profile</a>.
+</div>
 {% endif %}
 
 <div class="publications-timeline">
@@ -434,7 +411,7 @@ document.addEventListener('DOMContentLoaded', function () {
   </h3>
   <div class="pub-content">
     <div class="pub-image">
-      <img src="{{ site.baseurl }}/assets/graphical_abstracts/IEEE_IDCD.png" alt="Power Circuit AI graphical abstract">
+      <div class="pub-image-placeholder">Graphical abstract coming soon</div>
     </div>
     <div class="pub-details">
       <div class="pub-venue">
@@ -445,12 +422,12 @@ document.addEventListener('DOMContentLoaded', function () {
         <span class="pub-tag">Power Electronics</span>
         <span class="pub-tag">Generative AI</span>
         <span class="pub-tag">EDA</span>
-        <span class="pub-tag">Circuit Design</span>
+        <span class="pub-tag">Motor Drives</span>
       </div>
       <div class="pub-description">
         <p><strong>Problem:</strong> Accelerating the design of power electronic circuits for motor drives</p>
-        <p><strong>Solution:</strong> Multi-agent workflow from NL specifications to logically valid netlists and routed PCBs.</p>
-        <p><strong>Novelty:</strong> Autonomous constrained orchestration between AI agents and deterministic EDA tools</p>
+        <p><strong>Solution:</strong> Multi-agent workflow from natural language specifications to logically valid netlists and routed PCBs.</p>
+        <p><strong>Novelty:</strong> Autonomous constrained orchestration between generative AI agents and deterministic EDA tooling.</p>
       </div>
     </div>
   </div>
@@ -463,7 +440,7 @@ document.addEventListener('DOMContentLoaded', function () {
   </h3>
   <div class="pub-content">
     <div class="pub-image">
-      <img src="{{ site.baseurl }}/assets/graphical_abstracts/MiRAGE.png" alt="MiRAGE graphical abstract">
+      <div class="pub-image-placeholder">Graphical abstract coming soon</div>
     </div>
     <div class="pub-details">
       <div class="pub-venue">
@@ -477,9 +454,9 @@ document.addEventListener('DOMContentLoaded', function () {
         <span class="pub-tag">Benchmarking</span>
       </div>
       <div class="pub-description">
-        <p><strong>Problem:</strong> Evaluation of proprietary information retrieval systems</p>
-        <p><strong>Solution:</strong> Multi-agent framework to generate QA datasets from multimodal corpora</p>
-        <p><strong>Novelity:</strong> Corpus-specific multi-hop QA datasets</p>
+        <p><strong>Problem:</strong> Current RAG benchmarks under-represent multimodal, domain-specific, multi-hop reasoning demands.</p>
+        <p><strong>Solution:</strong> Multi-agent dataset generation framework with recursive context optimization and adversarial verification.</p>
+        <p><strong>Novelty:</strong> Automatically produces factually grounded multimodal multi-hop QA datasets across domains.</p>
       </div>
     </div>
   </div>

@@ -11,8 +11,11 @@ main:
   - title: "Patents"
     url: /patents/
 
-  - title: "Research"
-    url: /research/
+  - title: "Projects"
+    url: /projects/
+
+  - title: "Teaching"
+    url: /teaching/
 
   - title: "Impact"
     url: /recognition/
