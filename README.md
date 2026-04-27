@@ -37,6 +37,28 @@ When you are initially working your website, it is very useful to be able to pre
 
 If you are running on Linux it may be necessary to install some additional dependencies prior to being able to run locally: `sudo apt install build-essential gcc make`
 
+## Previewing in VS Code or Cursor
+
+1. Open this repository in VS Code or Cursor.
+1. Open the integrated terminal with `` Ctrl+` ``.
+1. Install dependencies if needed:
+
+    ```bash
+    bundle install
+    ```
+
+1. Start the local Jekyll server:
+
+    ```bash
+    bundle exec jekyll serve --livereload
+    ```
+
+1. Open the Command Palette with `Ctrl+Shift+P`.
+1. Run `Simple Browser: Show`.
+1. Enter `http://127.0.0.1:4000`.
+
+Keep the terminal running while you edit the site. The preview will rebuild automatically when files change.
+
 ## Using Docker
 
 Working from a different OS, or just want to avoid installing dependencies? You can use the provided `Dockerfile` to build a container that will run the site for you if you have [Docker](https://www.docker.com/) installed.

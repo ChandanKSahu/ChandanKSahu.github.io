@@ -3,6 +3,7 @@
    ========================================================================== */
 
 html.site-theme-dark {
+  background-color: #1e2124;
   color-scheme: dark;
 
   body {
@@ -91,7 +92,21 @@ html.site-theme-dark {
     }
   }
 
+  .author__urls {
+    background: #25282c;
+    border-color: #3d4247;
+
+    &:before {
+      border-color: #3d4247 transparent;
+    }
+
+    &:after {
+      border-color: #25282c transparent;
+    }
+  }
+
   .sidebar,
+  .author__urls.social-icons .ai,
   .author__urls.social-icons .fa,
   .author__urls.social-icons .fas,
   .author__urls.social-icons .fab {

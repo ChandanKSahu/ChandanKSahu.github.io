@@ -47,6 +47,57 @@ html.site-theme-dark .skill-tag {
   color: #d7d8da;
 }
 
+.influence-quote {
+  max-width: 760px;
+  margin: 0 auto 0.5rem;
+  text-align: center;
+  font-size: 1.05em;
+  line-height: 1.7;
+  color: #555;
+}
+.glory-line {
+  margin: 0 auto 1.75rem;
+  text-align: center;
+  font-weight: 700;
+}
+.influence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem 2rem;
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+.influence-person {
+  display: block;
+  padding: 0.45rem 0;
+}
+.influence-topic {
+  display: block;
+  color: #666;
+  font-size: 0.92em;
+}
+.influence-grid a {
+  color: #333 !important;
+  font-weight: 700;
+  text-decoration: none !important;
+  border-bottom: 0 !important;
+}
+.influence-grid a:hover {
+  text-decoration: none !important;
+  border-bottom: 0 !important;
+}
+.thanks-list {
+  text-align: center;
+  line-height: 1.7;
+}
+.thanks-list span + span {
+  margin-left: 2rem;
+}
+html.site-theme-dark .influence-quote { color: #c4c6c9; }
+html.site-theme-dark .influence-grid a { color: #ececec !important; }
+html.site-theme-dark .influence-topic { color: #c4c6c9; }
+
 /* Horizontal career rail: logos only; details on hover/focus */
 .career-rail {
   position: relative;
@@ -262,6 +313,15 @@ html.site-theme-dark .career-rail__year {
     min-width: 640px;
     padding: 0 0.5rem;
   }
+  .influence-grid {
+    grid-template-columns: 1fr;
+  }
+  .thanks-list span {
+    display: block;
+  }
+  .thanks-list span + span {
+    margin-left: 0;
+  }
 }
 </style>
 
@@ -387,6 +447,29 @@ My research focuses on bridging the gap between AI capabilities and real-world e
 - **Physics-Guided Machine Learning**: Hybrid models that combine physical principles with data-driven approaches
 - **Requirements Engineering**: NLP-based tools for automated requirements analysis, verification, and traceability
 - **Additive Manufacturing**: ML-based process monitoring, melt pool prediction, and quality control
+
+## Intellectual Influences
+
+<p class="influence-quote">
+"People are flawed and are inherently ordinary. Extraordinary men rise from extraordinary circumstances. The same men remain ordinary before and after those extraordinary circumstances. Those are their moments of glory. They seized it."
+</p>
+
+<p class="glory-line">Here I am seeking my moments of glory.</p>
+
+<div class="influence-grid">
+  <div class="influence-person"><a href="https://en.wikipedia.org/wiki/Jim_Simons">Jim Simons</a><span class="influence-topic">Quantitative Finance</span></div>
+  <div class="influence-person"><a href="https://en.wikipedia.org/wiki/Yann_LeCun">Yann LeCun</a><span class="influence-topic">Artificial Intelligence</span></div>
+  <div class="influence-person"><a href="https://en.wikipedia.org/wiki/Gunnar_Carlsson">Gunnar Carlsson</a><span class="influence-topic">Topological Data Analysis</span></div>
+  <div class="influence-person"><a href="https://en.wikipedia.org/wiki/Jean_Gallier">Jean Gallier</a><span class="influence-topic">Mathematics</span></div>
+  <div class="influence-person"><a href="https://en.wikipedia.org/wiki/Mark_Newman">Mark Newman</a><span class="influence-topic">Network Analysis</span></div>
+  <div class="influence-person"><a href="https://en.wikipedia.org/wiki/Ayn_Rand">Ayn Rand</a><span class="influence-topic">Objectivism</span></div>
+</div>
+
+## Thank You
+
+<p class="thanks-list">
+  <span>Rahul Rai</span><span>Vinayak Khade</span><span>Suraj Behera</span><span>Sudarshan Mishra</span><span>Sushma Trupathy</span>
+</p>
 
 <!-- ## Recent News
 
