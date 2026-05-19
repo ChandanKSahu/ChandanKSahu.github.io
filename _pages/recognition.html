@@ -612,14 +612,14 @@ html.site-theme-dark .institution-count { color: #c4c6c9; }
       .catch(function () { /* graph not yet generated */ });
   }
 
-  // Fetch the generated data JSON and hydrate the page
+  /* Fetch the generated data JSON and hydrate the page */
   fetch(BASE + '/assets/citation_data.json')
     .then(function (res) { return res.json(); })
     .then(function (data) {
       renderStats(data);
     })
     .catch(function () {
-      // JSON not available yet – leave placeholders as-is
+      /* JSON not available yet – leave placeholders as-is */
       console.log('citation_data.json not yet generated. Run: scholarmap');
     });
 
