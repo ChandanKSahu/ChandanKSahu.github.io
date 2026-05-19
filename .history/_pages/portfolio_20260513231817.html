@@ -1,0 +1,833 @@
+---
+layout: archive
+title: "Projects"
+permalink: /projects/
+author_profile: true
+---
+
+{% include base_path %}
+
+<style>
+.projects-page {
+  display: grid;
+  gap: 1.5rem;
+}
+.project-card {
+  padding: 1.15rem;
+  border: 1px solid #d7d8da;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.72);
+}
+.project-card h2 {
+  display: flex;
+  align-items: baseline;
+  margin: 0 0 0.35rem;
+}
+.project-card__years {
+  margin-left: auto;
+  color: #666;
+  font-weight: 700;
+}
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+.project-tag {
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: #f0f0f0;
+  color: #494e52;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.project-list {
+  margin-bottom: 0;
+}
+.honda-carousel {
+  margin-top: 1rem;
+}
+.honda-orbit {
+  position: relative;
+  height: 320px;
+  margin: 1rem 0;
+  border-radius: 22px;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at center, rgba(190, 30, 45, 0.13), transparent 32%),
+    linear-gradient(135deg, rgba(73, 78, 82, 0.08), rgba(255, 255, 255, 0));
+}
+.honda-model {
+  display: none;
+  width: min(440px, 92%);
+  margin: 0;
+  padding: 0.85rem;
+  text-align: center;
+}
+.honda-model__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  border-radius: 18px;
+  background: transparent;
+}
+.honda-model img {
+  max-width: 100%;
+  max-height: 230px;
+  object-fit: contain;
+  background: transparent;
+  filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.22));
+}
+.honda-model__name {
+  display: block;
+  margin-top: 0.45rem;
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+.honda-model[data-position="0"] {
+  display: block;
+}
+.honda-controls {
+  display: contents;
+}
+.honda-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #b7b9bc;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: #494e52;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.honda-control:hover {
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+}
+.honda-control[data-direction="-1"] { left: -21px; }
+.honda-control[data-direction="1"]  { right: -21px; }
+.honda-thumbs {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+.honda-thumb {
+  position: relative;
+  z-index: 1;
+  padding: 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.62);
+  color: #494e52;
+  font-size: 0.78rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: border-color 0.25s, color 0.25s;
+}
+.honda-thumb img {
+  display: block;
+  width: 100%;
+  height: 58px;
+  margin-bottom: 0.35rem;
+  object-fit: contain;
+  background: transparent;
+  filter: drop-shadow(0 7px 9px rgba(0, 0, 0, 0.18));
+}
+.honda-thumb.is-active {
+  border-color: #be1e2d;
+}
+.thumb-highlight {
+  position: absolute;
+  border-radius: 14px;
+  background: rgba(190, 30, 45, 0.08);
+  box-shadow: 0 0 0 2px rgba(190, 30, 45, 0.22), 0 4px 16px rgba(190, 30, 45, 0.10);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              width 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  z-index: 0;
+}
+.honda-note {
+  margin: 0.9rem 0 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+/* ── ABB topic carousel ── */
+.abb-carousel {
+  margin-top: 0.6rem;
+}
+.abb-orbit {
+  position: relative;
+  height: 300px;
+  margin: 0.4rem 0 0.3rem;
+  border-radius: 22px;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at center, rgba(255, 0, 15, 0.10), transparent 36%),
+    linear-gradient(135deg, rgba(73, 78, 82, 0.06), rgba(255, 255, 255, 0));
+}
+.abb-slide {
+  display: none;
+  width: min(520px, 94%);
+  padding: 0.5rem;
+  text-align: center;
+}
+.abb-slide.is-active { display: block; }
+.abb-slide__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 210px;
+  border-radius: 18px;
+}
+.abb-slide img {
+  max-width: 100%;
+  max-height: 250px;
+  object-fit: contain;
+  border-radius: 12px;
+  filter: drop-shadow(0 12px 16px rgba(0, 0, 0, 0.18));
+}
+.abb-slide__label {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #494e52;
+}
+.abb-controls {
+  display: contents;
+}
+.abb-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #b7b9bc;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: #494e52;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.abb-control:hover {
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+}
+.abb-control[data-abb-dir="-1"] { left: -21px; }
+.abb-control[data-abb-dir="1"]  { right: -21px; }
+.abb-thumbs {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+.abb-thumb {
+  position: relative;
+  z-index: 1;
+  padding: 0.55rem 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.62);
+  color: #494e52;
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.25s, color 0.25s;
+}
+.abb-thumb img {
+  display: block;
+  width: 100%;
+  height: 58px;
+  margin-bottom: 0.35rem;
+  object-fit: contain;
+  border-radius: 8px;
+  filter: drop-shadow(0 5px 7px rgba(0, 0, 0, 0.14));
+}
+.abb-thumb.is-active {
+  border-color: #ff000f;
+}
+.thumb-highlight--abb {
+  background: rgba(255, 0, 15, 0.08);
+  box-shadow: 0 0 0 2px rgba(255, 0, 15, 0.22), 0 4px 16px rgba(255, 0, 15, 0.10);
+}
+html.site-theme-dark .abb-orbit {
+  background:
+    radial-gradient(circle at center, rgba(255, 0, 15, 0.14), transparent 36%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(31, 34, 38, 0));
+}
+html.site-theme-dark .abb-slide__label { color: #d7d8da; }
+html.site-theme-dark .abb-control {
+  border-color: #4a4f55;
+  background: rgba(36, 39, 43, 0.92);
+  color: #ececec;
+}
+html.site-theme-dark .abb-control:hover {
+  background: #24272b;
+}
+html.site-theme-dark .abb-thumb {
+  border-color: transparent;
+  background: rgba(31, 34, 38, 0.72);
+  color: #d7d8da;
+}
+html.site-theme-dark .abb-thumb.is-active {
+  border-color: #ff000f;
+}
+html.site-theme-dark .thumb-highlight--abb {
+  background: rgba(255, 0, 15, 0.12);
+  box-shadow: 0 0 0 2px rgba(255, 0, 15, 0.28), 0 4px 16px rgba(255, 0, 15, 0.14);
+}
+/* ── Clemson topic carousel ── */
+.clemson-carousel {
+  margin-top: 0.6rem;
+}
+.clemson-orbit {
+  position: relative;
+  height: 300px;
+  margin: 0.4rem 0 0.3rem;
+  border-radius: 22px;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at center, rgba(82, 45, 128, 0.10), transparent 36%),
+    linear-gradient(135deg, rgba(73, 78, 82, 0.06), rgba(255, 255, 255, 0));
+}
+.clemson-slide {
+  display: none;
+  width: min(520px, 94%);
+  padding: 0.5rem;
+  text-align: center;
+}
+.clemson-slide.is-active { display: block; }
+.clemson-slide__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 210px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.clemson-slide img {
+  max-width: 100%;
+  max-height: 250px;
+  object-fit: contain;
+  border-radius: 12px;
+  filter: drop-shadow(0 12px 16px rgba(0, 0, 0, 0.18));
+}
+.clemson-slide__label {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #494e52;
+}
+.clemson-controls {
+  display: contents;
+}
+.clemson-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #b7b9bc;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: #494e52;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.clemson-control:hover {
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+}
+.clemson-control[data-clemson-dir="-1"] { left: -21px; }
+.clemson-control[data-clemson-dir="1"]  { right: -21px; }
+.clemson-thumbs {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+.clemson-thumb {
+  position: relative;
+  z-index: 1;
+  padding: 0.55rem 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.62);
+  color: #494e52;
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.25s, color 0.25s;
+}
+.clemson-thumb img {
+  display: block;
+  width: 100%;
+  height: 58px;
+  margin-bottom: 0.35rem;
+  object-fit: contain;
+  border-radius: 8px;
+  filter: drop-shadow(0 5px 7px rgba(0, 0, 0, 0.14));
+}
+.clemson-thumb.is-active {
+  border-color: #522D80;
+}
+.thumb-highlight--clemson {
+  background: rgba(82, 45, 128, 0.08);
+  box-shadow: 0 0 0 2px rgba(82, 45, 128, 0.22), 0 4px 16px rgba(82, 45, 128, 0.10);
+}
+html.site-theme-dark .clemson-orbit {
+  background:
+    radial-gradient(circle at center, rgba(82, 45, 128, 0.14), transparent 36%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(31, 34, 38, 0));
+}
+html.site-theme-dark .clemson-slide__label { color: #d7d8da; }
+html.site-theme-dark .clemson-control {
+  border-color: #4a4f55;
+  background: rgba(36, 39, 43, 0.92);
+  color: #ececec;
+}
+html.site-theme-dark .clemson-control:hover {
+  background: #24272b;
+}
+html.site-theme-dark .clemson-thumb {
+  border-color: transparent;
+  background: rgba(31, 34, 38, 0.72);
+  color: #d7d8da;
+}
+html.site-theme-dark .clemson-thumb.is-active {
+  border-color: #522D80;
+}
+html.site-theme-dark .thumb-highlight--clemson {
+  background: rgba(82, 45, 128, 0.12);
+  box-shadow: 0 0 0 2px rgba(82, 45, 128, 0.28), 0 4px 16px rgba(82, 45, 128, 0.14);
+}
+.turbine-figure {
+  display: block;
+  margin: 1.2rem 0 0;
+  text-align: center;
+}
+.turbine-figure img {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  max-height: 340px;
+  object-fit: contain;
+  border-radius: 14px;
+  filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.18));
+}
+.turbine-figure figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #494e52;
+  text-align: center;
+}
+html.site-theme-dark .turbine-figure figcaption {
+  color: #d7d8da;
+}
+html.site-theme-dark .project-card {
+  border-color: #34383d;
+  background: rgba(31, 34, 38, 0.72);
+}
+html.site-theme-dark .project-card__years,
+html.site-theme-dark .honda-note {
+  color: #c4c6c9;
+}
+html.site-theme-dark .project-tag {
+  background: #2a2d31;
+  color: #d7d8da;
+}
+html.site-theme-dark .honda-orbit {
+  background:
+    radial-gradient(circle at center, rgba(230, 55, 70, 0.16), transparent 32%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(31, 34, 38, 0));
+}
+html.site-theme-dark .honda-control {
+  border-color: #4a4f55;
+  background: rgba(36, 39, 43, 0.92);
+  color: #ececec;
+}
+html.site-theme-dark .honda-control:hover {
+  background: #24272b;
+}
+html.site-theme-dark .honda-thumb {
+  border-color: transparent;
+  background: rgba(31, 34, 38, 0.72);
+  color: #d7d8da;
+}
+html.site-theme-dark .honda-thumb.is-active {
+  border-color: #be1e2d;
+}
+html.site-theme-dark .thumb-highlight {
+  background: rgba(190, 30, 45, 0.12);
+  box-shadow: 0 0 0 2px rgba(190, 30, 45, 0.28), 0 4px 16px rgba(190, 30, 45, 0.14);
+}
+@media (max-width: 760px) {
+  .honda-orbit {
+    height: 290px;
+  }
+  .honda-model__image { min-height: 190px; }
+  .honda-model img { max-height: 190px; }
+  .honda-thumbs { grid-template-columns: repeat(7, 1fr); }
+  .abb-thumbs { grid-template-columns: repeat(2, 1fr); }
+  .clemson-thumbs { grid-template-columns: repeat(2, 1fr); }
+  .clemson-control {
+    width: 34px;
+    height: 34px;
+    font-size: 1.15rem;
+  }
+  .clemson-control[data-clemson-dir="-1"] { left: -10px; }
+  .clemson-control[data-clemson-dir="1"]  { right: -10px; }
+  .honda-control, .abb-control {
+    width: 34px;
+    height: 34px;
+    font-size: 1.15rem;
+  }
+  .honda-control[data-direction="-1"],
+  .abb-control[data-abb-dir="-1"] { left: -10px; }
+  .honda-control[data-direction="1"],
+  .abb-control[data-abb-dir="1"]  { right: -10px; }
+}
+</style>
+
+<div class="projects-page">
+  <section class="project-card">
+    <h2>ABB <span class="project-card__years">2025-Present</span></h2>
+    <div class="abb-carousel" data-abb-carousel>
+      <div class="abb-orbit" aria-live="polite">
+        <figure class="abb-slide" data-abb-index="0">
+          <span class="abb-slide__image"><img src="{{ '/assets/projects/abb/CADModeling.png' | relative_url }}" alt="CAD Modeling" loading="lazy" decoding="async"></span>
+          <figcaption class="abb-slide__label">CAD Modeling</figcaption>
+        </figure>
+        <figure class="abb-slide is-active" data-abb-index="1">
+          <span class="abb-slide__image"><img src="{{ '/assets/projects/abb/AgenticAI.png' | relative_url }}" alt="Agentic AI" decoding="async"></span>
+          <figcaption class="abb-slide__label">Agentic AI</figcaption>
+        </figure>
+        <figure class="abb-slide" data-abb-index="2">
+          <span class="abb-slide__image"><img src="{{ '/assets/projects/abb/InformationRetrieval.png' | relative_url }}" alt="Information Retrieval" loading="lazy" decoding="async"></span>
+          <figcaption class="abb-slide__label">Information Retrieval</figcaption>
+        </figure>
+        <figure class="abb-slide" data-abb-index="3">
+          <span class="abb-slide__image"><img src="{{ '/assets/projects/abb/GenerativeSEO.png' | relative_url }}" alt="Generative Search Engine Optimization" loading="lazy" decoding="async"></span>
+          <figcaption class="abb-slide__label">Generative Search Engine Optimization</figcaption>
+        </figure>
+        <button class="abb-control" type="button" data-abb-dir="-1" aria-label="Show previous ABB topic">&lsaquo;</button>
+        <button class="abb-control" type="button" data-abb-dir="1" aria-label="Show next ABB topic">&rsaquo;</button>
+      </div>
+      <div class="abb-thumbs" aria-label="ABB topic thumbnails">
+        <button class="abb-thumb" type="button" data-abb-thumb="0">
+          <img src="{{ '/assets/projects/abb/CADModeling.png' | relative_url }}" alt="" loading="lazy" decoding="async">CAD Modeling
+        </button>
+        <button class="abb-thumb is-active" type="button" data-abb-thumb="1">
+          <img src="{{ '/assets/projects/abb/AgenticAI.png' | relative_url }}" alt="" loading="lazy" decoding="async">Agentic AI
+        </button>
+        <button class="abb-thumb" type="button" data-abb-thumb="2">
+          <img src="{{ '/assets/projects/abb/InformationRetrieval.png' | relative_url }}" alt="" loading="lazy" decoding="async">Information Retrieval
+        </button>
+        <button class="abb-thumb" type="button" data-abb-thumb="3">
+          <img src="{{ '/assets/projects/abb/GenerativeSEO.png' | relative_url }}" alt="" loading="lazy" decoding="async">Generative SEO
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-card">
+    <h2>Clemson University <span class="project-card__years">2020-2024</span></h2>
+    <div class="clemson-carousel" data-clemson-carousel>
+      <div class="clemson-orbit" aria-live="polite">
+        <figure class="clemson-slide is-active" data-clemson-index="0">
+          <span class="clemson-slide__image"><img src="{{ '/assets/graphical_abstracts/dissertation.png' | relative_url }}" alt="Requirements Engineering" decoding="async"></span>
+          <figcaption class="clemson-slide__label">Requirements Engineering</figcaption>
+        </figure>
+        <figure class="clemson-slide" data-clemson-index="1">
+          <span class="clemson-slide__image"><img src="{{ '/assets/projects/clemson/additive_manufacturing.png' | relative_url }}" alt="Additive Manufacturing" loading="lazy" decoding="async"></span>
+          <figcaption class="clemson-slide__label">Additive Manufacturing</figcaption>
+        </figure>
+        <button class="clemson-control" type="button" data-clemson-dir="-1" aria-label="Show previous Clemson topic">&lsaquo;</button>
+        <button class="clemson-control" type="button" data-clemson-dir="1" aria-label="Show next Clemson topic">&rsaquo;</button>
+      </div>
+      <div class="clemson-thumbs" aria-label="Clemson topic thumbnails">
+        <button class="clemson-thumb is-active" type="button" data-clemson-thumb="0">
+          <img src="{{ '/assets/graphical_abstracts/dissertation.png' | relative_url }}" alt="" loading="lazy" decoding="async">Requirements Engineering
+        </button>
+        <button class="clemson-thumb" type="button" data-clemson-thumb="1">
+          <img src="{{ '/assets/projects/clemson/additive_manufacturing.png' | relative_url }}" alt="" loading="lazy" decoding="async">Additive Manufacturing
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-card">
+    <h2>University at Buffalo <span class="project-card__years">2018-2020</span></h2>
+    <figure class="turbine-figure">
+      <img src="{{ '/assets/projects/buffalo/PhysML.png' | relative_url }}" alt="Physics-Guided Machine Learning" loading="lazy" decoding="async">
+      <figcaption>Physics-Guided Machine Learning</figcaption>
+    </figure>
+  </section>
+
+  <section class="project-card">
+    <h2>Honda <span class="project-card__years">2014–2017</span></h2>
+    <div class="honda-carousel" data-honda-carousel>
+      <div class="honda-orbit" aria-live="polite">
+        <figure class="honda-model" data-position="hidden">
+          <span class="honda-model__image"><img src="{{ '/assets/projects/honda/CD110Dream.png' | relative_url }}" alt="Honda CD110 Dream" loading="lazy" decoding="async"></span>
+          <figcaption class="honda-model__name">CD110 Dream</figcaption>
+        </figure>
+        <figure class="honda-model" data-position="hidden">
+          <span class="honda-model__image"><img src="{{ '/assets/projects/honda/Livo.png' | relative_url }}" alt="Honda Livo" loading="lazy" decoding="async"></span>
+          <figcaption class="honda-model__name">Livo</figcaption>
+        </figure>
+        <figure class="honda-model" data-position="hidden">
+          <span class="honda-model__image"><img src="{{ '/assets/projects/honda/Navi.png' | relative_url }}" alt="Honda Navi" loading="lazy" decoding="async"></span>
+          <figcaption class="honda-model__name">Navi</figcaption>
+        </figure>
+        <figure class="honda-model" data-position="0">
+          <span class="honda-model__image"><img src="{{ '/assets/projects/honda/AfricaTwin.avif' | relative_url }}" alt="Honda Africa Twin" decoding="async"></span>
+          <figcaption class="honda-model__name">Africa Twin</figcaption>
+        </figure>
+        <figure class="honda-model" data-position="hidden">
+          <span class="honda-model__image"><img src="{{ '/assets/projects/honda/Cliq.png' | relative_url }}" alt="Honda Cliq" loading="lazy" decoding="async"></span>
+          <figcaption class="honda-model__name">Cliq</figcaption>
+        </figure>
+        <figure class="honda-model" data-position="hidden">
+          <span class="honda-model__image"><img src="{{ '/assets/projects/honda/DreamYuga.png' | relative_url }}" alt="Honda Dream Yuga" loading="lazy" decoding="async"></span>
+          <figcaption class="honda-model__name">Dream Yuga</figcaption>
+        </figure>
+        <figure class="honda-model" data-position="hidden">
+          <span class="honda-model__image"><img src="{{ '/assets/projects/honda/DreamNeo.png' | relative_url }}" alt="Honda Dream Neo" loading="lazy" decoding="async"></span>
+          <figcaption class="honda-model__name">Dream Neo</figcaption>
+        </figure>
+        <button class="honda-control" type="button" data-direction="-1" aria-label="Show previous Honda model">&lsaquo;</button>
+        <button class="honda-control" type="button" data-direction="1" aria-label="Show next Honda model">&rsaquo;</button>
+      </div>
+      <div class="honda-thumbs" aria-label="Honda model thumbnails">
+        <button class="honda-thumb" type="button" data-model-index="0">
+          <img src="{{ '/assets/projects/honda/CD110Dream.png' | relative_url }}" alt="" loading="lazy" decoding="async">CD110 Dream
+        </button>
+        <button class="honda-thumb" type="button" data-model-index="1">
+          <img src="{{ '/assets/projects/honda/Livo.png' | relative_url }}" alt="" loading="lazy" decoding="async">Livo
+        </button>
+        <button class="honda-thumb" type="button" data-model-index="2">
+          <img src="{{ '/assets/projects/honda/Navi.png' | relative_url }}" alt="" loading="lazy" decoding="async">Navi
+        </button>
+        <button class="honda-thumb is-active" type="button" data-model-index="3">
+          <img src="{{ '/assets/projects/honda/AfricaTwin.avif' | relative_url }}" alt="" loading="lazy" decoding="async">Africa Twin
+        </button>
+        <button class="honda-thumb" type="button" data-model-index="4">
+          <img src="{{ '/assets/projects/honda/Cliq.png' | relative_url }}" alt="" loading="lazy" decoding="async">Cliq
+        </button>
+        <button class="honda-thumb" type="button" data-model-index="5">
+          <img src="{{ '/assets/projects/honda/DreamYuga.png' | relative_url }}" alt="" loading="lazy" decoding="async">Dream Yuga
+        </button>
+        <button class="honda-thumb" type="button" data-model-index="6">
+          <img src="{{ '/assets/projects/honda/DreamNeo.png' | relative_url }}" alt="" loading="lazy" decoding="async">Dream Neo
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-card">
+    <h2>NIT Rourkela <span class="project-card__years">2010–2014</span></h2>
+    <figure class="turbine-figure">
+      <img src="{{ '/assets/projects/nitrkl/turbine.png' | relative_url }}" alt="Cryogenic Turboexpander" loading="lazy" decoding="async">
+      <figcaption>Cryogenic Turboexpander</figcaption>
+    </figure>
+  </section>
+</div>
+
+<script>
+/* ── Honda carousel ── */
+(function () {
+  var carousel = document.querySelector('[data-honda-carousel]');
+  if (!carousel) return;
+
+  var models = Array.prototype.slice.call(carousel.querySelectorAll('.honda-model'));
+  var thumbs = Array.prototype.slice.call(carousel.querySelectorAll('[data-model-index]'));
+  var active = models.findIndex(function (model) {
+    return model.getAttribute('data-position') === '0';
+  });
+
+  /* Create sliding highlight box */
+  var thumbsContainer = carousel.querySelector('.honda-thumbs');
+  var highlight = document.createElement('div');
+  highlight.className = 'thumb-highlight';
+  thumbsContainer.appendChild(highlight);
+
+  function moveHighlight() {
+    var target = thumbs[active];
+    if (!target) return;
+    highlight.style.width = target.offsetWidth + 'px';
+    highlight.style.height = target.offsetHeight + 'px';
+    highlight.style.transform = 'translate(' + target.offsetLeft + 'px, ' + target.offsetTop + 'px)';
+  }
+
+  function render() {
+    models.forEach(function (model, index) {
+      model.setAttribute('data-position', index === active ? '0' : 'hidden');
+    });
+    thumbs.forEach(function (thumb, index) {
+      thumb.classList.toggle('is-active', index === active);
+    });
+    moveHighlight();
+  }
+
+  carousel.addEventListener('click', function (event) {
+    var button = event.target.closest('[data-direction]');
+    var thumb = event.target.closest('[data-model-index]');
+    if (button) {
+      active = (active + Number(button.getAttribute('data-direction')) + models.length) % models.length;
+    } else if (thumb) {
+      active = Number(thumb.getAttribute('data-model-index'));
+    } else {
+      return;
+    }
+    render();
+  });
+
+  /* Position highlight on load (no transition for initial placement) */
+  highlight.style.transition = 'none';
+  moveHighlight();
+  /* Force reflow, then restore transition */
+  highlight.offsetHeight;
+  highlight.style.transition = '';
+  window.addEventListener('resize', moveHighlight);
+})();
+
+/* ── ABB topic carousel (auto-cycling) ── */
+(function () {
+  var wrapper = document.querySelector('[data-abb-carousel]');
+  if (!wrapper) return;
+
+  var slides = Array.prototype.slice.call(wrapper.querySelectorAll('.abb-slide'));
+  var thumbs = Array.prototype.slice.call(wrapper.querySelectorAll('[data-abb-thumb]'));
+  var count  = slides.length;
+  var active = 1;                       /* Agentic AI is the default (index 1) */
+
+  /* Create sliding highlight box */
+  var thumbsContainer = wrapper.querySelector('.abb-thumbs');
+  var highlight = document.createElement('div');
+  highlight.className = 'thumb-highlight thumb-highlight--abb';
+  thumbsContainer.appendChild(highlight);
+
+  function moveHighlight() {
+    var target = thumbs[active];
+    if (!target) return;
+    highlight.style.width = target.offsetWidth + 'px';
+    highlight.style.height = target.offsetHeight + 'px';
+    highlight.style.transform = 'translate(' + target.offsetLeft + 'px, ' + target.offsetTop + 'px)';
+  }
+
+  function render() {
+    slides.forEach(function (s, i) { s.classList.toggle('is-active', i === active); });
+    thumbs.forEach(function (t, i) { t.classList.toggle('is-active', i === active); });
+    moveHighlight();
+  }
+
+  wrapper.addEventListener('click', function (e) {
+    var dirBtn = e.target.closest('[data-abb-dir]');
+    var thumb  = e.target.closest('[data-abb-thumb]');
+    if (dirBtn) {
+      active = (active + Number(dirBtn.getAttribute('data-abb-dir')) + count) % count;
+    } else if (thumb) {
+      active = Number(thumb.getAttribute('data-abb-thumb'));
+    } else {
+      return;
+    }
+    render();
+  });
+
+  /* Position highlight on load (no transition for initial placement) */
+  highlight.style.transition = 'none';
+  moveHighlight();
+  highlight.offsetHeight;
+  highlight.style.transition = '';
+  window.addEventListener('resize', moveHighlight);
+})();
+
+/* ── Clemson topic carousel ── */
+(function () {
+  var wrapper = document.querySelector('[data-clemson-carousel]');
+  if (!wrapper) return;
+
+  var slides = Array.prototype.slice.call(wrapper.querySelectorAll('.clemson-slide'));
+  var thumbs = Array.prototype.slice.call(wrapper.querySelectorAll('[data-clemson-thumb]'));
+  var count  = slides.length;
+  var active = 0;
+
+  var thumbsContainer = wrapper.querySelector('.clemson-thumbs');
+  var highlight = document.createElement('div');
+  highlight.className = 'thumb-highlight thumb-highlight--clemson';
+  thumbsContainer.appendChild(highlight);
+
+  function moveHighlight() {
+    var target = thumbs[active];
+    if (!target) return;
+    highlight.style.width = target.offsetWidth + 'px';
+    highlight.style.height = target.offsetHeight + 'px';
+    highlight.style.transform = 'translate(' + target.offsetLeft + 'px, ' + target.offsetTop + 'px)';
+  }
+
+  function render() {
+    slides.forEach(function (s, i) { s.classList.toggle('is-active', i === active); });
+    thumbs.forEach(function (t, i) { t.classList.toggle('is-active', i === active); });
+    moveHighlight();
+  }
+
+  wrapper.addEventListener('click', function (e) {
+    var dirBtn = e.target.closest('[data-clemson-dir]');
+    var thumb  = e.target.closest('[data-clemson-thumb]');
+    if (dirBtn) {
+      active = (active + Number(dirBtn.getAttribute('data-clemson-dir')) + count) % count;
+    } else if (thumb) {
+      active = Number(thumb.getAttribute('data-clemson-thumb'));
+    } else {
+      return;
+    }
+    render();
+  });
+
+  highlight.style.transition = 'none';
+  moveHighlight();
+  highlight.offsetHeight;
+  highlight.style.transition = '';
+  window.addEventListener('resize', moveHighlight);
+})();
+</script>
+

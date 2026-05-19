@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Citation Network Graph</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; overflow: hidden; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #fafbfc; }
+  #graph { width: 100%; height: 100%; }
+
+  /* Legend */
+  .legend {
+    position: fixed; top: 12px; right: 12px;
+    background: #fff; border-radius: 10px; padding: 14px 18px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.1); z-index: 999;
+    font-size: 13px; line-height: 1.6;
+  }
+  .legend h4 { margin-bottom: 6px; color: #2d3748; font-size: 14px; }
+  .legend-item { display: flex; align-items: center; gap: 8px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+
+  /* Tooltip */
+  .tooltip {
+    position: absolute; pointer-events: none; opacity: 0;
+    background: #fff; border-radius: 8px; padding: 10px 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.15); font-size: 12px;
+    max-width: 300px; z-index: 1000; transition: opacity .15s;
+  }
+  .tooltip.visible { opacity: 1; }
+  .tooltip .tt-type { font-size: 10px; text-transform: uppercase; letter-spacing: .8px; color: #718096; }
+  .tooltip .tt-label { font-weight: 600; color: #2d3748; margin-top: 2px; word-wrap: break-word; }
+  .tooltip .tt-detail { color: #4a5568; margin-top: 3px; }
+
+  /* Controls */
+  .controls {
+    position: fixed; top: 12px; left: 12px;
+    background: #fff; border-radius: 10px; padding: 12px 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.1); z-index: 999;
+    font-size: 13px; display: flex; flex-direction: column; gap: 8px;
+  }
+  .controls label { display: flex; align-items: center; gap: 6px; cursor: pointer; color: #2d3748; }
+  .controls input[type=checkbox] { accent-color: #667eea; }
+  .controls select { padding: 4px 8px; border: 1px solid #ddd; border-radius: 4px; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<div class="controls" id="controls">
+  <strong style="color:#2d3748">Filter Node Types</strong>
+  <label><input type="checkbox" data-type="my_paper" checked> My Papers</label>
+  <label><input type="checkbox" data-type="citing_paper" checked> Citing Papers</label>
+  <label><input type="checkbox" data-type="author" checked> Authors</label>
+  <label><input type="checkbox" data-type="institution" checked> Institutions</label>
+  <label><input type="checkbox" data-type="country" checked> Countries</label>
+</div>
+
+<div class="legend">
+  <h4>Citation Network</h4>
+  <div class="legend-item"><span class="legend-dot" style="background:#667eea"></span> My Papers</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#f6ad55"></span> Citing Papers</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#68d391"></span> Authors</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#fc8181"></span> Institutions</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#b794f4"></span> Countries</div>
+</div>
+
+<div class="tooltip" id="tooltip">
+  <div class="tt-type"></div>
+  <div class="tt-label"></div>
+  <div class="tt-detail"></div>
+</div>
+
+<svg id="graph"></svg>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ---- colour & sizing map ---- */
+  var TYPE_CONFIG = {
+    my_paper:     { color: '#667eea', radius: 14 },
+    citing_paper: { color: '#f6ad55', radius: 6  },
+    author:       { color: '#68d391', radius: 5  },
+    institution:  { color: '#fc8181', radius: 9  },
+    country:      { color: '#b794f4', radius: 12 }
+  };
+
+  var DEFAULT_CFG = { color: '#a0aec0', radius: 5 };
+
+  function cfg(type) { return TYPE_CONFIG[type] || DEFAULT_CFG; }
+
+  /* ---- responsive SVG ---- */
+  var width  = window.innerWidth;
+  var height = window.innerHeight;
+
+  var svg = d3.select('#graph')
+    .attr('width', width)
+    .attr('height', height);
+
+  var g = svg.append('g');                       /* zoom container */
+
+  svg.call(d3.zoom()
+    .scaleExtent([0.1, 8])
+    .on('zoom', function (event) { g.attr('transform', event.transform); }));
+
+  var tooltip = document.getElementById('tooltip');
+
+  /* ---- load data ---- */
+  var basePath = '';
+  /* Detect if we're served from Jekyll site or standalone */
+  if (window.location.pathname.indexOf('/assets/') !== -1) {
+    basePath = window.location.pathname.replace(/\/assets\/citation_graph\.html.*/, '');
+  }
+
+  d3.json(basePath + '/assets/citation_graph.json').then(function (raw) {
+    if (!raw || !raw.nodes || raw.nodes.length === 0) {
+      svg.append('text')
+        .attr('x', width / 2).attr('y', height / 2)
+        .attr('text-anchor', 'middle').attr('fill', '#718096')
+        .text('No citation graph data yet. Run: scholarmap');
+      return;
+    }
+
+    boot(raw);
+  }).catch(function () {
+    svg.append('text')
+      .attr('x', width / 2).attr('y', height / 2)
+      .attr('text-anchor', 'middle').attr('fill', '#718096')
+      .text('citation_graph.json not found. Run: scholarmap');
+  });
+
+  /* ---- main visualisation ---- */
+  function boot(raw) {
+    /* Deep-copy so we can filter without mutating the original */
+    var allNodes = raw.nodes;
+    var allLinks = raw.links;
+
+    /* Build ID lookup for links (d3-force will mutate source/target to objects) */
+    var nodeById = {};
+    allNodes.forEach(function (n) { nodeById[n.id] = n; });
+
+    /* Normalise link source/target to IDs (they may already be strings) */
+    allLinks = allLinks.map(function (l) {
+      return { source: (typeof l.source === 'object' ? l.source.id : l.source),
+               target: (typeof l.target === 'object' ? l.target.id : l.target),
+               type: l.type };
+    });
+
+    var visibleTypes = new Set(['my_paper', 'citing_paper', 'author', 'institution', 'country']);
+
+    /* ---- simulation ---- */
+    var simulation = d3.forceSimulation()
+      .force('link',   d3.forceLink().id(function (d) { return d.id; }).distance(60))
+      .force('charge', d3.forceManyBody().strength(-80))
+      .force('center', d3.forceCenter(width / 2, height / 2))
+      .force('x',      d3.forceX(width / 2).strength(0.03))
+      .force('y',      d3.forceY(height / 2).strength(0.03))
+      .force('collision', d3.forceCollide().radius(function (d) { return cfg(d.type).radius + 2; }));
+
+    /* SVG groups (links below nodes) */
+    var linkG = g.append('g').attr('class', 'links');
+    var nodeG = g.append('g').attr('class', 'nodes');
+
+    var linkSel, nodeSel;
+
+    function render() {
+      var nodes = allNodes.filter(function (n) { return visibleTypes.has(n.type); });
+      var visibleIds = new Set(nodes.map(function (n) { return n.id; }));
+      var links = allLinks.filter(function (l) { return visibleIds.has(l.source) && visibleIds.has(l.target); });
+
+      /* Links */
+      linkSel = linkG.selectAll('line').data(links, function (d) { return d.source + '-' + d.target; });
+      linkSel.exit().remove();
+      linkSel = linkSel.enter().append('line')
+        .attr('stroke', '#cbd5e0')
+        .attr('stroke-opacity', 0.4)
+        .attr('stroke-width', 1)
+        .merge(linkSel);
+
+      /* Nodes */
+      nodeSel = nodeG.selectAll('circle').data(nodes, function (d) { return d.id; });
+      nodeSel.exit().remove();
+      var entered = nodeSel.enter().append('circle')
+        .attr('r',    function (d) { return cfg(d.type).radius; })
+        .attr('fill', function (d) { return cfg(d.type).color; })
+        .attr('stroke', '#fff')
+        .attr('stroke-width', 1.5)
+        .attr('cursor', 'pointer')
+        .on('mouseover', onHover)
+        .on('mouseout',  onOut)
+        .call(d3.drag()
+          .on('start', dragStart)
+          .on('drag',  dragging)
+          .on('end',   dragEnd));
+
+      nodeSel = entered.merge(nodeSel);
+
+      simulation.nodes(nodes);
+      simulation.force('link').links(links);
+      simulation.alpha(0.6).restart();
+
+      simulation.on('tick', function () {
+        linkSel
+          .attr('x1', function (d) { return d.source.x; })
+          .attr('y1', function (d) { return d.source.y; })
+          .attr('x2', function (d) { return d.target.x; })
+          .attr('y2', function (d) { return d.target.y; });
+
+        nodeSel
+          .attr('cx', function (d) { return d.x; })
+          .attr('cy', function (d) { return d.y; });
+      });
+    }
+
+    render();
+
+    /* ---- Tooltip ---- */
+    function onHover(event, d) {
+      var ttType   = tooltip.querySelector('.tt-type');
+      var ttLabel  = tooltip.querySelector('.tt-label');
+      var ttDetail = tooltip.querySelector('.tt-detail');
+
+      var typeLabels = { my_paper: 'My Paper', citing_paper: 'Citing Paper', author: 'Author', institution: 'Institution', country: 'Country' };
+      ttType.textContent  = typeLabels[d.type] || d.type;
+      ttLabel.textContent = d.label || d.id;
+
+      var detail = '';
+      if (d.year)    detail += 'Year: ' + d.year;
+      if (d.city)    detail += (detail ? ' · ' : '') + d.city;
+      if (d.country && d.type !== 'country') detail += (detail ? ', ' : '') + d.country;
+      ttDetail.textContent = detail;
+
+      tooltip.classList.add('visible');
+      tooltip.style.left = (event.pageX + 14) + 'px';
+      tooltip.style.top  = (event.pageY - 10) + 'px';
+
+      /* Highlight connected */
+      d3.select(this).attr('stroke', '#2d3748').attr('stroke-width', 3);
+    }
+
+    function onOut() {
+      tooltip.classList.remove('visible');
+      d3.select(this).attr('stroke', '#fff').attr('stroke-width', 1.5);
+    }
+
+    /* ---- Drag ---- */
+    function dragStart(event, d) {
+      if (!event.active) simulation.alphaTarget(0.3).restart();
+      d.fx = d.x; d.fy = d.y;
+    }
+    function dragging(event, d) { d.fx = event.x; d.fy = event.y; }
+    function dragEnd(event, d) {
+      if (!event.active) simulation.alphaTarget(0);
+      d.fx = null; d.fy = null;
+    }
+
+    /* ---- Filter checkboxes ---- */
+    document.querySelectorAll('#controls input[type=checkbox]').forEach(function (cb) {
+      cb.addEventListener('change', function () {
+        var type = this.getAttribute('data-type');
+        if (this.checked) visibleTypes.add(type); else visibleTypes.delete(type);
+
+        /* Must re-normalise links to string IDs since d3-force mutated them */
+        allLinks = allLinks.map(function (l) {
+          return {
+            source: (typeof l.source === 'object' ? l.source.id : l.source),
+            target: (typeof l.target === 'object' ? l.target.id : l.target),
+            type: l.type
+          };
+        });
+
+        render();
+      });
+    });
+  }
+
+  /* ---- Resize ---- */
+  window.addEventListener('resize', function () {
+    width  = window.innerWidth;
+    height = window.innerHeight;
+    svg.attr('width', width).attr('height', height);
+  });
+})();
+</script>
+</body>
+</html>

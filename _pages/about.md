@@ -50,27 +50,36 @@ html.site-theme-dark .skill-tag {
 .influence-quote {
   max-width: 760px;
   margin: 0 auto 0.5rem;
+  padding: 0;
+  border-left: none;
   text-align: center;
   font-size: 1.05em;
+  font-style: normal;
   line-height: 1.7;
   color: #555;
 }
 .glory-line {
-  margin: 0 auto 1.75rem;
+  margin: 1.75rem auto 1.75rem;
   text-align: center;
   font-weight: 700;
 }
 .influence-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.6rem 2rem;
-  max-width: 540px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem 2.5rem;
+  max-width: 800px;
   margin: 0 auto;
+  padding: 0;
+  list-style: none;
   line-height: 1.5;
 }
 .influence-person {
   display: block;
+  flex: 0 0 calc(33.333% - 2.5rem);
+  min-width: 200px;
   padding: 0.45rem 0;
+  text-align: center;
 }
 .influence-topic {
   display: block;
@@ -78,14 +87,16 @@ html.site-theme-dark .skill-tag {
   font-size: 0.92em;
 }
 .influence-grid a {
-  color: #333 !important;
+  color: #333;
   font-weight: 700;
-  text-decoration: none !important;
-  border-bottom: 0 !important;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease;
 }
-.influence-grid a:hover {
-  text-decoration: none !important;
-  border-bottom: 0 !important;
+.influence-grid a:hover,
+.influence-grid a:focus-visible {
+  border-bottom-color: currentColor;
+  outline: none;
 }
 .thanks-list {
   text-align: center;
@@ -94,9 +105,6 @@ html.site-theme-dark .skill-tag {
 .thanks-list span + span {
   margin-left: 2rem;
 }
-html.site-theme-dark .influence-quote { color: #c4c6c9; }
-html.site-theme-dark .influence-grid a { color: #ececec !important; }
-html.site-theme-dark .influence-topic { color: #c4c6c9; }
 
 /* Horizontal career rail: logos only; details on hover/focus */
 .career-rail {
@@ -314,7 +322,12 @@ html.site-theme-dark .career-rail__year {
     padding: 0 0.5rem;
   }
   .influence-grid {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: center;
+  }
+  .influence-person {
+    width: 100%;
+    flex: none;
   }
   .thanks-list span {
     display: block;
@@ -327,7 +340,7 @@ html.site-theme-dark .career-rail__year {
 
 <div class="intro-section" style="text-align: left;">
   <p>
-    <strong>Dr. Chandan Kumar Sahu</strong> is a <strong>Research Scientist - Generative AI and Agentic Systems</strong> at the ABB US Corporate Research Center. He pushes the knowledge frontier as an early adopter of emerging technologies to make industrial systems smarter and safer. He systematically integrates Generative AI, NLP, and network analysis techniques with the rigor of mathematical modeling and first-principles. This hybrid approach enables him to solve critical challenges across cyber-physical systems, additive manufacturing, requirements engineering, information retrieval systems, and CAD modeling. Dr. Sahu is a seasoned researcher whose scholarly contributions have been highly cited and resulted in multiple patents. His expertise is further evidenced by multiple industry accolades and hackathon wins. He holds a PhD in Automotive Engineering from Clemson University.
+    <strong>Dr. Chandan Kumar Sahu</strong> is a <strong>Research Scientist - Generative AI and Agentic Systems</strong> at the ABB US Corporate Research Center. He pushes the knowledge frontier as an early adopter of emerging technologies to make industrial systems smarter and safer. He systematically integrates Generative AI, NLP, and network analysis techniques with the rigor of mathematical modeling and first-principles. This hybrid approach enables him to solve critical challenges across cyber-physical systems, additive manufacturing, requirements engineering, information retrieval systems, and CAD modeling. Dr. Sahu is a seasoned researcher whose scholarly contributions have been highly cited and resulted in multiple patents. His expertise is further evidenced by multiple industry accolades and hackathon wins. He holds a PhD degree.
   </p>
   
   <div class="skills-tags">
@@ -360,7 +373,7 @@ html.site-theme-dark .career-rail__year {
             <span class="career-rail__tip-org">JNV</span>
             <span class="career-rail__tip-years">2003–2010</span>
           </div>
-          <p class="career-rail__tip-body">Middle school and high school: Basic science education.</p>
+          <p class="career-rail__tip-body">School: Basic Science Education.</p>
         </div>
       </li>
       <li class="career-rail__node career-rail__node--bottom">
@@ -374,7 +387,7 @@ html.site-theme-dark .career-rail__year {
             <span class="career-rail__tip-org">NIT Rourkela</span>
             <span class="career-rail__tip-years">2010–2014</span>
           </div>
-          <p class="career-rail__tip-body">Undergrad: B.Tech in Mechanical Engineering with a Project on the Design of Cryogenic Turboexpanders.</p>
+          <p class="career-rail__tip-body">Undergrad in Engineering.</p>
         </div>
       </li>
       <li class="career-rail__node career-rail__node--top">
@@ -402,7 +415,7 @@ html.site-theme-dark .career-rail__year {
             <span class="career-rail__tip-org">University at Buffalo</span>
             <span class="career-rail__tip-years">2017–2020</span>
           </div>
-          <p class="career-rail__tip-body">Masters in Mechanical Engineering with a Thesis on Physics-Guided Machine Learning.</p>
+          <p class="career-rail__tip-body">Masters in Engineering.</p>
         </div>
       </li>
       <li class="career-rail__node career-rail__node--top">
@@ -416,7 +429,7 @@ html.site-theme-dark .career-rail__year {
             <span class="career-rail__tip-org">Clemson University</span>
             <span class="career-rail__tip-years">2020–2024</span>
           </div>
-          <p class="career-rail__tip-body">PhD in Automotive Engineering with a Dissertation on Requirements Engineering.</p>
+          <p class="career-rail__tip-body">PhD in Engineering.</p>
         </div>
       </li>
       <li class="career-rail__node career-rail__node--bottom career-rail__node--current career-rail__node--short-connector">
@@ -450,25 +463,24 @@ My research focuses on bridging the gap between AI capabilities and real-world e
 
 ## Intellectual Influences
 
-<p class="influence-quote">
-"People are flawed and are inherently ordinary. Extraordinary men rise from extraordinary circumstances. The same men remain ordinary before and after those extraordinary circumstances. Those are their moments of glory. They seized it."
-</p>
+<blockquote class="influence-quote">
+"People are flawed and are inherently ordinary. Extraordinary people rise from extraordinary problems. They remain ordinary before and after, but in the crucible of the moment, they seized it. Those are their moments of glory."
+</blockquote>
 
-<p class="glory-line">Here I am seeking my moments of glory.</p>
+<ul class="influence-grid" aria-label="Intellectual influences">
+  <li class="influence-person"><a href="https://en.wikipedia.org/wiki/Jim_Simons">Jim Simons</a><span class="influence-topic">Quantitative Finance</span></li>
+  <li class="influence-person"><a href="https://en.wikipedia.org/wiki/Yann_LeCun">Yann LeCun</a><span class="influence-topic">Artificial Intelligence</span></li>
+  <li class="influence-person"><a href="https://en.wikipedia.org/wiki/Gunnar_Carlsson">Gunnar Carlsson</a><span class="influence-topic">Topological Data Analysis</span></li>
+  <li class="influence-person"><a href="https://en.wikipedia.org/wiki/Jean_Gallier">Jean Gallier</a><span class="influence-topic">Mathematics for Engineering</span></li>
+  <li class="influence-person"><a href="https://en.wikipedia.org/wiki/Mark_Newman">Mark Newman</a><span class="influence-topic">Network Analysis</span></li>
+</ul>
 
-<div class="influence-grid">
-  <div class="influence-person"><a href="https://en.wikipedia.org/wiki/Jim_Simons">Jim Simons</a><span class="influence-topic">Quantitative Finance</span></div>
-  <div class="influence-person"><a href="https://en.wikipedia.org/wiki/Yann_LeCun">Yann LeCun</a><span class="influence-topic">Artificial Intelligence</span></div>
-  <div class="influence-person"><a href="https://en.wikipedia.org/wiki/Gunnar_Carlsson">Gunnar Carlsson</a><span class="influence-topic">Topological Data Analysis</span></div>
-  <div class="influence-person"><a href="https://en.wikipedia.org/wiki/Jean_Gallier">Jean Gallier</a><span class="influence-topic">Mathematics</span></div>
-  <div class="influence-person"><a href="https://en.wikipedia.org/wiki/Mark_Newman">Mark Newman</a><span class="influence-topic">Network Analysis</span></div>
-  <div class="influence-person"><a href="https://en.wikipedia.org/wiki/Ayn_Rand">Ayn Rand</a><span class="influence-topic">Objectivism</span></div>
-</div>
+<p class="glory-line">Here I am, seeking extraordinary problems</p>
 
 ## Thank You
 
 <p class="thanks-list">
-  <span>Rahul Rai</span><span>Vinayak Khade</span><span>Suraj Behera</span><span>Sudarshan Mishra</span><span>Sushma Trupathy</span>
+  <span>Rahul Rai</span><span>Suraj Behera</span><span>Sudarshan Mishra</span><span>Sushama Tripathy</span>
 </p>
 
 <!-- ## Recent News

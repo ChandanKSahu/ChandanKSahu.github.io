@@ -15,19 +15,22 @@ author_profile: true
 /* Stats Cards */
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
   margin-bottom: 40px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .stat-card {
   background: white;
   border-radius: 8px;
-  padding: 30px;
+  padding: 18px 10px;
   text-align: center;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   border: 1px solid #e0e0e0;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-width: 0;
 }
 
 .stat-card:hover {
@@ -36,24 +39,25 @@ author_profile: true
 }
 
 .stat-icon {
-  font-size: 2.5em;
-  margin-bottom: 15px;
+  font-size: 1.8em;
+  margin-bottom: 10px;
   color: #494e52;
 }
 
 .stat-value {
-  font-size: 2.8em;
+  font-size: clamp(1.4em, 2.2vw, 2.4em);
   font-weight: 700;
   color: #2d3748;
   line-height: 1;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  white-space: nowrap;
 }
 
 .stat-label {
-  font-size: 0.9em;
+  font-size: clamp(0.65em, 0.85vw, 0.85em);
   color: #718096;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 /* Section Styles */
@@ -111,27 +115,6 @@ author_profile: true
   font-weight: 600;
   color: #2d3748;
   margin: 0;
-}
-
-.map-stats {
-  display: flex;
-  gap: 20px;
-}
-
-.map-stat {
-  text-align: center;
-}
-
-.map-stat-value {
-  font-size: 1.4em;
-  font-weight: 700;
-  color: #494e52;
-}
-
-.map-stat-label {
-  font-size: 0.75em;
-  color: #718096;
-  text-transform: uppercase;
 }
 
 .map-frame {
@@ -274,6 +257,113 @@ author_profile: true
   color: #718096;
 }
 
+/* Citation Graph */
+.graph-container {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+}
+
+.graph-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  border-bottom: 1px solid #eee;
+}
+
+.graph-title {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0;
+}
+
+.graph-frame {
+  width: 100%;
+  height: 600px;
+  border: none;
+}
+
+.graph-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  color: #a0aec0;
+  font-size: 1.1em;
+}
+
+.graph-placeholder i {
+  font-size: 3em;
+  margin-bottom: 15px;
+}
+
+/* ---- Dark mode overrides (AcademicPages palette) ---- */
+html.site-theme-dark .stat-card {
+  background: #25282c;
+  border-color: #3d4247;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+html.site-theme-dark .stat-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+}
+html.site-theme-dark .stat-icon { color: #7a8288; }
+html.site-theme-dark .stat-value { color: #ececec; }
+html.site-theme-dark .stat-label { color: #7a8288; }
+
+html.site-theme-dark .section-header { border-bottom-color: #3d4247; }
+html.site-theme-dark .section-header h2 { color: #ececec; }
+html.site-theme-dark .section-icon { background: #2a2d31; }
+
+html.site-theme-dark .citation-map-container {
+  background: #25282c;
+  border-color: #3d4247;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+html.site-theme-dark .map-header {
+  background: linear-gradient(135deg, #1e2124 0%, #25282c 100%);
+  border-bottom-color: #3d4247;
+}
+html.site-theme-dark .map-title { color: #ececec; }
+html.site-theme-dark .map-placeholder {
+  background: linear-gradient(135deg, #1e2124 0%, #25282c 100%);
+  color: #7a8288;
+}
+
+html.site-theme-dark .graph-container {
+  background: #25282c;
+  border-color: #3d4247;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+}
+html.site-theme-dark .graph-header { border-bottom-color: #3d4247; }
+html.site-theme-dark .graph-title { color: #ececec; }
+html.site-theme-dark .graph-placeholder { color: #555a60; }
+
+html.site-theme-dark .award-card {
+  background: #25282c;
+  border-color: #3d4247;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+html.site-theme-dark .award-title { color: #ececec; }
+html.site-theme-dark .award-org { color: #c4c6c9; }
+html.site-theme-dark .award-year { color: #7a8288; }
+html.site-theme-dark .award-card p { color: #c4c6c9 !important; }
+html.site-theme-dark .award-card a { color: #d7d8da !important; }
+
+html.site-theme-dark .institution-card {
+  background: #25282c;
+  border-color: #3d4247;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+html.site-theme-dark .institution-icon { background: #2a2d31; color: #c4c6c9; }
+html.site-theme-dark .institution-name { color: #ececec; }
+html.site-theme-dark .institution-location { color: #7a8288; }
+html.site-theme-dark .institution-count { color: #c4c6c9; }
+
 /* Responsive */
 @media (max-width: 768px) {
   .stats-grid {
@@ -339,16 +429,6 @@ author_profile: true
   <div class="citation-map-container">
     <div class="map-header">
       <h3 class="map-title">Institutions Citing My Work</h3>
-      <div class="map-stats">
-        <div class="map-stat">
-          <div class="map-stat-value" id="mapCountries">--</div>
-          <div class="map-stat-label">Countries</div>
-        </div>
-        <div class="map-stat">
-          <div class="map-stat-value" id="mapInstitutions">--</div>
-          <div class="map-stat-label">Institutions</div>
-        </div>
-      </div>
     </div>
     
     <!-- Map will be embedded here -->
@@ -356,22 +436,30 @@ author_profile: true
       <div class="map-placeholder">
         <i class="fas fa-map-marked-alt"></i>
         <p>Citation map loading...</p>
-        <p style="font-size: 0.85em; margin-top: 10px;">Run <code>python scripts/generate_citation_map.py</code> to generate the map</p>
+        <p style="font-size: 0.85em; margin-top: 10px;">Run <code>scholarmap</code> to generate the map</p>
       </div>
     </div>
   </div>
   
-  <!-- Top Citing Institutions -->
-  <h3 style="margin-top: 30px; margin-bottom: 20px; color: #2d3748;">Top Citing Institutions</h3>
-  <div class="institutions-grid" id="institutionsList">
-    <!-- Placeholder institutions - will be populated by script -->
-    <div class="institution-card">
-      <div class="institution-icon"><i class="fas fa-university"></i></div>
-      <div class="institution-info">
-        <div class="institution-name">Loading...</div>
-        <div class="institution-location">Run citation map script</div>
+</div>
+
+<!-- Citation Network Graph Section -->
+<div class="recognition-section">
+  <div class="section-header">
+    <div class="section-icon"><i class="fas fa-project-diagram"></i></div>
+    <h2>Citation Network Graph</h2>
+  </div>
+  
+  <div class="graph-container">
+    <div class="graph-header">
+      <h3 class="graph-title">Citation Network</h3>
+    </div>
+    <div id="citationGraph">
+      <div class="graph-placeholder">
+        <i class="fas fa-project-diagram"></i>
+        <p>Citation network graph loading...</p>
+        <p style="font-size: 0.85em; margin-top: 10px;">Run <code>scholarmap</code> to generate the graph</p>
       </div>
-      <div class="institution-count">--</div>
     </div>
   </div>
 </div>
@@ -462,59 +550,115 @@ author_profile: true
   </div>
 </div>
 
-<!-- Community Service Section -->
-<div class="recognition-section">
-  <div class="section-header">
-    <div class="section-icon"><i class="fas fa-hands-helping"></i></div>
-    <h2>Community Service</h2>
-  </div>
-  
-  <div class="awards-list">
-    <div class="award-card">
-      <div class="award-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);"><i class="fas fa-mobile-alt"></i></div>
-      <div class="award-content">
-        <div class="award-title">STEM Workshop Organizer - RasPi Phone Building</div>
-        <div class="award-org">K-12 Education Outreach, Western Region</div>
-        <div class="award-year">Workshop Series</div>
-        <p style="margin-top: 10px; font-size: 0.9em; color: #4a5568;">
-          Organized hands-on workshops for K-12 students to build Raspberry Pi phones, aimed at increasing STEM interest and reducing dropout rates in underserved communities in Western regions.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-
 </div>
 
 <script>
-// This script will be updated when the citation data is generated
-// For now, it shows placeholder values
+(function () {
+  const BASE = '{{ site.baseurl }}';
 
-// You can update these values manually or via the Python script
-const citationData = {
-  totalCitations: '900+',
-  hIndex: '4',
-  researchers: '--',
-  institutions: '--',
-  countries: '--'
-};
+  /**
+   * Format total citations to the highest 100× multiplier below the actual
+   * value, with a plus sign.  e.g. 945 → "900+", 1089 → "1000+".
+   * Falls back to the pre-computed value from the JSON when available.
+   */
+  function formatCitationsRounded(total) {
+    const floored = Math.floor(total / 100) * 100;
+    return floored + '+';
+  }
 
-// Update stats display
-document.getElementById('totalCitations').textContent = citationData.totalCitations;
-document.getElementById('hIndex').textContent = citationData.hIndex;
-document.getElementById('researchers').textContent = citationData.researchers;
-document.getElementById('institutions').textContent = citationData.institutions;
-document.getElementById('countries').textContent = citationData.countries;
-document.getElementById('mapCountries').textContent = citationData.countries;
-document.getElementById('mapInstitutions').textContent = citationData.institutions;
+  function formatResearchers(count) {
+    const floored = Math.floor(count / 100) * 100;
+    return floored + '+';
+  }
 
-// Check if citation map exists and load it
-fetch('{{ site.baseurl }}/assets/citation_map.html')
-  .then(response => {
-    if (response.ok) {
-      document.getElementById('citationMap').innerHTML = 
-        '<iframe src="{{ site.baseurl }}/assets/citation_map.html" class="map-frame"></iframe>';
-    }
-  })
-  .catch(err => console.log('Citation map not yet generated'));
+  function formatByTen(count) {
+    const floored = Math.floor(count / 10) * 10;
+    return floored + '+';
+  }
+
+  function setText(id, value) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+  }
+
+  function renderStats(data) {
+    const display = data.total_citations_display || formatCitationsRounded(data.total_citations || 0);
+    setText('totalCitations', display);
+    setText('hIndex', data.h_index ?? '--');
+    setText('researchers', formatResearchers(data.unique_authors || 0));
+    setText('institutions', formatByTen(data.unique_institutions || 0));
+    setText('countries', formatByTen(data.countries || 0));
+  }
+
+  function loadCitationMap() {
+    fetch(BASE + '/assets/citation_map.html')
+      .then(function (res) {
+        if (res.ok) {
+          document.getElementById('citationMap').innerHTML =
+            '<iframe src="' + BASE + '/assets/citation_map.html" class="map-frame"></iframe>';
+        }
+      })
+      .catch(function () { /* map not yet generated */ });
+  }
+
+  function loadCitationGraph() {
+    fetch(BASE + '/assets/citation_graph.html')
+      .then(function (res) {
+        if (res.ok) {
+          document.getElementById('citationGraph').innerHTML =
+            '<iframe src="' + BASE + '/assets/citation_graph.html" class="graph-frame"></iframe>';
+        }
+      })
+      .catch(function () { /* graph not yet generated */ });
+  }
+
+  // Fetch the generated data JSON and hydrate the page
+  fetch(BASE + '/assets/citation_data.json')
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      renderStats(data);
+    })
+    .catch(function () {
+      // JSON not available yet – leave placeholders as-is
+      console.log('citation_data.json not yet generated. Run: scholarmap');
+    });
+
+  loadCitationMap();
+  loadCitationGraph();
+
+  /* ---- Broadcast theme to iframes ---- */
+  function broadcastTheme() {
+    var dark = document.documentElement.classList.contains('site-theme-dark');
+    var msg = { theme: dark ? 'dark' : 'light' };
+    document.querySelectorAll('.map-frame, .graph-frame').forEach(function (iframe) {
+      try { iframe.contentWindow.postMessage(msg, '*'); } catch (e) {}
+    });
+  }
+
+  /* Watch for theme class changes on <html> (triggered by the site toggle) */
+  var observer = new MutationObserver(function (mutations) {
+    mutations.forEach(function (m) {
+      if (m.attributeName === 'class') broadcastTheme();
+    });
+  });
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
+  /* Also send theme when iframes finish loading */
+  new MutationObserver(function () {
+    document.querySelectorAll('.map-frame, .graph-frame').forEach(function (iframe) {
+      if (!iframe._themeHooked) {
+        iframe._themeHooked = true;
+        iframe.addEventListener('load', broadcastTheme);
+      }
+    });
+  }).observe(document.getElementById('citationMap'), { childList: true, subtree: true });
+  new MutationObserver(function () {
+    document.querySelectorAll('.map-frame, .graph-frame').forEach(function (iframe) {
+      if (!iframe._themeHooked) {
+        iframe._themeHooked = true;
+        iframe.addEventListener('load', broadcastTheme);
+      }
+    });
+  }).observe(document.getElementById('citationGraph'), { childList: true, subtree: true });
+})();
 </script>

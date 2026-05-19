@@ -1,0 +1,1444 @@
+{
+  "processed_citations": [
+    "53e27927a93aa0a3c9c3dfdeb689074e",
+    "b03a509a0886b99e796aebe9b0dccdbe",
+    "d8c5c2964811273bc826fd83add53361",
+    "2a5728701d27ecd4111e70bc405ca9de",
+    "dad0b3ff82f552fea854e7f3ff894108",
+    "c6a8c5b73652e4607894e4c0c43202ec",
+    "edf4c67f9b67e4e6b33f7afade75afbf",
+    "a387567692367bc9826e65b04ff9f915",
+    "df19e6346a54e8446da690225bc815ab",
+    "6ddb1a01595c567cf262208c3fd77551",
+    "692b57154094eadc9b53a1d455b3ab0d",
+    "93f12a4426d2fb520cb1de26a5a008d5",
+    "47fb5db1194e5ba02e47bdeefbe1c952",
+    "f1e92cc1436e992e0a04582c2d64284f",
+    "09fec1996bf036811f07eeea07f6975f",
+    "cde733eb115f861558874e009fda5b34",
+    "b464a1f23a42cc7b508d7ccd7d1be659",
+    "7c4d5791afbb2cdf8ca219d782c210aa",
+    "cb3cdee43e1efec823bb7fba11abb2e2",
+    "ac88199e37f9b3ea841181d43ed1eea1",
+    "a791bd59362882d3fcad9bd1f06a9af6",
+    "c44a9bcb0a5aa1dde760cca0281a0135",
+    "ae395617ae0208dc12b0ce2d6f7849e6",
+    "261fec510842d00c2568609e54025209",
+    "2cb4c63620bbdd51f8f7bf89005f2763",
+    "ef48fec2c82b1925ade3bfe0588be900",
+    "3a7c51f500a71baf835033e85516fb3e",
+    "f54c100ab40bedd6d168a3927444a2a1",
+    "4bc37d3befb6e0f2ebaa5d12e10a878e",
+    "1270a1f11a9d975d897e6b13a5a2bbfe",
+    "50688a7acfea596bc163079ccbed2aa8",
+    "3bef967133ad05fae3687c8dd7e55a2a",
+    "ffe2fec2cd36bb7b64966c68d3b566a8",
+    "0af0f546234722207722fd0424be3098",
+    "21a42f790c872bb8ff2ee79f05529239",
+    "b60be0360b1b02ce918ff1815bb303db",
+    "ad0e4b83d6dfa3fb2792afbf2d6649f5",
+    "86d1aecb475093df8bb2911a41a11a8e",
+    "753ffe7316ec2b304905d02952711db1",
+    "4660301757958a2e80cee71dc5596ca3",
+    "47925266125b1052583798eae2371085",
+    "501903bac9502f466cc1ed07575a6a07",
+    "af8fc0177133801cf7dca2109ba00a46",
+    "5895a21362981293e9a29e20a2715862",
+    "58982d7b333ea9db7a4be306a1c6ef1f",
+    "9264b1c007bcaa5f906962f69c14e79e",
+    "62cbac3615265972a3899a4bb03f3eed",
+    "afa6b8a83702ff14d30acc1edb078182",
+    "66f9b5259fe0778fa10b3b684f73e180",
+    "2d745a27568c4f6b0d287d06950dab7d",
+    "8f97376ff29789f40f4bb8a71bea0e8f",
+    "1f704541e790401ac710033c7d19ba9b",
+    "a4d07b0f4fbbc6e2ac934ad8c506b1dc",
+    "2a54614964ee715d1ca8b42bbdeb6b52",
+    "9983abafc13c927325ca6fdb1b859544",
+    "cbaaf66a9439e13933599bab6ba15985",
+    "55fe3911e9d5102fa011b013e9123ded",
+    "861b4d582063b261bb61e1be8463e748",
+    "b8bf0fb466c30394a3a0ed200d673ef9",
+    "d2ece606af6b21a6d9e8551867144659",
+    "645272f9611c18823bd3d96e3348dd2a",
+    "80d71f3d4fc11ee506681a18155f7d0c",
+    "97235161fb6550e496a505e14e7ceb3c",
+    "965d25143384a5c35330105f7b0a4339",
+    "fc9e16df826fb48f3e1a5b3a91a8f54e",
+    "f8c012d71556357b30da5688d6ad3160",
+    "4b3290aad262f162c3348a600d4a47c2"
+  ],
+  "authors": {},
+  "institutions": {},
+  "publications_hierarchy": [
+    {
+      "title": "Driven by data or derived through physics? a review of hybrid physics guided machine learning techniques with cyber-physical system (cps) focus",
+      "year": 2020,
+      "venue": "",
+      "num_citations": 420,
+      "citing_papers": [
+        {
+          "title": "Technology roadmap for flexible sensors",
+          "year": "2023",
+          "authors": [
+            {
+              "name": "Y Luo",
+              "institutions": []
+            },
+            {
+              "name": "MR Abidian",
+              "institutions": []
+            },
+            {
+              "name": "JH Ahn",
+              "institutions": []
+            },
+            {
+              "name": "D Akinwande",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Applications of physics-informed neural networks in power systems-a review",
+          "year": "2022",
+          "authors": [
+            {
+              "name": "B Huang",
+              "institutions": []
+            },
+            {
+              "name": "J Wang",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Physics-informed machine learning for reliability and systems safety applications: State of the art and challenges",
+          "year": "2023",
+          "authors": [
+            {
+              "name": "Y Xu",
+              "institutions": []
+            },
+            {
+              "name": "S Kohtz",
+              "institutions": []
+            },
+            {
+              "name": "J Boakye",
+              "institutions": []
+            },
+            {
+              "name": "P Gardoni",
+              "institutions": []
+            },
+            {
+              "name": "P Wang",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Machine learning in manufacturing and industry 4.0 applications",
+          "year": "2021",
+          "authors": [
+            {
+              "name": "R Rai",
+              "institutions": []
+            },
+            {
+              "name": "MK Tiwari",
+              "institutions": []
+            },
+            {
+              "name": "D Ivanov",
+              "institutions": []
+            },
+            {
+              "name": "A Dolgui",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Predictive maintenance enabled by machine learning: Use cases and challenges in the automotive industry",
+          "year": "2021",
+          "authors": [
+            {
+              "name": "A Theissler",
+              "institutions": []
+            },
+            {
+              "name": "J Pérez-Velázquez",
+              "institutions": []
+            },
+            {
+              "name": "M Kettelgerdes",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Physics-informed machine learning: A survey on problems, methods and applications",
+          "year": "2022",
+          "authors": [
+            {
+              "name": "Z Hao",
+              "institutions": []
+            },
+            {
+              "name": "S Liu",
+              "institutions": []
+            },
+            {
+              "name": "Y Zhang",
+              "institutions": []
+            },
+            {
+              "name": "C Ying",
+              "institutions": []
+            },
+            {
+              "name": "Y Feng",
+              "institutions": []
+            },
+            {
+              "name": "H Su",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Integrating scientific knowledge with machine learning for engineering and environmental systems",
+          "year": "2022",
+          "authors": [
+            {
+              "name": "J Willard",
+              "institutions": []
+            },
+            {
+              "name": "X Jia",
+              "institutions": []
+            },
+            {
+              "name": "S Xu",
+              "institutions": []
+            },
+            {
+              "name": "M Steinbach",
+              "institutions": []
+            },
+            {
+              "name": "V Kumar",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Physics-informed graphical neural network for power system state estimation",
+          "year": "2024",
+          "authors": [
+            {
+              "name": "QH Ngo",
+              "institutions": []
+            },
+            {
+              "name": "BLH Nguyen",
+              "institutions": []
+            },
+            {
+              "name": "TV Vu",
+              "institutions": []
+            },
+            {
+              "name": "J Zhang",
+              "institutions": []
+            },
+            {
+              "name": "T Ngo",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Integrating physics-based modeling with machine learning: A survey",
+          "year": "2020",
+          "authors": [
+            {
+              "name": "J Willard",
+              "institutions": []
+            },
+            {
+              "name": "X Jia",
+              "institutions": []
+            },
+            {
+              "name": "S Xu",
+              "institutions": []
+            },
+            {
+              "name": "M Steinbach",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Digital twins in safety analysis, risk assessment and emergency management",
+          "year": "2024",
+          "authors": [
+            {
+              "name": "E Zio",
+              "institutions": []
+            },
+            {
+              "name": "L Miqueles",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Hybrid physics-based and data-driven models for smart manufacturing: Modelling, simulation, and explainability",
+          "year": "2022",
+          "authors": [
+            {
+              "name": "J Wang",
+              "institutions": []
+            },
+            {
+              "name": "Y Li",
+              "institutions": []
+            },
+            {
+              "name": "RX Gao",
+              "institutions": []
+            },
+            {
+              "name": "F Zhang",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Toward physics-informed machine-learning-based predictive maintenance for power converters—a review",
+          "year": "2023",
+          "authors": [
+            {
+              "name": "Y Fassi",
+              "institutions": []
+            },
+            {
+              "name": "V Heiries",
+              "institutions": []
+            },
+            {
+              "name": "J Boutet",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Fusing physics-based and deep learning models for prognostics",
+          "year": "2022",
+          "authors": [
+            {
+              "name": "MA Chao",
+              "institutions": []
+            },
+            {
+              "name": "C Kulkarni",
+              "institutions": []
+            },
+            {
+              "name": "K Goebel",
+              "institutions": []
+            },
+            {
+              "name": "O Fink",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "A review of machine learning methods applied to structural dynamics and vibroacoustic",
+          "year": "2023",
+          "authors": [
+            {
+              "name": "BZ Cunha",
+              "institutions": []
+            },
+            {
+              "name": "C Droz",
+              "institutions": []
+            },
+            {
+              "name": "AM Zine",
+              "institutions": []
+            },
+            {
+              "name": "S Foulard",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "A review of physics-based machine learning in civil engineering",
+          "year": "2022",
+          "authors": [
+            {
+              "name": "SR Vadyala",
+              "institutions": []
+            },
+            {
+              "name": "SN Betgeri",
+              "institutions": []
+            },
+            {
+              "name": "JC Matthews",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Artificial intelligence (AI) in augmented reality (AR)-assisted manufacturing applications: a review",
+          "year": "2021",
+          "authors": [
+            {
+              "name": "CK Sahu",
+              "institutions": []
+            },
+            {
+              "name": "C Young",
+              "institutions": []
+            },
+            {
+              "name": "R Rai",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Physics-informed computer vision: A review and perspectives",
+          "year": "2024",
+          "authors": [
+            {
+              "name": "C Banerjee",
+              "institutions": []
+            },
+            {
+              "name": "K Nguyen",
+              "institutions": []
+            },
+            {
+              "name": "C Fookes",
+              "institutions": []
+            },
+            {
+              "name": "K George",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Vehicle lateral dynamics-inspired hybrid model using neural network for parameter identification and error characterization",
+          "year": "2024",
+          "authors": [
+            {
+              "name": "Z Zhou",
+              "institutions": []
+            },
+            {
+              "name": "Y Wang",
+              "institutions": []
+            },
+            {
+              "name": "G Zhou",
+              "institutions": []
+            },
+            {
+              "name": "X Liu",
+              "institutions": []
+            },
+            {
+              "name": "M Wu",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Security in modern manufacturing systems: integrating blockchain in artificial intelligence-assisted manufacturing",
+          "year": "2024",
+          "authors": [
+            {
+              "name": "D Patel",
+              "institutions": []
+            },
+            {
+              "name": "CK Sahu",
+              "institutions": []
+            },
+            {
+              "name": "R Rai",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Physics-informed machine learning for data anomaly detection, classification, localization, and mitigation: A review, challenges, and path forward",
+          "year": "2023",
+          "authors": [
+            {
+              "name": "MJ Zideh",
+              "institutions": []
+            },
+            {
+              "name": "P Chatterjee",
+              "institutions": []
+            },
+            {
+              "name": "AK Srivastava",
+              "institutions": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Artificial intelligence (AI) in augmented reality (AR)-assisted manufacturing applications: a review",
+      "year": 2020,
+      "venue": "",
+      "num_citations": 356,
+      "citing_papers": [
+        {
+          "title": "Predictive maintenance using digital twins: A systematic literature review",
+          "year": "2022",
+          "authors": [
+            {
+              "name": "R Van Dinter",
+              "institutions": []
+            },
+            {
+              "name": "B Tekinerdogan",
+              "institutions": []
+            },
+            {
+              "name": "C Catal",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Artificial intelligence as an enabler for entrepreneurs: a systematic literature review and an agenda for future research",
+          "year": "2023",
+          "authors": [
+            {
+              "name": "G Giuggioli",
+              "institutions": []
+            },
+            {
+              "name": "MM Pellegrini",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "How can artificial intelligence impact sustainability: A systematic literature review",
+          "year": "2022",
+          "authors": [
+            {
+              "name": "AK Kar",
+              "institutions": []
+            },
+            {
+              "name": "SK Choudhary",
+              "institutions": []
+            },
+            {
+              "name": "VK Singh",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Challenges and opportunities on AR/VR technologies for manufacturing systems in the context of industry 4.0: A state of the art review",
+          "year": "2022",
+          "authors": [
+            {
+              "name": "M Eswaran",
+              "institutions": []
+            },
+            {
+              "name": "MVAR Bahubalendruni",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Augmented Reality and Artificial Intelligence in industry: Trends, tools, and future challenges",
+          "year": "2022",
+          "authors": [
+            {
+              "name": "JS Devagiri",
+              "institutions": []
+            },
+            {
+              "name": "S Paheding",
+              "institutions": []
+            },
+            {
+              "name": "Q Niyaz",
+              "institutions": []
+            },
+            {
+              "name": "X Yang",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Adoption of digital technologies by SMEs for sustainability and value creation: Moderating role of entrepreneurial orientation",
+          "year": "2022",
+          "authors": [
+            {
+              "name": "D Vrontis",
+              "institutions": []
+            },
+            {
+              "name": "R Chaudhuri",
+              "institutions": []
+            },
+            {
+              "name": "S Chatterjee",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "A critical evaluation, challenges, and future perspectives of using artificial intelligence and emerging technologies in smart classrooms",
+          "year": "2023",
+          "authors": [
+            {
+              "name": "E Dimitriadou",
+              "institutions": []
+            },
+            {
+              "name": "A Lanitis",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "A comprehensive overview of industrial demand response status in Europe",
+          "year": "2024",
+          "authors": [
+            {
+              "name": "M Ranaboldo",
+              "institutions": []
+            },
+            {
+              "name": "M Aragüés-Peñalba",
+              "institutions": []
+            },
+            {
+              "name": "E Arica",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Head-mounted display augmented reality in manufacturing: A systematic review",
+          "year": "2023",
+          "authors": [
+            {
+              "name": "W Fang",
+              "institutions": []
+            },
+            {
+              "name": "L Chen",
+              "institutions": []
+            },
+            {
+              "name": "T Zhang",
+              "institutions": []
+            },
+            {
+              "name": "C Chen",
+              "institutions": []
+            },
+            {
+              "name": "Z Teng",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Leveraging AI-powered mobile learning: A pedagogically informed framework",
+          "year": "2024",
+          "authors": [
+            {
+              "name": "S Moya",
+              "institutions": []
+            },
+            {
+              "name": "M Camacho",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Prioritizing barriers for the adoption of Industry 4.0 technologies",
+          "year": "2022",
+          "authors": [
+            {
+              "name": "PP Senna",
+              "institutions": []
+            },
+            {
+              "name": "LMDF Ferreira",
+              "institutions": []
+            },
+            {
+              "name": "AC Barros",
+              "institutions": []
+            },
+            {
+              "name": "JB Roca",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "AI-driven supply chain transformation in Industry 5.0: Enhancing resilience and sustainability",
+          "year": "2025",
+          "authors": [
+            {
+              "name": "H Wu",
+              "institutions": []
+            },
+            {
+              "name": "J Liu",
+              "institutions": []
+            },
+            {
+              "name": "B Liang",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Deep learning for manufacturing sustainability: Models, applications in Industry 4.0 and implications",
+          "year": "2022",
+          "authors": [
+            {
+              "name": "A Jamwal",
+              "institutions": []
+            },
+            {
+              "name": "R Agrawal",
+              "institutions": []
+            },
+            {
+              "name": "M Sharma",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Adoption of information and digital technologies for sustainable smart manufacturing systems for industry 4.0 in small, medium, and micro enterprises (SMMEs)",
+          "year": "2023",
+          "authors": [
+            {
+              "name": "L Yang",
+              "institutions": []
+            },
+            {
+              "name": "H Zou",
+              "institutions": []
+            },
+            {
+              "name": "C Shang",
+              "institutions": []
+            },
+            {
+              "name": "X Ye",
+              "institutions": []
+            },
+            {
+              "name": "P Rani",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Adoption of artificial intelligence and cutting-edge technologies for production system sustainability: a moderator-mediation analysis",
+          "year": "2023",
+          "authors": [
+            {
+              "name": "S Chatterjee",
+              "institutions": []
+            },
+            {
+              "name": "R Chaudhuri",
+              "institutions": []
+            },
+            {
+              "name": "S Kamble",
+              "institutions": []
+            },
+            {
+              "name": "S Gupta",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Artificial intelligence in entrepreneurial project management: a review, framework and research agenda",
+          "year": "2024",
+          "authors": [
+            {
+              "name": "A Kiani",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Accelerating split federated learning over wireless communication networks",
+          "year": "2023",
+          "authors": [
+            {
+              "name": "C Xu",
+              "institutions": []
+            },
+            {
+              "name": "J Li",
+              "institutions": []
+            },
+            {
+              "name": "Y Liu",
+              "institutions": []
+            },
+            {
+              "name": "Y Ling",
+              "institutions": []
+            },
+            {
+              "name": "M Wen",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "The digital twin: What and why?",
+          "year": "2023",
+          "authors": [
+            {
+              "name": "N Crespi",
+              "institutions": []
+            },
+            {
+              "name": "AT Drobot",
+              "institutions": []
+            },
+            {
+              "name": "R Minerva",
+              "institutions": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Security in modern manufacturing systems: integrating blockchain in artificial intelligence-assisted manufacturing",
+      "year": 2024,
+      "venue": "",
+      "num_citations": 88,
+      "citing_papers": [
+        {
+          "title": "Advancements in food quality monitoring: integrating biosensors for precision detection",
+          "year": "2024",
+          "authors": [
+            {
+              "name": "S Nath",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Artificial intelligence in food system: Innovative approach to minimizing food spoilage and food waste",
+          "year": "2025",
+          "authors": [
+            {
+              "name": "H Onyeaka",
+              "institutions": []
+            },
+            {
+              "name": "A Akinsemolu",
+              "institutions": []
+            },
+            {
+              "name": "T Miri",
+              "institutions": []
+            },
+            {
+              "name": "ND Nnaji",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Integrating digital twin and blockchain for responsive working capital management in supply chains facing financial disruptions",
+          "year": "2025",
+          "authors": [
+            {
+              "name": "E Badakhshan",
+              "institutions": []
+            },
+            {
+              "name": "D Ivanov",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "A literature review on transformative impacts of blockchain technology on manufacturing management and industrial engineering practices",
+          "year": "2025",
+          "authors": [
+            {
+              "name": "D Hariyani",
+              "institutions": []
+            },
+            {
+              "name": "P Hariyani",
+              "institutions": []
+            },
+            {
+              "name": "S Mishra",
+              "institutions": []
+            },
+            {
+              "name": "MK Sharma",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Investigating the synergy of Blockchain and AI: enhancing security, efficiency, and transparency",
+          "year": "2025",
+          "authors": [
+            {
+              "name": "MM Alzoubi",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Platform design and governance in industrial markets: Charting the meta-organizational logic",
+          "year": "2025",
+          "authors": [
+            {
+              "name": "V Springer",
+              "institutions": []
+            },
+            {
+              "name": "K Randhawa",
+              "institutions": []
+            },
+            {
+              "name": "M Jovanović",
+              "institutions": []
+            },
+            {
+              "name": "P Ritala",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Digital Transformation of Food Supply Chain Management Using Blockchain: A Systematic Literature Review Towards Food Safety and Traceability: M. Vasileiou et al.",
+          "year": "2025",
+          "authors": [
+            {
+              "name": "M Vasileiou",
+              "institutions": []
+            },
+            {
+              "name": "LS Kyrgiakos",
+              "institutions": []
+            },
+            {
+              "name": "C Kleisiari",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Blockchain implementation decisions in a dual-channel supply chain under different market power structures",
+          "year": "2025",
+          "authors": [
+            {
+              "name": "M Yuan",
+              "institutions": []
+            },
+            {
+              "name": "R Qiu",
+              "institutions": []
+            },
+            {
+              "name": "M Sun",
+              "institutions": []
+            },
+            {
+              "name": "S Shao",
+              "institutions": []
+            },
+            {
+              "name": "ZP Fan",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Artificial intelligence application and high-performance work systems in the manufacturing sector: a moderated-mediating model",
+          "year": "2024",
+          "authors": [
+            {
+              "name": "S Zahoor",
+              "institutions": []
+            },
+            {
+              "name": "IS Chaudhry",
+              "institutions": []
+            },
+            {
+              "name": "S Yang",
+              "institutions": []
+            },
+            {
+              "name": "X Ren",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Energy Gen-AI technology framework: A perspective of energy efficiency and business ethics in operation management",
+          "year": "2025",
+          "authors": [
+            {
+              "name": "L Fontoura",
+              "institutions": []
+            },
+            {
+              "name": "DL de Mattos Nascimento",
+              "institutions": []
+            },
+            {
+              "name": "JV Neto",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "The interplay between artificial intelligence, production systems, and operations management resilience",
+          "year": "2024",
+          "authors": [
+            {
+              "name": "S Fosso Wamba",
+              "institutions": []
+            },
+            {
+              "name": "MM Queiroz",
+              "institutions": []
+            },
+            {
+              "name": "EWT Ngai",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Most important performance evaluation methods of production lines: A comprehensive review on historical perspective and emerging trends",
+          "year": "2024",
+          "authors": [
+            {
+              "name": "MU Koyuncuoğlu",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Technological innovations in carbon emission reduction: A comparative analysis of R&D and carbon offsetting strategies",
+          "year": "2025",
+          "authors": [
+            {
+              "name": "J Zhu",
+              "institutions": []
+            },
+            {
+              "name": "RK Dong",
+              "institutions": []
+            },
+            {
+              "name": "T Feng",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Exploring the critical drivers of blockchain technology adoption in Indian industries using the best-worst method",
+          "year": "2025",
+          "authors": [
+            {
+              "name": "S Gupta",
+              "institutions": []
+            },
+            {
+              "name": "PS Kushwaha",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Ethical Intelligence in Motion: Leveraging AI for Responsible Sourcing in Supply Chain and Logistics",
+          "year": "2026",
+          "authors": [
+            {
+              "name": "MMH Emon",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "A literature review on the artificial intelligence in manufacturing systems under industry 5.0",
+          "year": "2026",
+          "authors": [
+            {
+              "name": "Y Pan",
+              "institutions": []
+            },
+            {
+              "name": "Z Huang",
+              "institutions": []
+            },
+            {
+              "name": "B Lev",
+              "institutions": []
+            },
+            {
+              "name": "L Xu",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Enhancing IoT security and healthcare data protection in the metaverse: A Dynamic Adaptive Security Mechanism",
+          "year": "2025",
+          "authors": [
+            {
+              "name": "SS Qureshi",
+              "institutions": []
+            },
+            {
+              "name": "J He",
+              "institutions": []
+            },
+            {
+              "name": "N Zhu",
+              "institutions": []
+            },
+            {
+              "name": "A Nazir",
+              "institutions": []
+            },
+            {
+              "name": "J Fang",
+              "institutions": []
+            },
+            {
+              "name": "X Ma",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Blockchain technology for requirement traceability in systems engineering",
+          "year": "2024",
+          "authors": [
+            {
+              "name": "MSR Elapolu",
+              "institutions": []
+            },
+            {
+              "name": "R Rai",
+              "institutions": []
+            },
+            {
+              "name": "DJ Gorsich",
+              "institutions": []
+            },
+            {
+              "name": "D Rizzo",
+              "institutions": []
+            },
+            {
+              "name": "S Rapp",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "A systematic review of AI-driven business models for advancing Sustainable Development Goals",
+          "year": "2025",
+          "authors": [
+            {
+              "name": "MDA Khan",
+              "institutions": []
+            },
+            {
+              "name": "A Rahman",
+              "institutions": []
+            },
+            {
+              "name": "FU Mahmud",
+              "institutions": []
+            },
+            {
+              "name": "KK Bishnu",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "BBAD: blockchain-backed assault detection for cyber physical systems",
+          "year": "2024",
+          "authors": [
+            {
+              "name": "M Anwar",
+              "institutions": []
+            },
+            {
+              "name": "N Tariq",
+              "institutions": []
+            },
+            {
+              "name": "M Ashraf",
+              "institutions": []
+            },
+            {
+              "name": "SA Moqurrab",
+              "institutions": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Machine learning based prediction of melt pool morphology in a laser-based powder bed fusion additive manufacturing process",
+      "year": 2024,
+      "venue": "",
+      "num_citations": 54,
+      "citing_papers": [
+        {
+          "title": "AIGC-empowered smart manufacturing: Prospects and challenges",
+          "year": "2026",
+          "authors": [
+            {
+              "name": "J Leng",
+              "institutions": []
+            },
+            {
+              "name": "K Zheng",
+              "institutions": []
+            },
+            {
+              "name": "R Li",
+              "institutions": []
+            },
+            {
+              "name": "C Chen",
+              "institutions": []
+            },
+            {
+              "name": "B Wang",
+              "institutions": []
+            },
+            {
+              "name": "Q Liu",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Current Applications of Machine Learning in Additive Manufacturing: A Review on Challenges and Future Trends: G. Vashishtha et al.",
+          "year": "2025",
+          "authors": [
+            {
+              "name": "G Vashishtha",
+              "institutions": []
+            },
+            {
+              "name": "S Chauhan",
+              "institutions": []
+            },
+            {
+              "name": "R Zimroz",
+              "institutions": []
+            },
+            {
+              "name": "N Yadav",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Generative AI in industrial machine vision: a review",
+          "year": "2026",
+          "authors": [
+            {
+              "name": "HA Zhou",
+              "institutions": []
+            },
+            {
+              "name": "D Wolfschläger",
+              "institutions": []
+            },
+            {
+              "name": "C Florides",
+              "institutions": []
+            },
+            {
+              "name": "J Werheid",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "A physics-guided deep generative model for predicting melt pool behavior in laser powder bed fusion additive manufacturing",
+          "year": "2025",
+          "authors": [
+            {
+              "name": "J Kim",
+              "institutions": []
+            },
+            {
+              "name": "Z Yang",
+              "institutions": []
+            },
+            {
+              "name": "Y Lu",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Application of artificial intelligence for surface roughness prediction of additively manufactured components",
+          "year": "2023",
+          "authors": [
+            {
+              "name": "T Batu",
+              "institutions": []
+            },
+            {
+              "name": "HG Lemu",
+              "institutions": []
+            },
+            {
+              "name": "H Shimels",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Advancing additive manufacturing through deep learning: A comprehensive review of current progress and future challenges",
+          "year": "2026",
+          "authors": [
+            {
+              "name": "AI Saimon",
+              "institutions": []
+            },
+            {
+              "name": "E Yangue",
+              "institutions": []
+            },
+            {
+              "name": "X Yue",
+              "institutions": []
+            },
+            {
+              "name": "Z Kong",
+              "institutions": []
+            },
+            {
+              "name": "C Liu",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Use of machine learning to improve additive manufacturing processes",
+          "year": "2024",
+          "authors": [
+            {
+              "name": "I Rojek",
+              "institutions": []
+            },
+            {
+              "name": "J Kopowski",
+              "institutions": []
+            },
+            {
+              "name": "J Lewandowski",
+              "institutions": []
+            },
+            {
+              "name": "D Mikołajewski",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Data-driven prediction of future melt pool from built parts during metal additive manufacturing",
+          "year": "2024",
+          "authors": [
+            {
+              "name": "Y Xiao",
+              "institutions": []
+            },
+            {
+              "name": "X Wang",
+              "institutions": []
+            },
+            {
+              "name": "W Yang",
+              "institutions": []
+            },
+            {
+              "name": "XX Yao",
+              "institutions": []
+            },
+            {
+              "name": "Z Yang",
+              "institutions": []
+            },
+            {
+              "name": "Y Lu",
+              "institutions": []
+            }
+          ]
+        },
+        {
+          "title": "Deep learning-based applications in metal additive manufacturing processes: Challenges and opportunities–A review",
+          "year": "2025",
+          "authors": [
+            {
+              "name": "T Özel",
+              "institutions": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "h_index": 4,
+  "total_citations": 918,
+  "last_updated": null
+}

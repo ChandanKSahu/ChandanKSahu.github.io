@@ -1,0 +1,664 @@
+---
+layout: archive
+title: ""
+permalink: /impact/
+author_profile: true
+---
+
+<style>
+/* Recognition Page Styles */
+.recognition-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Stats Cards */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-bottom: 40px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 8px;
+  padding: 18px 10px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-width: 0;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.stat-icon {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  color: #494e52;
+}
+
+.stat-value {
+  font-size: clamp(1.4em, 2.2vw, 2.4em);
+  font-weight: 700;
+  color: #2d3748;
+  line-height: 1;
+  margin-bottom: 6px;
+  white-space: nowrap;
+}
+
+.stat-label {
+  font-size: clamp(0.65em, 0.85vw, 0.85em);
+  color: #718096;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Section Styles */
+.recognition-section {
+  margin-bottom: 50px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: 1.6em;
+  color: #2d3748;
+}
+
+.section-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #494e52;
+  border-radius: 6px;
+  color: white;
+  font-size: 1.4em;
+}
+
+/* Citation Map Container */
+.citation-map-container {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+}
+
+.map-header {
+  padding: 20px 25px;
+  background: linear-gradient(135deg, #f8f9fc 0%, #fff 100%);
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.map-title {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0;
+}
+
+.map-frame {
+  width: 100%;
+  height: 500px;
+  border: none;
+}
+
+.map-placeholder {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+  color: #718096;
+}
+
+.map-placeholder i {
+  font-size: 4em;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.map-placeholder p {
+  font-size: 1.1em;
+  margin: 0;
+}
+
+/* Citing Institutions List */
+.institutions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.institution-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
+  transition: transform 0.2s ease;
+}
+
+.institution-card:hover {
+  transform: translateX(5px);
+}
+
+.institution-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f0f0;
+  border-radius: 6px;
+  color: #494e52;
+}
+
+.institution-info {
+  flex: 1;
+}
+
+.institution-name {
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 0.95em;
+}
+
+.institution-location {
+  font-size: 0.8em;
+  color: #718096;
+}
+
+.institution-count {
+  font-weight: 700;
+  color: #494e52;
+  font-size: 1.1em;
+}
+
+/* Awards Section */
+.awards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.award-card {
+  display: flex;
+  gap: 20px;
+  padding: 25px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+  transition: transform 0.3s ease;
+}
+
+.award-card:hover {
+  transform: translateY(-2px);
+}
+
+.award-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+  border-radius: 50%;
+  color: white;
+  font-size: 1.5em;
+  flex-shrink: 0;
+}
+
+.award-content {
+  flex: 1;
+}
+
+.award-title {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 5px;
+}
+
+.award-org {
+  font-size: 0.95em;
+  color: #494e52;
+  margin-bottom: 8px;
+}
+
+.award-year {
+  font-size: 0.85em;
+  color: #718096;
+}
+
+/* Citation Graph */
+.graph-container {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+}
+
+.graph-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  border-bottom: 1px solid #eee;
+}
+
+.graph-title {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0;
+}
+
+.graph-frame {
+  width: 100%;
+  height: 600px;
+  border: none;
+}
+
+.graph-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  color: #a0aec0;
+  font-size: 1.1em;
+}
+
+.graph-placeholder i {
+  font-size: 3em;
+  margin-bottom: 15px;
+}
+
+/* ---- Dark mode overrides (AcademicPages palette) ---- */
+html.site-theme-dark .stat-card {
+  background: #25282c;
+  border-color: #3d4247;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+html.site-theme-dark .stat-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+}
+html.site-theme-dark .stat-icon { color: #7a8288; }
+html.site-theme-dark .stat-value { color: #ececec; }
+html.site-theme-dark .stat-label { color: #7a8288; }
+
+html.site-theme-dark .section-header { border-bottom-color: #3d4247; }
+html.site-theme-dark .section-header h2 { color: #ececec; }
+html.site-theme-dark .section-icon { background: #2a2d31; }
+
+html.site-theme-dark .citation-map-container {
+  background: #25282c;
+  border-color: #3d4247;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+html.site-theme-dark .map-header {
+  background: linear-gradient(135deg, #1e2124 0%, #25282c 100%);
+  border-bottom-color: #3d4247;
+}
+html.site-theme-dark .map-title { color: #ececec; }
+html.site-theme-dark .map-placeholder {
+  background: linear-gradient(135deg, #1e2124 0%, #25282c 100%);
+  color: #7a8288;
+}
+
+html.site-theme-dark .graph-container {
+  background: #25282c;
+  border-color: #3d4247;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+}
+html.site-theme-dark .graph-header { border-bottom-color: #3d4247; }
+html.site-theme-dark .graph-title { color: #ececec; }
+html.site-theme-dark .graph-placeholder { color: #555a60; }
+
+html.site-theme-dark .award-card {
+  background: #25282c;
+  border-color: #3d4247;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+html.site-theme-dark .award-title { color: #ececec; }
+html.site-theme-dark .award-org { color: #c4c6c9; }
+html.site-theme-dark .award-year { color: #7a8288; }
+html.site-theme-dark .award-card p { color: #c4c6c9 !important; }
+html.site-theme-dark .award-card a { color: #d7d8da !important; }
+
+html.site-theme-dark .institution-card {
+  background: #25282c;
+  border-color: #3d4247;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+html.site-theme-dark .institution-icon { background: #2a2d31; color: #c4c6c9; }
+html.site-theme-dark .institution-name { color: #ececec; }
+html.site-theme-dark .institution-location { color: #7a8288; }
+html.site-theme-dark .institution-count { color: #c4c6c9; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+  }
+  
+  .map-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .award-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .award-icon {
+    margin: 0 auto;
+  }
+}
+</style>
+
+<div class="recognition-container">
+
+<!-- Stats Overview -->
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-icon"><i class="fas fa-quote-left"></i></div>
+    <div class="stat-value" id="totalCitations">--</div>
+    <div class="stat-label">Total Citations</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+    <div class="stat-value" id="hIndex">--</div>
+    <div class="stat-label">h-index</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon"><i class="fas fa-users"></i></div>
+    <div class="stat-value" id="researchers">--</div>
+    <div class="stat-label">Researchers</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon"><i class="fas fa-university"></i></div>
+    <div class="stat-value" id="institutions">--</div>
+    <div class="stat-label">Institutions</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon"><i class="fas fa-globe"></i></div>
+    <div class="stat-value" id="countries">--</div>
+    <div class="stat-label">Countries</div>
+  </div>
+</div>
+
+<!-- Citation Map Section -->
+<div class="recognition-section">
+  <div class="section-header">
+    <div class="section-icon"><i class="fas fa-globe-americas"></i></div>
+    <h2>Global Citation Map</h2>
+  </div>
+  
+  <div class="citation-map-container">
+    <div class="map-header">
+      <h3 class="map-title">Institutions Citing My Work</h3>
+    </div>
+    
+    <!-- Map will be embedded here -->
+    <div id="citationMap">
+      <div class="map-placeholder">
+        <i class="fas fa-map-marked-alt"></i>
+        <p>Citation map loading...</p>
+        <p style="font-size: 0.85em; margin-top: 10px;">Run <code>scholarmap</code> to generate the map</p>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<!-- Citation Network Graph Section -->
+<div class="recognition-section">
+  <div class="section-header">
+    <div class="section-icon"><i class="fas fa-project-diagram"></i></div>
+    <h2>Citation Network Graph</h2>
+  </div>
+  
+  <div class="graph-container">
+    <div class="graph-header">
+      <h3 class="graph-title">Citation Network</h3>
+    </div>
+    <div id="citationGraph">
+      <div class="graph-placeholder">
+        <i class="fas fa-project-diagram"></i>
+        <p>Citation network graph loading...</p>
+        <p style="font-size: 0.85em; margin-top: 10px;">Run <code>scholarmap</code> to generate the graph</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Industry Recognition Section -->
+<div class="recognition-section">
+  <div class="section-header">
+    <div class="section-icon"><i class="fas fa-industry"></i></div>
+    <h2>Industry Recognition</h2>
+  </div>
+  
+  <div class="awards-list">
+    <div class="award-card">
+      <div class="award-icon" style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);"><i class="fas fa-building"></i></div>
+      <div class="award-content">
+        <div class="award-title">ReqCity Listed as Transformative Entry</div>
+        <div class="award-org">National Center for Manufacturing Sciences (NCMS) - DTC Technology Competition 2024</div>
+        <div class="award-year">2024</div>
+        <p style="margin-top: 10px; font-size: 0.9em; color: #4a5568;">
+          ReqCity was recognized as a transformative entry in the NCMS Defense Technology Challenge, showcasing its potential to revolutionize requirements engineering in defense manufacturing.
+        </p>
+        <a href="https://ncms.org/wp-content/uploads/2024/11/2024_DTC_book_241121_FINAL_WEB.pdf#page=17.07" target="_blank" style="display: inline-flex; align-items: center; gap: 5px; margin-top: 10px; color: #494e52; font-size: 0.85em; text-decoration: none;">
+          <i class="fas fa-external-link-alt"></i> View Publication
+        </a>
+      </div>
+    </div>
+    
+    <div class="award-card">
+      <div class="award-icon" style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);"><i class="fas fa-lightbulb"></i></div>
+      <div class="award-content">
+        <div class="award-title">ReqCity++ - Top 35 Innovative Solutions</div>
+        <div class="award-org">NCMS CTMA Technology Competition 2025</div>
+        <div class="award-year">2025</div>
+        <p style="margin-top: 10px; font-size: 0.9em; color: #4a5568;">
+          ReqCity++ was recognized as one of the 35 innovative solutions for manufacturing technology advancement in the CTMA Technology Competition.
+        </p>
+        <a href="https://publications.ncms.org/2025-ctma-technology-competition-booklet/full-view.html" target="_blank" style="display: inline-flex; align-items: center; gap: 5px; margin-top: 10px; color: #494e52; font-size: 0.85em; text-decoration: none;">
+          <i class="fas fa-external-link-alt"></i> View Publication
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Awards & Competitions Section -->
+<div class="recognition-section">
+  <div class="section-header">
+    <div class="section-icon"><i class="fas fa-trophy"></i></div>
+    <h2>Awards & Competitions</h2>
+  </div>
+  
+  <div class="awards-list">
+    <div class="award-card">
+      <div class="award-icon" style="background: linear-gradient(135deg, #ffd700 0%, #f59e0b 100%);"><i class="fas fa-medal"></i></div>
+      <div class="award-content">
+        <div class="award-title">🥇 First Position - ASME IDETC-CIE Hackathon</div>
+        <div class="award-org">ASME International Design Engineering Technical Conferences</div>
+        <div class="award-year">2020</div>
+        <p style="margin-top: 10px; font-size: 0.9em; color: #4a5568;">
+          Won first place for developing physics-guided machine learning solutions for additive manufacturing quality prediction and process optimization.
+        </p>
+      </div>
+    </div>
+    
+    <div class="award-card">
+      <div class="award-icon" style="background: linear-gradient(135deg, #c0c0c0 0%, #6b7280 100%);"><i class="fas fa-medal"></i></div>
+      <div class="award-content">
+        <div class="award-title">🥈 Second Position - ASME IMECE Hackathon</div>
+        <div class="award-org">ASME International Mechanical Engineering Congress & Exposition</div>
+        <div class="award-year">2020</div>
+        <p style="margin-top: 10px; font-size: 0.9em; color: #4a5568;">
+          Secured second place for innovative AI-driven solutions in additive manufacturing process monitoring and defect prediction.
+        </p>
+      </div>
+    </div>
+    
+    <div class="award-card">
+      <div class="award-icon"><i class="fas fa-certificate"></i></div>
+      <div class="award-content">
+        <div class="award-title">Merit Certificate in Mathematics - Top 0.1%</div>
+        <div class="award-org">All India Senior School Certificate Examination (AISSCE)</div>
+        <div class="award-year">2010</div>
+        <p style="margin-top: 10px; font-size: 0.9em; color: #4a5568;">
+          Recognized for being among the top 0.1% of successful candidates in Mathematics in the national board examination.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  const BASE = '{{ site.baseurl }}';
+
+  /**
+   * Format total citations to the highest 100× multiplier below the actual
+   * value, with a plus sign.  e.g. 945 → "900+", 1089 → "1000+".
+   * Falls back to the pre-computed value from the JSON when available.
+   */
+  function formatCitationsRounded(total) {
+    const floored = Math.floor(total / 100) * 100;
+    return floored + '+';
+  }
+
+  function formatResearchers(count) {
+    const floored = Math.floor(count / 100) * 100;
+    return floored + '+';
+  }
+
+  function formatByTen(count) {
+    const floored = Math.floor(count / 10) * 10;
+    return floored + '+';
+  }
+
+  function setText(id, value) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+  }
+
+  function renderStats(data) {
+    const display = data.total_citations_display || formatCitationsRounded(data.total_citations || 0);
+    setText('totalCitations', display);
+    setText('hIndex', data.h_index ?? '--');
+    setText('researchers', formatResearchers(data.unique_authors || 0));
+    setText('institutions', formatByTen(data.unique_institutions || 0));
+    setText('countries', formatByTen(data.countries || 0));
+  }
+
+  function loadCitationMap() {
+    fetch(BASE + '/assets/citation_map.html')
+      .then(function (res) {
+        if (res.ok) {
+          document.getElementById('citationMap').innerHTML =
+            '<iframe src="' + BASE + '/assets/citation_map.html" class="map-frame"></iframe>';
+        }
+      })
+      .catch(function () { /* map not yet generated */ });
+  }
+
+  function loadCitationGraph() {
+    fetch(BASE + '/assets/citation_graph.html')
+      .then(function (res) {
+        if (res.ok) {
+          document.getElementById('citationGraph').innerHTML =
+            '<iframe src="' + BASE + '/assets/citation_graph.html" class="graph-frame"></iframe>';
+        }
+      })
+      .catch(function () { /* graph not yet generated */ });
+  }
+
+  // Fetch the generated data JSON and hydrate the page
+  fetch(BASE + '/assets/citation_data.json')
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      renderStats(data);
+    })
+    .catch(function () {
+      // JSON not available yet – leave placeholders as-is
+      console.log('citation_data.json not yet generated. Run: scholarmap');
+    });
+
+  loadCitationMap();
+  loadCitationGraph();
+
+  /* ---- Broadcast theme to iframes ---- */
+  function broadcastTheme() {
+    var dark = document.documentElement.classList.contains('site-theme-dark');
+    var msg = { theme: dark ? 'dark' : 'light' };
+    document.querySelectorAll('.map-frame, .graph-frame').forEach(function (iframe) {
+      try { iframe.contentWindow.postMessage(msg, '*'); } catch (e) {}
+    });
+  }
+
+  /* Watch for theme class changes on <html> (triggered by the site toggle) */
+  var observer = new MutationObserver(function (mutations) {
+    mutations.forEach(function (m) {
+      if (m.attributeName === 'class') broadcastTheme();
+    });
+  });
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
+  /* Also send theme when iframes finish loading */
+  new MutationObserver(function () {
+    document.querySelectorAll('.map-frame, .graph-frame').forEach(function (iframe) {
+      if (!iframe._themeHooked) {
+        iframe._themeHooked = true;
+        iframe.addEventListener('load', broadcastTheme);
+      }
+    });
+  }).observe(document.getElementById('citationMap'), { childList: true, subtree: true });
+  new MutationObserver(function () {
+    document.querySelectorAll('.map-frame, .graph-frame').forEach(function (iframe) {
+      if (!iframe._themeHooked) {
+        iframe._themeHooked = true;
+        iframe.addEventListener('load', broadcastTheme);
+      }
+    });
+  }).observe(document.getElementById('citationGraph'), { childList: true, subtree: true });
+})();
+</script>
