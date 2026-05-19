@@ -14,17 +14,17 @@ main:
   - title: "Projects"
     url: /projects/
 
-  - title: "Service"
-    url: /service/
+  # - title: "Service"
+  #   url: /service/
 
-  - title: "Teaching"
-    url: /teaching/
+  # - title: "Teaching"
+  #   url: /teaching/
 
   - title: "Impact"
     url: /impact/
 
-  - title: "Deadlines"
-    url: /deadlines/
+  # - title: "Deadlines"
+  #   url: /deadlines/
 
   # - title: "Talks"
   #  url: /talks/    
