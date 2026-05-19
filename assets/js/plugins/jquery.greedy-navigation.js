@@ -1,13 +1,9 @@
 /*
-* Greedy Navigation - DISABLED
+* Greedy Navigation — DISABLED
 *
-* All nav links are always visible via CSS flex-wrap.
-* The overflow-to-dropdown behaviour has been removed so
-* every header link stays in the masthead at all times.
+* All navigation links are now always visible via CSS flex-wrap.
+* The greedy collapse behaviour is intentionally removed so that
+* page links never hide behind a hamburger menu.
 */
 
-// Hide the dropdown button and ensure hidden-links list stays empty
-$(function() {
-  $('#greedy-nav-btn').addClass('hidden');
-  $('#site-nav .hidden-links').addClass('hidden');
-});
+// No-op: keep all links visible at all times.

@@ -6,7 +6,8 @@
   position: fixed;
   background: white;
   border-bottom: 1px solid $border-color;
-  height: $masthead-height;
+  min-height: $masthead-height;
+  height: auto;
   top: 0;
   width: 100%;
 
