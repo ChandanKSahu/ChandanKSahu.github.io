@@ -1,0 +1,29 @@
+<script src="{{ base_path }}/assets/js/main.min.js"></script>
+
+<script>
+// Override greedy-nav: move all hidden links back to visible and disable resize handler
+(function() {
+  var $vlinks = $('#site-nav .visible-links');
+  var $hlinks = $('#site-nav .hidden-links');
+  var $btn    = $('#greedy-nav-btn');
+
+  // Move any items the greedy-nav already relocated back to the visible list
+  if ($hlinks.length && $vlinks.length) {
+    $hlinks.children().appendTo($vlinks);
+  }
+
+  // Hide the hamburger button and dropdown permanently
+  if ($btn.length) { $btn.addClass('hidden').hide(); }
+  if ($hlinks.length) { $hlinks.addClass('hidden').hide(); }
+
+  // Replace updateNav globally so resize events are harmless
+  if (typeof window.updateNav === 'function') {
+    window.updateNav = function() {};
+  }
+
+  // Detach any resize listeners that call updateNav
+  $(window).off('resize');
+})();
+</script>
+
+{% include analytics.html %}

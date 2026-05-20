@@ -1,0 +1,35 @@
+<script src="{{ base_path }}/assets/js/main.min.js"></script>
+
+<script>
+// Override greedy-nav: move all hidden links back to visible and disable resize handler.
+// The minified main.min.js still contains the old greedy-nav that moves <li> elements
+// from .visible-links into .hidden-links on ready + resize. We undo that here.
+(function() {
+  function restoreNav() {
+    var $vlinks = $('#site-nav .visible-links');
+    var $hlinks = $('#site-nav .hidden-links');
+    var $btn    = $('#greedy-nav-btn');
+
+    // Move any items the greedy-nav relocated back to the visible list
+    if ($hlinks.length && $vlinks.length) {
+      $hlinks.children().appendTo($vlinks);
+    }
+
+    // Hide the hamburger button and dropdown permanently
+    if ($btn.length) { $btn.addClass('hidden').hide(); }
+    if ($hlinks.length) { $hlinks.addClass('hidden').hide(); }
+  }
+
+  // Run after greedy-nav's own $(document).ready handler (FIFO order)
+  $(document).ready(function() {
+    restoreNav();
+    // Safety net: catch any deferred layout recalculations from the minified bundle
+    setTimeout(restoreNav, 100);
+    setTimeout(restoreNav, 500);
+    // Kill resize-triggered re-hiding by detaching all resize handlers
+    $(window).off('resize.greedy');
+  });
+})();
+</script>
+
+{% include analytics.html %}
