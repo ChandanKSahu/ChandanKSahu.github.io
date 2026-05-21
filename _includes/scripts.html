@@ -2,22 +2,25 @@
 <script src="{{ base_path }}/assets/js/main.min.js" defer></script>
 
 <script>
-// Fix: main.min.js (deferred) bundles old greedy-nav code that moves <li>
-// elements from .visible-links into .hidden-links inside $(document).ready().
-// A plain DOMContentLoaded handler registered before the deferred script fires
-// BEFORE jQuery's ready callbacks, so it cannot undo changes that haven't
-// happened yet.  Using setTimeout(fn, 0) inside DOMContentLoaded defers the
-// restore to the next macrotask — after all synchronous ready handlers finish.
-// A MutationObserver guards against resize-triggered re-collapses.
+/*
+ * Greedy-nav fix: main.min.js (deferred) bundles old greedy-nav code that
+ * moves li elements from .visible-links into .hidden-links at ready-time
+ * and on resize.  setTimeout(fn,0) inside DOMContentLoaded defers the
+ * restore to the next macrotask, after all jQuery ready callbacks finish.
+ * A MutationObserver catches any future resize-triggered re-collapses.
+ *
+ * IMPORTANT: only block comments here — compress_html strips newlines,
+ * which would turn single-line comments into one giant comment.
+ */
 document.addEventListener('DOMContentLoaded', function() {
   setTimeout(function() {
-    var $ = window.jQuery;
-    if (!$) return;
+    var jQ = window.jQuery;
+    if (!jQ) { return; }
 
-    var $nav    = $('#site-nav');
+    var $nav    = jQ('#site-nav');
     var $vlinks = $nav.find('.visible-links');
     var $hlinks = $nav.find('.hidden-links');
-    var $btn    = $('#greedy-nav-btn');
+    var $btn    = jQ('#greedy-nav-btn');
 
     function restoreAllLinks() {
       if ($hlinks.length && $vlinks.length) {
@@ -29,12 +32,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     restoreAllLinks();
 
-    // Neutralise the greedy-nav global so future calls are harmless
+    /* Neutralise the greedy-nav global so future resize calls are harmless */
     if (typeof window.updateNav === 'function') {
       window.updateNav = function() {};
     }
 
-    // Guard against resize-triggered re-collapse by the bundled greedy-nav
+    /* Guard against resize-triggered re-collapse by the bundled greedy-nav */
     if (window.MutationObserver && $hlinks.length) {
       new MutationObserver(function() {
         if ($hlinks.children().length > 0) {
