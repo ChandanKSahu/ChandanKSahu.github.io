@@ -1,15 +1,11 @@
-{% include base_path %}
 <script src="{{ base_path }}/assets/js/main.min.js" defer></script>
 
 <script>
 // Fix: main.min.js contains old greedy-nav code that moves <li> elements from
 // .visible-links into .hidden-links at load time and on resize. Since main.min.js
-// is deferred, we wait for DOMContentLoaded (which fires after deferred scripts)
-// then undo the damage and replace the global updateNav function with a no-op.
-document.addEventListener('DOMContentLoaded', function() {
-  var $ = window.jQuery;
-  if (!$) return;
-
+// has already executed synchronously above, we immediately undo the damage and
+// replace the global updateNav function with a no-op.
+(function() {
   var $vlinks = $('#site-nav .visible-links');
   var $hlinks = $('#site-nav .hidden-links');
   var $btn    = $('#greedy-nav-btn');
@@ -22,12 +18,17 @@ document.addEventListener('DOMContentLoaded', function() {
     if ($hlinks.length) { $hlinks.addClass('hidden').hide(); }
   }
 
+  // 1. Immediately undo what updateNav() just did during main.min.js execution
   restoreNav();
 
-  if (typeof window.updateNav === 'function') {
-    window.updateNav = function() {};
+  // 2. Replace the global updateNav so resize events become harmless
+  if (typeof updateNav === 'function') {
+    updateNav = function() {};
   }
-});
+
+  // 3. Safety net for any deferred execution paths
+  $(document).ready(restoreNav);
+})();
 </script>
 
 {% include analytics.html %}
