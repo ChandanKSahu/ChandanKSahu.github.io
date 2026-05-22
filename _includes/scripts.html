@@ -5,45 +5,57 @@
 /*
  * Greedy-nav fix: main.min.js (deferred) bundles old greedy-nav code that
  * moves li elements from .visible-links into .hidden-links at ready-time
- * and on resize.  setTimeout(fn,0) inside DOMContentLoaded defers the
- * restore to the next macrotask, after all jQuery ready callbacks finish.
- * A MutationObserver catches any future resize-triggered re-collapses.
+ * and on resize.  The bundled updateNav() is recursive and bound to
+ * $(window).resize inside a closure we cannot patch.
+ *
+ * Strategy: after greedy-nav finishes its initial collapse, restore all
+ * links, then REPLACE the .visible-links, .hidden-links and button DOM
+ * nodes with fresh clones.  The closure still holds jQuery references to
+ * the OLD (now detached) nodes, so every future updateNav() call
+ * harmlessly manipulates phantom elements — no infinite loop, no jank.
  *
  * IMPORTANT: only block comments here — compress_html strips newlines,
  * which would turn single-line comments into one giant comment.
  */
 document.addEventListener('DOMContentLoaded', function() {
   setTimeout(function() {
-    var jQ = window.jQuery;
-    if (!jQ) { return; }
+    var nav = document.getElementById('site-nav');
+    if (!nav) { return; }
 
-    var $nav    = jQ('#site-nav');
-    var $vlinks = $nav.find('.visible-links');
-    var $hlinks = $nav.find('.hidden-links');
-    var $btn    = jQ('#greedy-nav-btn');
+    var oldVlinks = nav.querySelector('.visible-links');
+    var oldHlinks = nav.querySelector('.hidden-links');
+    var oldBtn    = document.getElementById('greedy-nav-btn');
+    if (!oldVlinks) { return; }
 
-    function restoreAllLinks() {
-      if ($hlinks.length && $vlinks.length) {
-        $hlinks.children().appendTo($vlinks);
+    /* Move any hidden children back to visible */
+    if (oldHlinks) {
+      while (oldHlinks.firstChild) {
+        oldVlinks.appendChild(oldHlinks.firstChild);
       }
-      $btn.addClass('hidden').hide();
-      $hlinks.addClass('hidden').hide();
     }
 
-    restoreAllLinks();
+    /*
+     * Deep-clone .visible-links and swap it in.
+     * cloneNode does NOT copy event listeners or jQuery data,
+     * so greedy-nav's closure keeps referencing the detached original.
+     */
+    var newVlinks = oldVlinks.cloneNode(true);
+    oldVlinks.parentNode.replaceChild(newVlinks, oldVlinks);
 
-    /* Neutralise the greedy-nav global so future resize calls are harmless */
-    if (typeof window.updateNav === 'function') {
-      window.updateNav = function() {};
+    /* Replace .hidden-links with an empty shell */
+    if (oldHlinks) {
+      var newHlinks = oldHlinks.cloneNode(false);
+      newHlinks.className = 'hidden-links hidden';
+      newHlinks.style.display = 'none';
+      oldHlinks.parentNode.replaceChild(newHlinks, oldHlinks);
     }
 
-    /* Guard against resize-triggered re-collapse by the bundled greedy-nav */
-    if (window.MutationObserver && $hlinks.length) {
-      new MutationObserver(function() {
-        if ($hlinks.children().length > 0) {
-          restoreAllLinks();
-        }
-      }).observe($hlinks[0], { childList: true });
+    /* Replace the overflow button so its click handler is also severed */
+    if (oldBtn) {
+      var newBtn = oldBtn.cloneNode(true);
+      newBtn.className = 'hidden';
+      newBtn.style.cssText = 'display:none;visibility:hidden;position:absolute';
+      oldBtn.parentNode.replaceChild(newBtn, oldBtn);
     }
   }, 0);
 });
