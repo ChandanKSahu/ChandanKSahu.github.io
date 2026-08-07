@@ -1,0 +1,52 @@
+{% include base_path %}
+<script src="{{ base_path }}/assets/js/main.min.js" defer></script>
+
+<script>
+/*
+ * Greedy-nav fix: main.min.js (deferred) bundles old greedy-nav code that
+ * moves li elements from .visible-links into .hidden-links at ready-time
+ * and on resize.  setTimeout(fn,0) inside DOMContentLoaded defers the
+ * restore to the next macrotask, after all jQuery ready callbacks finish.
+ * A MutationObserver catches any future resize-triggered re-collapses.
+ *
+ * IMPORTANT: only block comments here — compress_html strips newlines,
+ * which would turn single-line comments into one giant comment.
+ */
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(function() {
+    var jQ = window.jQuery;
+    if (!jQ) { return; }
+
+    var $nav    = jQ('#site-nav');
+    var $vlinks = $nav.find('.visible-links');
+    var $hlinks = $nav.find('.hidden-links');
+    var $btn    = jQ('#greedy-nav-btn');
+
+    function restoreAllLinks() {
+      if ($hlinks.length && $vlinks.length) {
+        $hlinks.children().appendTo($vlinks);
+      }
+      $btn.addClass('hidden').hide();
+      $hlinks.addClass('hidden').hide();
+    }
+
+    restoreAllLinks();
+
+    /* Neutralise the greedy-nav global so future resize calls are harmless */
+    if (typeof window.updateNav === 'function') {
+      window.updateNav = function() {};
+    }
+
+    /* Guard against resize-triggered re-collapse by the bundled greedy-nav */
+    if (window.MutationObserver && $hlinks.length) {
+      new MutationObserver(function() {
+        if ($hlinks.children().length > 0) {
+          restoreAllLinks();
+        }
+      }).observe($hlinks[0], { childList: true });
+    }
+  }, 0);
+});
+</script>
+
+{% include analytics.html %}
